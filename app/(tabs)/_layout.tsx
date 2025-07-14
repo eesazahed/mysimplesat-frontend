@@ -1,4 +1,4 @@
-import { HapticTab } from "@/components/HapticTab";
+import HapticTab from "@/components/HapticTab";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Tabs } from "expo-router";
 import React from "react";
@@ -35,6 +35,38 @@ const TabLayout = () => {
             <MaterialIcons name="home" color={color} size={28} />
           ),
           href: "/(tabs)",
+        }}
+      />
+      ,
+      <Tabs.Screen
+        name="test"
+        options={{
+          title: "Take a test",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="book" color={color} size={28} />
+          ),
+          href: "/(tabs)/test",
+        }}
+      />
+      ,
+      <Tabs.Screen
+        name="questions"
+        options={{
+          href: null,
+        }}
+      />
+      ,
+      <Tabs.Screen
+        name="review"
+        options={{
+          href: null,
+        }}
+      />
+      ,
+      <Tabs.Screen
+        name="example"
+        options={{
+          href: null,
         }}
       />
     </Tabs>
