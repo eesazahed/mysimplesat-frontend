@@ -3,7 +3,7 @@ import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
 import { ScrollView, StyleSheet, View } from "react-native";
 
-export default function HomeScreen() {
+const Home = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
@@ -15,7 +15,9 @@ export default function HomeScreen() {
       </Container>
     </ScrollView>
   );
-}
+};
+
+export default Home;
 
 const styles = StyleSheet.create({
   container: { flexGrow: 1, paddingBottom: 150 },
