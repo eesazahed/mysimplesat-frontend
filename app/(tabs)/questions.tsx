@@ -2,6 +2,12 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
+import type {
+  Difficulty,
+  RootStackParamList,
+  Subject,
+  UserAnswer,
+} from "@/types";
 import renderLatex from "@/utils/renderLatex";
 import {
   RouteProp,
@@ -18,12 +24,13 @@ import {
   View,
   useColorScheme,
 } from "react-native";
-
-import type { RootStackParamList, UserAnswer } from "@/types";
+import "react-native-get-random-values";
 
 type ParsedQuestion = {
   id: string;
   question_text: string;
+  subject: Subject;
+  difficulty: Difficulty;
   options: { id: string; text: string }[];
   correctChoiceId: string;
   rationale: string;
@@ -41,6 +48,10 @@ const Questions = () => {
   const [rawQuestions, setRawQuestions] = useState<any[] | null>(null);
 
   const colorScheme = useColorScheme();
+
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
 
   useFocusEffect(
     useCallback(() => {
@@ -75,6 +86,8 @@ const Questions = () => {
         return {
           id: q.id,
           question_text: q.question_text,
+          subject: q.subject,
+          difficulty: q.difficulty,
           options,
           correctChoiceId: q.correct_choice,
           rationale: q.rationale,
@@ -86,10 +99,6 @@ const Questions = () => {
       return [];
     }
   }, [rawQuestions]);
-
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
 
   if (!rawQuestions || questions.length === 0) {
     return (
@@ -113,6 +122,8 @@ const Questions = () => {
     const newAnswer: UserAnswer = {
       questionId: currentQuestion.id,
       questionText: currentQuestion.question_text,
+      subject: currentQuestion.subject,
+      difficulty: currentQuestion.difficulty,
       selectedChoiceValue: selectedOption?.text || "",
       isCorrect,
       rationale: currentQuestion.rationale,
@@ -161,23 +172,36 @@ const Questions = () => {
               questions.length
             }`}
           />
-          <ThemedText style={{ marginBottom: 12 }}>
+          <ThemedText
+            style={{ marginBottom: 24 }}
+            key={`question-${currentQuestionIndex}`}
+          >
             {renderLatex(currentQuestion.question_text)}
           </ThemedText>
 
-          {currentQuestion.options.map((option) => {
+          {currentQuestion.options.map((option, index) => {
             const isSelected = answers[currentQuestion.id] === option.id;
+
+            const optionButtonStyle = [
+              styles.optionButton,
+              {
+                backgroundColor:
+                  colorScheme === "dark" ? "#323232" : "transparent",
+                borderColor: colorScheme === "dark" ? "#323232" : "#ccc",
+              },
+              isSelected && selectedOptionStyle,
+            ];
 
             return (
               <View key={option.id} style={styles.optionContainer}>
                 <TouchableOpacity
                   onPress={() => selectOption(option.id)}
-                  style={[
-                    styles.optionButton,
-                    isSelected && selectedOptionStyle,
-                  ]}
+                  style={optionButtonStyle}
                 >
-                  <ThemedText style={styles.optionText}>
+                  <ThemedText
+                    style={styles.optionText}
+                    key={`option-${currentQuestionIndex}-${index}`}
+                  >
                     {renderLatex(option.text)}
                   </ThemedText>
                 </TouchableOpacity>
@@ -224,7 +248,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     borderWidth: 1,
-    borderColor: "#ccc",
     borderRadius: 6,
   },
   optionText: {

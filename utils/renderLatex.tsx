@@ -1,20 +1,27 @@
 import React, { ReactNode } from "react";
-import { InlineMath } from "react-katex";
+import { Text } from "react-native";
+import MathJax from "react-native-mathjax-svg";
 
 const renderLatex = (text: string): ReactNode[] => {
-  if (text) {
-    const parts = text.split(/(\$[^$]+\$)/g);
+  if (!text) return [];
 
-    return parts.map((part, index) => {
-      if (part.startsWith("$") && part.endsWith("$")) {
-        const math = part.slice(1, -1);
-        return <InlineMath key={index}>{math}</InlineMath>;
-      }
-      return <span key={index}>{part}</span>;
-    });
-  } else {
-    return [];
-  }
+  const parts = text.split(/(\$[^$]+\$)/g);
+
+  return parts.map((part, index) => {
+    if (part.startsWith("$") && part.endsWith("$")) {
+      const math = part.slice(1, -1);
+      return (
+        <MathJax key={index} style={{ transform: [{ translateY: 3 }] }}>
+          {math}
+        </MathJax>
+      );
+    }
+    return (
+      <Text key={index} style={{ fontSize: 16, color: "black" }}>
+        {part}
+      </Text>
+    );
+  });
 };
 
 export default renderLatex;

@@ -19,6 +19,8 @@ export interface Question {
 export interface UserAnswer {
   questionId: string;
   questionText: string;
+  subject: Subject;
+  difficulty: Difficulty;
   selectedChoiceValue: string;
   isCorrect: boolean;
   rationale: string;
@@ -32,11 +34,15 @@ export interface UserAnswer {
 export interface AnswerRow {
   questionId: string;
   questionText?: string | null;
+  subject: Subject;
+  difficulty: Difficulty;
   isCorrect: boolean;
   selectedChoiceValue: string;
   rationale?: string | null;
   reasonForMistake?: string | null;
   howToAvoidMistake?: string | null;
+  reasonForGuess?: string | null;
+  howToAvoidGuess?: string | null;
 }
 
 export type RootStackParamList = {

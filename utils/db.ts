@@ -10,15 +10,17 @@ const initDB = async (): Promise<SQLiteDatabase> => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       questionId TEXT,
       questionText TEXT,
+      subject TEXT,
+      difficulty TEXT,
       isCorrect INTEGER,
       selectedChoiceValue TEXT,
       rationale TEXT,
       reasonForMistake TEXT,
-      howToAvoidMistake TEXT
-    );
+      howToAvoidMistake TEXT,
+      reasonForGuess TEXT,
+      howToAvoidGuess TEXT
+    )
   `);
-
-  console.log("Initialized DB");
 
   return db;
 };
@@ -32,28 +34,48 @@ const saveAnswers = async (
       `INSERT INTO answers (
         questionId,
         questionText,
+        subject,
+        difficulty,
         isCorrect,
         selectedChoiceValue,
         rationale,
         reasonForMistake,
-        howToAvoidMistake
-      ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        howToAvoidMistake,
+        reasonForGuess,
+        howToAvoidGuess         
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         answer.questionId,
         answer.questionText ?? null,
+        answer.subject,
+        answer.difficulty,
         answer.isCorrect ? 1 : 0,
         answer.selectedChoiceValue,
         answer.rationale ?? null,
         answer.reasonForMistake ?? null,
         answer.howToAvoidMistake ?? null,
+        answer.reasonForGuess ?? null,
+        answer.howToAvoidGuess ?? null,
       ]
     );
   }
 };
 
 const fetchAnswers = async (db: SQLiteDatabase): Promise<AnswerRow[]> => {
-  const rows = await db.getAllAsync<AnswerRow>(`SELECT * FROM answers;`);
-  return rows;
+  const rows = await db.getAllAsync<any>(`SELECT * FROM answers;`);
+  return rows.map((row) => ({
+    questionId: row.questionId,
+    questionText: row.questionText,
+    subject: row.subject,
+    difficulty: row.difficulty,
+    isCorrect: row.isCorrect === 1,
+    selectedChoiceValue: row.selectedChoiceValue,
+    rationale: row.rationale,
+    reasonForMistake: row.reasonForMistake,
+    howToAvoidMistake: row.howToAvoidMistake,
+    reasonForGuess: row.reasonForGuess,
+    howToAvoidGuess: row.howToAvoidGuess,
+  }));
 };
 
 const deleteDatabase = async () => {

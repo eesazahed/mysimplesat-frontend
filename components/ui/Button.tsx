@@ -66,7 +66,7 @@ const Button = ({
       style={[
         {
           backgroundColor: getBackgroundColor(),
-          borderWidth: variant === "outline" ? 1 : 0,
+          borderWidth: 1,
           borderColor: colors.border,
           borderRadius: 8,
           flexDirection: "row",

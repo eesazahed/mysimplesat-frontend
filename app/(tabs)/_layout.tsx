@@ -8,7 +8,6 @@ const TabLayout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "#fff",
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarStyle: Platform.select({
@@ -60,6 +59,17 @@ const TabLayout = () => {
         name="review"
         options={{
           href: null,
+        }}
+      />
+      ,
+      <Tabs.Screen
+        name="tracker"
+        options={{
+          title: "Mistake tracker",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="checklist" color={color} size={28} />
+          ),
+          href: "/(tabs)/tracker",
         }}
       />
       ,

@@ -88,18 +88,20 @@ const Test = () => {
         <View>
           <Header title="Take a test" />
 
-          <ThemedText>Select Subject</ThemedText>
-          {renderButtonGroup(subjects, subject, setSubject)}
+          <View style={{ marginBottom: 16 }}>
+            <ThemedText>Select Subject</ThemedText>
+            {renderButtonGroup(subjects, subject, setSubject)}
 
-          <ThemedText>Select Difficulty</ThemedText>
-          {renderButtonGroup(difficulties, difficulty, setDifficulty)}
+            <ThemedText>Select Difficulty</ThemedText>
+            {renderButtonGroup(difficulties, difficulty, setDifficulty)}
 
-          <ThemedText>Select Number of Questions</ThemedText>
-          {renderButtonGroup(
-            questionCounts.map((v) => ({ label: v.toString(), value: v })),
-            count,
-            setCount
-          )}
+            <ThemedText>Select Number of Questions</ThemedText>
+            {renderButtonGroup(
+              questionCounts.map((v) => ({ label: v.toString(), value: v })),
+              count,
+              setCount
+            )}
+          </View>
 
           <Button
             title={loading ? "Loading..." : "Ready to start?"}
@@ -118,5 +120,5 @@ const styles = StyleSheet.create({
   container: { flexGrow: 1, paddingBottom: 150 },
   selectedButton: { backgroundColor: "#007AFF" },
   buttonGroup: { flexDirection: "row", flexWrap: "wrap", marginBottom: 16 },
-  buttonMargin: { margin: 8 },
+  buttonMargin: { marginRight: 16, marginVertical: 12 },
 });

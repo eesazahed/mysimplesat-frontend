@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   link: {
-    lineHeight: 30,
     fontSize: 16,
+    lineHeight: 24,
     color: "#20a9d5",
   },
 });

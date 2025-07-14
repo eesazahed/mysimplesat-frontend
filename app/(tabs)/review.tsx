@@ -1,12 +1,11 @@
-import { RouteProp, useFocusEffect, useRoute } from "@react-navigation/native";
-import React, { useCallback, useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
-
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import TextArea from "@/components/ui/TextArea";
 import ThemedText from "@/components/ui/ThemedText";
+import { RouteProp, useFocusEffect, useRoute } from "@react-navigation/native";
+import React, { useCallback, useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 import type { RootStackParamList } from "@/types";
 import initDB, { saveAnswers } from "@/utils/db";
@@ -90,22 +89,30 @@ const Review = () => {
   const currentAnswer = userAnswers[currentIndex];
   if (!currentAnswer) {
     const combinedAnswers = userAnswers.map((answer) => {
+      const base = {
+        ...answer,
+        reasonForGuess: null,
+        howToAvoidGuess: null,
+        reasonForMistake: null,
+        howToAvoidMistake: null,
+      };
+
       if (answer.isCorrect && guessedQuestions[answer.questionId]) {
         return {
-          ...answer,
+          ...base,
           reasonForGuess: guessedQuestions[answer.questionId].reasonForGuess,
           howToAvoidGuess: guessedQuestions[answer.questionId].howToAvoidGuess,
         };
       } else if (!answer.isCorrect && incorrectQuestions[answer.questionId]) {
         return {
-          ...answer,
+          ...base,
           reasonForMistake:
             incorrectQuestions[answer.questionId].reasonForMistake,
           howToAvoidMistake:
             incorrectQuestions[answer.questionId].howToAvoidMistake,
         };
       }
-      return answer;
+      return base;
     });
 
     const saveData = async () => {
@@ -213,21 +220,28 @@ const Review = () => {
         />
 
         <View style={{ marginBottom: 20 }}>
-          <ThemedText style={{ marginBottom: 8 }}>
+          <ThemedText
+            style={{ marginBottom: 8 }}
+            key={`question-${currentIndex}`}
+          >
             Question: {renderLatex(currentAnswer.questionText)}
           </ThemedText>
-          <ThemedText style={{ marginBottom: 8 }}>
+          <ThemedText
+            style={{ marginBottom: 24 }}
+            key={`rationale-${currentIndex}`}
+          >
             Rationale: {renderLatex(currentAnswer.rationale)}
           </ThemedText>
-
           {isCorrect ? (
             <>
-              <ThemedText>You answered this question correctly.</ThemedText>
-
-              <br />
+              <ThemedText
+                style={{ color: "green", marginTop: 16, marginBottom: 32 }}
+              >
+                You answered this question correctly.
+              </ThemedText>
 
               {guessStep === 0 && !guessSubmitted && (
-                <View style={{ flexDirection: "row", gap: 12 }}>
+                <View style={{ flexDirection: "row", gap: 20 }}>
                   <Button title="I solved it" onPress={handleSolved} />
                   <Button
                     title="I guessed it"
@@ -235,7 +249,6 @@ const Review = () => {
                   />
                 </View>
               )}
-
               {guessStep === 1 && !guessSubmitted && (
                 <>
                   <ThemedText style={{ marginTop: 20, marginBottom: 8 }}>
@@ -244,7 +257,7 @@ const Review = () => {
                   <TextArea
                     value={inputReason}
                     onChangeText={setInputReason}
-                    placeholder="Explain your guess reason..."
+                    placeholder="Explain your thought process"
                   />
                   <Button
                     title="Submit"
@@ -264,7 +277,7 @@ const Review = () => {
                   <TextArea
                     value={inputAvoid}
                     onChangeText={setInputAvoid}
-                    placeholder="Your ideas to avoid guessing..."
+                    placeholder="Strategies to avoid guessing..."
                   />
                   <Button
                     title="Submit"
@@ -274,7 +287,6 @@ const Review = () => {
                   />
                 </>
               )}
-
               {guessSubmitted && (
                 <Button
                   title="Next Question"
@@ -285,7 +297,7 @@ const Review = () => {
             </>
           ) : (
             <>
-              <ThemedText style={{ marginTop: 12 }}>
+              <ThemedText style={{ color: "red", marginVertical: 16 }}>
                 You answered: {currentAnswer.selectedChoiceValue}, which was
                 incorrect
               </ThemedText>

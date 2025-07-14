@@ -30,7 +30,7 @@ const Input = ({
   const placeholderColor = colorScheme === "dark" ? "#aaa" : "#888";
 
   return (
-    <View style={[{ marginBottom: 16 }, containerStyle]}>
+    <View style={[{ marginTop: 8, marginBottom: 16 }, containerStyle]}>
       {label && (
         <ThemedText
           style={{
