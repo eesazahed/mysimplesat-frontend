@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
 import { RootStackParamList } from "@/types";
-import initDB, { fetchQuestionsFromDB } from "@/utils/db";
+import { fetchQuestionsFromDB } from "@/utils/db";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useState } from "react";
@@ -23,9 +23,9 @@ const difficulties = [
 const questionCounts = [5, 10, 15, 20];
 
 const timers = [
-  { label: "60 mins", value: 60 },
-  { label: "30 mins", value: 30 },
-  { label: "15 mins", value: 15 },
+  { label: "60", value: 60 },
+  { label: "30", value: 30 },
+  { label: "15", value: 15 },
   { label: "None", value: 0 },
 ];
 
@@ -37,7 +37,7 @@ const Test = () => {
   const [subject, setSubject] = useState<string>("math");
   const [difficulty, setDifficulty] = useState<string>("easy");
   const [count, setCount] = useState<number>(5);
-  const [timer, setTimer] = useState<number>(0);
+  const [timer, setTimer] = useState<number>(30);
   const [loading, setLoading] = useState(false);
 
   const canStart = subject && difficulty && count;
@@ -47,8 +47,7 @@ const Test = () => {
 
     setLoading(true);
     try {
-      const db = await initDB();
-      const data = await fetchQuestionsFromDB(db, subject, difficulty, count);
+      const data = await fetchQuestionsFromDB(subject, difficulty, count);
 
       if (!Array.isArray(data)) throw new Error("Invalid question data");
 
@@ -98,8 +97,15 @@ const Test = () => {
               setCount
             )}
 
-            <ThemedText>Select Timer</ThemedText>
+            <ThemedText>Select Time Limit (minutes)</ThemedText>
             {renderButtonGroup(timers, timer, setTimer)}
+
+            <ThemedText
+              style={{ marginVertical: 16, color: "red", fontStyle: "italic" }}
+            >
+              Once you start a test, exiting will reset all progress. Make sure
+              you&apos;re ready and focused.
+            </ThemedText>
           </View>
 
           <Button

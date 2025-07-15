@@ -44,15 +44,14 @@ const initDB = async (): Promise<SQLiteDatabase> => {
     );
   `);
 
-  await insertQuestions(db);
+  await insertQuestions();
   return db;
 };
 
-const saveAnswers = async (
-  db: SQLiteDatabase,
-  combinedAnswers: AnswerRow[]
-): Promise<void> => {
+const saveAnswers = async (combinedAnswers: AnswerRow[]): Promise<void> => {
   try {
+    const db = await SQLite.openDatabaseAsync("mistake_tracker");
+
     await db.runAsync(
       `INSERT INTO sessions (createdAt) VALUES (datetime('now'))`
     );
@@ -117,11 +116,12 @@ const saveAnswers = async (
 };
 
 const fetchQuestionsFromDB = async (
-  db: SQLiteDatabase,
   subject: string,
   difficulty: string,
   count: number
 ) => {
+  const db = await SQLite.openDatabaseAsync("mistake_tracker");
+
   const rows = await db.getAllAsync<any>(
     `SELECT q.*
      FROM questions q
@@ -149,7 +149,9 @@ const fetchQuestionsFromDB = async (
   }));
 };
 
-const fetchAnswers = async (db: SQLiteDatabase): Promise<AnswerRow[]> => {
+const fetchAnswers = async (): Promise<AnswerRow[]> => {
+  const db = await SQLite.openDatabaseAsync("mistake_tracker");
+
   const rows = await db.getAllAsync<any>(`SELECT * FROM answers;`);
 
   return rows.map((row) => ({
@@ -169,6 +171,17 @@ const fetchAnswers = async (db: SQLiteDatabase): Promise<AnswerRow[]> => {
   }));
 };
 
+const dropTables = async () => {
+  try {
+    const db = await SQLite.openDatabaseAsync("mistake_tracker");
+    await db.execAsync(`DROP TABLE IF EXISTS answers;`);
+    await db.execAsync(`DROP TABLE IF EXISTS sessions;`);
+    console.log(`Tables answers and sessions dropped successfully.`);
+  } catch (error) {
+    console.error(`Failed to drop tables answers and sessions:`, error);
+  }
+};
+
 const deleteDatabase = async () => {
   try {
     await SQLite.deleteDatabaseAsync("mistake_tracker");
@@ -179,4 +192,10 @@ const deleteDatabase = async () => {
 };
 
 export default initDB;
-export { deleteDatabase, fetchAnswers, fetchQuestionsFromDB, saveAnswers };
+export {
+  deleteDatabase,
+  dropTables,
+  fetchAnswers,
+  fetchQuestionsFromDB,
+  saveAnswers,
+};

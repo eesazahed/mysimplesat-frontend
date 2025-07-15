@@ -77,6 +77,17 @@ const TabLayout = () => {
       />
 
       <Tabs.Screen
+        name="settings"
+        options={{
+          title: "Settings",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="settings" color={color} size={28} />
+          ),
+          href: !inTest ? "/(tabs)/settings" : null,
+        }}
+      />
+
+      <Tabs.Screen
         name="example"
         options={{
           href: null,

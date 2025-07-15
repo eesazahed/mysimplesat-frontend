@@ -9,7 +9,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { ScrollView, StyleSheet, useColorScheme, View } from "react-native";
 
 import type { RootStackParamList } from "@/types";
-import initDB, { saveAnswers } from "@/utils/db";
+import { saveAnswers } from "@/utils/db";
 import renderLatex from "@/utils/renderLatex";
 
 type GuessState = {
@@ -84,7 +84,6 @@ const Review = () => {
   useEffect(() => {
     if (!currentAnswer && userAnswers && userAnswers.length > 0) {
       const saveData = async () => {
-        const db = await initDB();
         const combinedAnswers = userAnswers.map((answer) => {
           const base = {
             ...answer,
@@ -117,7 +116,7 @@ const Review = () => {
           return base;
         });
 
-        await saveAnswers(db, combinedAnswers);
+        await saveAnswers(combinedAnswers);
       };
 
       setInTest(false);

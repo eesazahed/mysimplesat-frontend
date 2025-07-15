@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
 import type { AnswerRow } from "@/types";
-import initDB, { fetchAnswers } from "@/utils/db";
+import { fetchAnswers } from "@/utils/db";
 import renderLatex from "@/utils/renderLatex";
 import { useFocusEffect } from "@react-navigation/native";
 import { useCallback, useMemo, useState } from "react";
@@ -40,8 +40,7 @@ const Tracker = () => {
     useCallback(() => {
       const loadAnswers = async () => {
         try {
-          const db = await initDB();
-          const data = await fetchAnswers(db);
+          const data = await fetchAnswers();
           setAnswers(data);
         } catch {
           setAnswers([]);

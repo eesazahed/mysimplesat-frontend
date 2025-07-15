@@ -1,7 +1,9 @@
 import questions from "@/assets/sat_question_bank.json";
-import type { SQLiteDatabase } from "expo-sqlite";
+import * as SQLite from "expo-sqlite";
 
-const insertQuestions = async (db: SQLiteDatabase) => {
+const insertQuestions = async () => {
+  const db = await SQLite.openDatabaseAsync("mistake_tracker");
+
   const [{ count }] = await db.getAllAsync<{ count: number }>(
     `SELECT COUNT(*) as count FROM questions`
   );
