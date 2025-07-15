@@ -23,7 +23,7 @@ const Header = ({ title, style, fontSize = 34 }: HeaderProps) => {
         style={{
           fontSize: fontSize,
           fontWeight: 600,
-          lineHeight: 24,
+          lineHeight: fontSize * 1.2,
           flex: 1,
           paddingVertical: 28,
         }}

@@ -85,6 +85,13 @@ const TabLayout = () => {
       />
 
       <Tabs.Screen
+        name="sessiondetail"
+        options={{
+          href: null,
+        }}
+      />
+
+      <Tabs.Screen
         name="settings"
         options={{
           title: "Settings",

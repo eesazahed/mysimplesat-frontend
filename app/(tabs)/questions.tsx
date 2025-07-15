@@ -185,7 +185,9 @@ const Questions = () => {
     return (
       <Container>
         <Header title="Questions" />
-        <ThemedText>No valid questions available.</ThemedText>
+        <ThemedText style={{ textAlign: "center" }}>
+          No valid questions available
+        </ThemedText>
       </Container>
     );
   }

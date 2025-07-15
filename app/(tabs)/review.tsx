@@ -277,7 +277,9 @@ const Review = () => {
       <ScrollView contentContainerStyle={styles.container}>
         <Container>
           <Header title="Nothing to Review" />
-          <ThemedText>No answers available to review.</ThemedText>
+          <ThemedText style={{ textAlign: "center" }}>
+            No answers available to review
+          </ThemedText>
         </Container>
       </ScrollView>
     );
@@ -288,7 +290,9 @@ const Review = () => {
       <ScrollView contentContainerStyle={styles.container}>
         <Container>
           <Header title="Review Complete" />
-          <ThemedText>All questions reviewed.</ThemedText>
+          <ThemedText style={{ textAlign: "center" }}>
+            All questions reviewed
+          </ThemedText>
         </Container>
       </ScrollView>
     );

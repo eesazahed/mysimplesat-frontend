@@ -3,7 +3,6 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { CustomDarkTheme, CustomLightTheme } from "@/themes";
 import initDB from "@/utils/db";
 import { ThemeProvider } from "@react-navigation/native";
-import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
@@ -12,10 +11,6 @@ import "react-native-reanimated";
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
-
-  const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-  });
 
   useEffect(() => {
     const createTable = async () => {
@@ -27,8 +22,6 @@ const RootLayout = () => {
     };
     createTable();
   }, []);
-
-  if (!loaded) return null;
 
   return (
     <ThemeProvider

@@ -44,11 +44,22 @@ export interface AnswerRow {
   reasonForGuess?: string | null;
   howToAvoidGuess?: string | null;
   updatedAt?: string | null;
+  sessionId?: number | null;
 }
+
+export type Session = {
+  id: number;
+  createdAt: string;
+  correct: number;
+  total: number;
+  subject: string;
+  difficulty: string;
+};
 
 export type RootStackParamList = {
   questions: { questions: any[]; timer: number };
   review: { userAnswers: UserAnswer[] };
   test: undefined;
   tracker: undefined;
+  sessiondetail: { session: Session };
 };

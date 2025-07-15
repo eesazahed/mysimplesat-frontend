@@ -2,15 +2,26 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
+import { RootStackParamList } from "@/types";
 import { fetchSessionStats } from "@/utils/db";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useCallback, useMemo, useState } from "react";
-import { ScrollView, StyleSheet, View, useColorScheme } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  View,
+  useColorScheme,
+} from "react-native";
 
 const PAGE_SIZE = 20;
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 const Stats = () => {
   const colorScheme = useColorScheme();
+  const navigation = useNavigation<NavigationProp>();
 
   const [sessions, setSessions] = useState<any[]>([]);
   const [page, setPage] = useState(1);
@@ -109,6 +120,17 @@ const Stats = () => {
           ))}
         </View>
 
+        <ThemedText
+          style={{
+            fontSize: 18,
+            marginBottom: 32,
+            textAlign: "center",
+            fontWeight: "bold",
+          }}
+        >
+          Your previous tests
+        </ThemedText>
+
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator
@@ -116,11 +138,15 @@ const Stats = () => {
         >
           <View style={styles.table}>
             <View style={[styles.tableRow, { backgroundColor: "transparent" }]}>
+              <ThemedText style={styles.idCell}>ID</ThemedText>
               <ThemedText style={styles.dateCell}>Date</ThemedText>
               <ThemedText style={styles.timeCell}>Time</ThemedText>
+              <ThemedText style={styles.subjectCell}>Subject</ThemedText>
+              <ThemedText style={styles.difficultyCell}>Difficulty</ThemedText>
               <ThemedText style={styles.correctCell}>Correct</ThemedText>
               <ThemedText style={styles.totalCell}>Total</ThemedText>
               <ThemedText style={styles.percentCell}>%</ThemedText>
+              <ThemedText style={styles.detailsCell}>Questions</ThemedText>
             </View>
 
             {paginatedSessions.map((sesh, index) => {
@@ -141,6 +167,7 @@ const Stats = () => {
                     colorScheme === "dark" && styles.tableRowDarkBg,
                   ]}
                 >
+                  <ThemedText style={styles.idCell}>{sesh.id}</ThemedText>
                   <ThemedText style={styles.dateCell}>
                     {date
                       .toLocaleDateString(undefined, {
@@ -156,11 +183,29 @@ const Stats = () => {
                       hour12: true,
                     })}
                   </ThemedText>
+                  <ThemedText style={styles.subjectCell}>
+                    {sesh.subject}
+                  </ThemedText>
+                  <ThemedText style={styles.difficultyCell}>
+                    {sesh.difficulty}
+                  </ThemedText>
                   <ThemedText style={styles.correctCell}>
                     {sesh.correct}
                   </ThemedText>
                   <ThemedText style={styles.totalCell}>{sesh.total}</ThemedText>
                   <ThemedText style={styles.percentCell}>{percent}%</ThemedText>
+                  <Pressable
+                    onPress={() =>
+                      navigation.navigate("sessiondetail", { session: sesh })
+                    }
+                    style={styles.detailsCell}
+                  >
+                    <ThemedText
+                      style={{ color: "#007aff", textAlign: "center" }}
+                    >
+                      View
+                    </ThemedText>
+                  </Pressable>
                 </View>
               );
             })}
@@ -241,14 +286,32 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     paddingBottom: 8,
   },
+  idCell: {
+    width: 50,
+    paddingVertical: 8,
+    paddingHorizontal: 6,
+    textAlign: "center",
+  },
   dateCell: {
-    width: 80,
+    width: 60,
     paddingVertical: 8,
     paddingHorizontal: 6,
     textAlign: "center",
   },
   timeCell: {
     width: 80,
+    paddingVertical: 8,
+    paddingHorizontal: 6,
+    textAlign: "center",
+  },
+  subjectCell: {
+    width: 80,
+    paddingVertical: 8,
+    paddingHorizontal: 6,
+    textAlign: "center",
+  },
+  difficultyCell: {
+    width: 100,
     paddingVertical: 8,
     paddingHorizontal: 6,
     textAlign: "center",
@@ -260,15 +323,22 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   totalCell: {
-    width: 69,
+    width: 80,
     paddingVertical: 8,
     paddingHorizontal: 6,
     textAlign: "center",
   },
   percentCell: {
-    width: 60,
+    width: 80,
     paddingVertical: 8,
     paddingHorizontal: 6,
     textAlign: "center",
+  },
+  detailsCell: {
+    width: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 8,
+    paddingHorizontal: 6,
   },
 });
