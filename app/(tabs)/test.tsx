@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
 import { RootStackParamList } from "@/types";
+import initDB, { fetchQuestionsFromDB } from "@/utils/db";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useState } from "react";
@@ -21,42 +22,37 @@ const difficulties = [
 
 const questionCounts = [5, 10, 15, 20];
 
-type TestScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  "test"
->;
+const timers = [
+  { label: "60 mins", value: 60 },
+  { label: "30 mins", value: 30 },
+  { label: "15 mins", value: 15 },
+  { label: "None", value: 0 },
+];
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Test = () => {
-  const navigation = useNavigation<TestScreenNavigationProp>();
+  const navigation = useNavigation<NavigationProp>();
 
   const [subject, setSubject] = useState<string>("math");
   const [difficulty, setDifficulty] = useState<string>("easy");
   const [count, setCount] = useState<number>(5);
-
+  const [timer, setTimer] = useState<number>(0);
   const [loading, setLoading] = useState(false);
 
   const canStart = subject && difficulty && count;
 
   const fetchQuestions = async () => {
-    if (!canStart || !subject || !difficulty || !count) return;
+    if (!canStart) return;
 
     setLoading(true);
     try {
-      const queryParams = new URLSearchParams({
-        subject,
-        difficulty,
-        limit: count.toString(),
-      }).toString();
+      const db = await initDB();
+      const data = await fetchQuestionsFromDB(db, subject, difficulty, count);
 
-      const res = await fetch(
-        `http://192.168.1.77:5000/get-questions?${queryParams}`
-      );
-      if (!res.ok) throw new Error("Failed to fetch questions");
+      if (!Array.isArray(data)) throw new Error("Invalid question data");
 
-      const data = await res.json();
-      if (!Array.isArray(data)) throw new Error("Invalid response format");
-
-      navigation.navigate("questions", { questions: data });
+      navigation.navigate("questions", { questions: data, timer });
     } catch (error) {
       console.error("Error fetching questions:", error);
     } finally {
@@ -101,6 +97,9 @@ const Test = () => {
               count,
               setCount
             )}
+
+            <ThemedText>Select Timer</ThemedText>
+            {renderButtonGroup(timers, timer, setTimer)}
           </View>
 
           <Button

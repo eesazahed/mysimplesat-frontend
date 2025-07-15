@@ -16,7 +16,13 @@ import {
   useRoute,
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { useCallback, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -24,7 +30,6 @@ import {
   View,
   useColorScheme,
 } from "react-native";
-import "react-native-get-random-values";
 
 type ParsedQuestion = {
   id: string;
@@ -32,53 +37,125 @@ type ParsedQuestion = {
   subject: Subject;
   difficulty: Difficulty;
   options: { id: string; text: string }[];
-  correctChoiceId: string;
+  correct_choice: string;
   rationale: string;
 };
 
-type NavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  "questions"
->;
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Questions = () => {
   const route = useRoute<RouteProp<RootStackParamList, "questions">>();
   const navigation = useNavigation<NavigationProp>();
 
   const [rawQuestions, setRawQuestions] = useState<any[] | null>(null);
-
   const colorScheme = useColorScheme();
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
+  const [answers, setAnswers] = useState<Record<string, string | null>>({});
+  const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
+  const timerInterval = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useFocusEffect(
     useCallback(() => {
       const questionsFromParams = route.params?.questions ?? null;
+      const timerMinutes = route.params?.timer ?? 0;
 
       if (questionsFromParams) {
         setRawQuestions(questionsFromParams);
         setCurrentQuestionIndex(0);
         setAnswers({});
-        setUserAnswers([]);
+      }
+
+      if (timerMinutes && timerMinutes > 0) {
+        setSecondsLeft(timerMinutes * 60);
+      } else {
+        setSecondsLeft(null);
       }
 
       return () => {
         setRawQuestions(null);
         setCurrentQuestionIndex(0);
         setAnswers({});
-        setUserAnswers([]);
+        if (timerInterval.current !== null) {
+          clearInterval(timerInterval.current);
+          timerInterval.current = null;
+        }
+        setSecondsLeft(null);
       };
-    }, [route.params?.questions])
+    }, [route.params?.questions, route.params?.timer])
   );
+
+  const autoSubmit = useCallback(() => {
+    if (!rawQuestions) return;
+
+    const allAnswers: UserAnswer[] = rawQuestions.map((q) => {
+      const selectedChoiceId = answers[q.id] ?? null;
+      const isAnswered = typeof selectedChoiceId === "string";
+
+      let selectedOptionText: string | null = null;
+      if (isAnswered) {
+        try {
+          const parsedChoices =
+            typeof q.choices === "string" ? JSON.parse(q.choices) : q.choices;
+          selectedOptionText = parsedChoices[selectedChoiceId] ?? null;
+        } catch {
+          selectedOptionText = null;
+        }
+      }
+
+      return {
+        questionId: q.id,
+        questionText: q.question_text,
+        subject: q.subject,
+        difficulty: q.difficulty,
+        selectedChoiceValue: selectedOptionText,
+        isCorrect: isAnswered ? selectedChoiceId === q.correct_choice : false,
+        rationale: q.rationale,
+      };
+    });
+
+    navigation.navigate("review", { userAnswers: allAnswers });
+
+    if (timerInterval.current !== null) {
+      clearInterval(timerInterval.current);
+      timerInterval.current = null;
+    }
+  }, [rawQuestions, answers, navigation]);
+
+  useEffect(() => {
+    if (secondsLeft === null) return;
+
+    if (secondsLeft === 0) {
+      autoSubmit();
+      return;
+    }
+
+    timerInterval.current = setInterval(() => {
+      setSecondsLeft((sec) => (sec !== null ? sec - 1 : null));
+    }, 1000);
+
+    return () => {
+      if (timerInterval.current !== null) {
+        clearInterval(timerInterval.current);
+        timerInterval.current = null;
+      }
+    };
+  }, [secondsLeft, autoSubmit]);
+
+  const formatTime = (secs: number) => {
+    const m = Math.floor(secs / 60)
+      .toString()
+      .padStart(2, "0");
+    const s = (secs % 60).toString().padStart(2, "0");
+    return `${m}:${s}`;
+  };
 
   const questions: ParsedQuestion[] = useMemo(() => {
     if (!rawQuestions) return [];
 
     try {
       return rawQuestions.map((q) => {
-        const parsedChoices = JSON.parse(q.choices);
+        const parsedChoices =
+          typeof q.choices === "string" ? JSON.parse(q.choices) : q.choices;
         const options = Object.entries(parsedChoices).map(([id, text]) => ({
           id,
           text: text as string,
@@ -89,7 +166,7 @@ const Questions = () => {
           subject: q.subject,
           difficulty: q.difficulty,
           options,
-          correctChoiceId: q.correct_choice,
+          correct_choice: q.correct_choice,
           rationale: q.rationale,
         };
       });
@@ -113,33 +190,6 @@ const Questions = () => {
 
   const selectOption = (optionId: string) => {
     setAnswers((prev) => ({ ...prev, [currentQuestion.id]: optionId }));
-
-    const isCorrect = currentQuestion.correctChoiceId === optionId;
-    const selectedOption = currentQuestion.options.find(
-      (opt) => opt.id === optionId
-    );
-
-    const newAnswer: UserAnswer = {
-      questionId: currentQuestion.id,
-      questionText: currentQuestion.question_text,
-      subject: currentQuestion.subject,
-      difficulty: currentQuestion.difficulty,
-      selectedChoiceValue: selectedOption?.text || "",
-      isCorrect,
-      rationale: currentQuestion.rationale,
-    };
-
-    setUserAnswers((prev) => {
-      const existingIndex = prev.findIndex(
-        (ua) => ua.questionId === currentQuestion.id
-      );
-      if (existingIndex >= 0) {
-        const updated = [...prev];
-        updated[existingIndex] = newAnswer;
-        return updated;
-      }
-      return [...prev, newAnswer];
-    });
   };
 
   const goNext = () => {
@@ -155,7 +205,7 @@ const Questions = () => {
   };
 
   const onSubmit = () => {
-    navigation.navigate("review", { userAnswers });
+    autoSubmit();
   };
 
   const selectedOptionStyle = {
@@ -172,11 +222,19 @@ const Questions = () => {
               questions.length
             }`}
           />
+          {secondsLeft !== null && (
+            <ThemedText
+              style={{ marginBottom: 16, fontSize: 16, fontWeight: "600" }}
+            >
+              Time Remaining: {formatTime(secondsLeft)}
+            </ThemedText>
+          )}
+
           <ThemedText
             style={{ marginBottom: 24 }}
             key={`question-${currentQuestionIndex}`}
           >
-            {renderLatex(currentQuestion.question_text)}
+            {renderLatex(currentQuestion.question_text, colorScheme)}
           </ThemedText>
 
           {currentQuestion.options.map((option, index) => {
@@ -202,7 +260,7 @@ const Questions = () => {
                     style={styles.optionText}
                     key={`option-${currentQuestionIndex}-${index}`}
                   >
-                    {renderLatex(option.text)}
+                    {renderLatex(option.text, colorScheme)}
                   </ThemedText>
                 </TouchableOpacity>
               </View>

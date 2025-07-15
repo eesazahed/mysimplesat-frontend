@@ -36,7 +36,7 @@ const TabLayout = () => {
           href: "/(tabs)",
         }}
       />
-      ,
+
       <Tabs.Screen
         name="test"
         options={{
@@ -47,21 +47,21 @@ const TabLayout = () => {
           href: "/(tabs)/test",
         }}
       />
-      ,
+
       <Tabs.Screen
         name="questions"
         options={{
           href: null,
         }}
       />
-      ,
+
       <Tabs.Screen
         name="review"
         options={{
           href: null,
         }}
       />
-      ,
+
       <Tabs.Screen
         name="tracker"
         options={{
@@ -72,7 +72,7 @@ const TabLayout = () => {
           href: "/(tabs)/tracker",
         }}
       />
-      ,
+
       <Tabs.Screen
         name="example"
         options={{

@@ -1,0 +1,1682 @@
+[
+  {
+    "id": "easy-math-01",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "If $3x - 8 = 7$, what is the value of $x$?",
+    "choices": {
+      "A": "3",
+      "B": "5",
+      "C": "15",
+      "D": "21"
+    },
+    "correct_choice": "B",
+    "rationale": "To solve for x, first add 8 to both sides of the equation: $3x = 7 + 8$, which simplifies to $3x = 15$. Then, divide both sides by 3 to find $x = 5$."
+  },
+  {
+    "id": "easy-math-02",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "A bake sale sold 45 cookies on Saturday and 55 cookies on Sunday. What is the total number of cookies sold over the weekend?",
+    "choices": {
+      "A": "90",
+      "B": "100",
+      "C": "105",
+      "D": "110"
+    },
+    "correct_choice": "B",
+    "rationale": "To find the total number of cookies sold, add the number of cookies sold on Saturday and Sunday: $45 + 55 = 100$."
+  },
+  {
+    "id": "easy-math-03",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "What is the perimeter of a square with a side length of 6 inches?",
+    "choices": {
+      "A": "12 inches",
+      "B": "18 inches",
+      "C": "24 inches",
+      "D": "36 inches"
+    },
+    "correct_choice": "C",
+    "rationale": "The perimeter of a square is calculated by multiplying the side length by 4. Therefore, the perimeter is $6 \\text{ inches} \\times 4 = 24 \\text{ inches}$."
+  },
+  {
+    "id": "easy-math-04",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "If a bus travels at a constant speed of 50 miles per hour, how many miles will it travel in 3 hours?",
+    "choices": {
+      "A": "100 miles",
+      "B": "150 miles",
+      "C": "200 miles",
+      "D": "250 miles"
+    },
+    "correct_choice": "B",
+    "rationale": "Distance is calculated by multiplying speed by time. The total distance is $50 \\text{ mph} \\times 3 \\text{ hours} = 150 \\text{ miles}$."
+  },
+  {
+    "id": "easy-math-05",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "What is 20% of 80?",
+    "choices": {
+      "A": "10",
+      "B": "16",
+      "C": "20",
+      "D": "40"
+    },
+    "correct_choice": "B",
+    "rationale": "To find the percentage, convert 20% to a decimal (0.20) and multiply it by 80. $0.20 \\times 80 = 16$."
+  },
+  {
+    "id": "easy-math-06",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "In a class of 30 students, 18 are girls. What is the ratio of boys to girls in the class?",
+    "choices": {
+      "A": "2:3",
+      "B": "3:2",
+      "C": "3:5",
+      "D": "5:3"
+    },
+    "correct_choice": "A",
+    "rationale": "First, find the number of boys: $30 - 18 = 12$. The ratio of boys to girls is 12 to 18. This simplifies to $12/18 = 2/3$, or a ratio of 2:3."
+  },
+  {
+    "id": "easy-math-07",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "What is the area of a rectangle with a length of 10 cm and a width of 4 cm?",
+    "choices": {
+      "A": "14 sq cm",
+      "B": "28 sq cm",
+      "C": "40 sq cm",
+      "D": "100 sq cm"
+    },
+    "correct_choice": "C",
+    "rationale": "The area of a rectangle is found by multiplying its length by its width. Area = $10 \\text{ cm} \\times 4 \\text{ cm} = 40 \\text{ sq cm}$."
+  },
+  {
+    "id": "easy-math-08",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "If $f(x) = 2x + 5$, what is the value of $f(3)$?",
+    "choices": {
+      "A": "6",
+      "B": "8",
+      "C": "10",
+      "D": "11"
+    },
+    "correct_choice": "D",
+    "rationale": "To find $f(3)$, substitute 3 for x in the function: $f(3) = 2(3) + 5 = 6 + 5 = 11$."
+  },
+  {
+    "id": "easy-math-09",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "What is the next number in the sequence: 3, 6, 9, 12, ...?",
+    "choices": {
+      "A": "13",
+      "B": "14",
+      "C": "15",
+      "D": "16"
+    },
+    "correct_choice": "C",
+    "rationale": "This is an arithmetic sequence with a common difference of 3. To find the next number, add 3 to the last number: $12 + 3 = 15$."
+  },
+  {
+    "id": "easy-math-10",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "A shirt originally priced at \\$40 is on sale for 25% off. What is the sale price?",
+    "choices": {
+      "A": "\\$10",
+      "B": "\\$20",
+      "C": "\\$30",
+      "D": "\\$35"
+    },
+    "correct_choice": "C",
+    "rationale": "First, calculate the discount amount: $25\\% \\text{ of } \\$40 = 0.25 \\times \\$40 = \\$10$. Then, subtract the discount from the original price: $\\$40 - \\$10 = \\$30$."
+  },
+  {
+    "id": "easy-math-11",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "If two angles in a triangle measure 50 degrees and 70 degrees, what is the measure of the third angle?",
+    "choices": {
+      "A": "40 degrees",
+      "B": "50 degrees",
+      "C": "60 degrees",
+      "D": "70 degrees"
+    },
+    "correct_choice": "C",
+    "rationale": "The sum of the angles in a triangle is always 180 degrees. Subtract the known angles from 180: $180 - 50 - 70 = 60$ degrees."
+  },
+  {
+    "id": "easy-math-12",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "What is the value of $x$ if $x/4 = 5$?",
+    "choices": {
+      "A": "1.25",
+      "B": "9",
+      "C": "20",
+      "D": "24"
+    },
+    "correct_choice": "C",
+    "rationale": "To solve for x, multiply both sides of the equation by 4: $x = 5 \\times 4 = 20$."
+  },
+  {
+    "id": "easy-math-13",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "A bag contains 4 red marbles and 6 blue marbles. What is the probability of randomly selecting a red marble?",
+    "choices": {
+      "A": "1/4",
+      "B": "2/5",
+      "C": "3/5",
+      "D": "2/3"
+    },
+    "correct_choice": "B",
+    "rationale": "The total number of marbles is $4 + 6 = 10$. The number of red marbles is 4. The probability is the number of red marbles divided by the total number of marbles: $4/10$, which simplifies to $2/5$."
+  },
+  {
+    "id": "easy-math-14",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "What is the slope of the line represented by the equation $y = 4x - 2$?",
+    "choices": {
+      "A": "-2",
+      "B": "1/4",
+      "C": "2",
+      "D": "4"
+    },
+    "correct_choice": "D",
+    "rationale": "The equation is in slope-intercept form, $y = mx + b$, where 'm' is the slope. In this equation, the slope is 4."
+  },
+  {
+    "id": "easy-math-15",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "Simplify the expression $5(x + 2) - 3x$.",
+    "choices": {
+      "A": "2x + 2",
+      "B": "2x + 10",
+      "C": "8x + 10",
+      "D": "12x"
+    },
+    "correct_choice": "B",
+    "rationale": "First, distribute the 5: $5x + 10 - 3x$. Then, combine the like terms ($5x$ and $-3x$): $2x + 10$."
+  },
+  {
+    "id": "easy-math-16",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "A student scored 85, 90, and 95 on three tests. What is the student's average (arithmetic mean) score?",
+    "choices": {
+      "A": "88",
+      "B": "90",
+      "C": "92",
+      "D": "95"
+    },
+    "correct_choice": "B",
+    "rationale": "To find the average, sum the scores and divide by the number of scores: $(85 + 90 + 95) / 3 = 270 / 3 = 90$."
+  },
+  {
+    "id": "easy-math-17",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "If $x = -2$, what is the value of $x^2 + 3x - 4$?",
+    "choices": {
+      "A": "-14",
+      "B": "-6",
+      "C": "4",
+      "D": "6"
+    },
+    "correct_choice": "B",
+    "rationale": "Substitute -2 for x in the expression: $(-2)^2 + 3(-2) - 4 = 4 - 6 - 4 = -6$."
+  },
+  {
+    "id": "easy-math-18",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "What is the y-intercept of the line with the equation $y = -3x + 7$?",
+    "choices": {
+      "A": "-3",
+      "B": "3",
+      "C": "7",
+      "D": "-7/3"
+    },
+    "correct_choice": "C",
+    "rationale": "The equation is in slope-intercept form, $y = mx + b$, where 'b' is the y-intercept. In this equation, the y-intercept is 7."
+  },
+  {
+    "id": "easy-math-19",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "A recipe calls for 2 cups of sugar for every 5 cups of flour. If a baker uses 10 cups of flour, how many cups of sugar are needed?",
+    "choices": {
+      "A": "2 cups",
+      "B": "4 cups",
+      "C": "5 cups",
+      "D": "10 cups"
+    },
+    "correct_choice": "B",
+    "rationale": "The ratio of sugar to flour is 2:5. Since the baker is using 10 cups of flour, which is twice the amount in the recipe, they must also use twice the amount of sugar: $2 \\text{ cups} \\times 2 = 4 \\text{ cups}$."
+  },
+  {
+    "id": "easy-math-20",
+    "subject": "math",
+    "difficulty": "easy",
+    "question_text": "Find the value of $\\sqrt{81} - \\sqrt{16}$.",
+    "choices": {
+      "A": "5",
+      "B": "7",
+      "C": "13",
+      "D": "65"
+    },
+    "correct_choice": "A",
+    "rationale": "The square root of 81 is 9, and the square root of 16 is 4. The expression evaluates to $9 - 4 = 5$."
+  },
+  {
+    "id": "easy-rw-01",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The team members, as well as the coach, ______ excited for the upcoming championship game. Which choice completes the sentence with the correct verb?",
+    "choices": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has been"
+    },
+    "correct_choice": "B",
+    "rationale": "The subject of the sentence is 'members' (plural). The phrase 'as well as the coach' is a non-essential phrase that does not affect the subject-verb agreement. Therefore, the plural verb 'are' is required."
+  },
+  {
+    "id": "easy-rw-02",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "Ancient Roman engineers were masters of their craft; ______, their aqueducts still stand today as a testament to their skill. Which transition word best connects the two clauses?",
+    "choices": {
+      "A": "however,",
+      "B": "for instance,",
+      "C": "in addition,",
+      "D": "consequently,"
+    },
+    "correct_choice": "B",
+    "rationale": "'For instance' is used to introduce an example that supports the preceding statement. The enduring aqueducts serve as a specific example of the engineers' mastery."
+  },
+  {
+    "id": "easy-rw-03",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The new chef's dishes are incredibly ______; each one is a carefully constructed masterpiece of flavor and texture. Which word best fits the context?",
+    "choices": {
+      "A": "bland",
+      "B": "simple",
+      "C": "exquisite",
+      "D": "hasty"
+    },
+    "correct_choice": "C",
+    "rationale": "'Exquisite' means extremely beautiful and delicate, which aligns with the description of the dishes as 'carefully constructed masterpieces'."
+  },
+  {
+    "id": "easy-rw-04",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The library announced that ______ hours would be extended during final exams. Which choice completes the sentence correctly?",
+    "choices": {
+      "A": "it's",
+      "B": "its",
+      "C": "its'",
+      "D": "their"
+    },
+    "correct_choice": "B",
+    "rationale": "'Its' is the possessive pronoun for the singular noun 'library'. 'It's' is a contraction for 'it is'. The hours belong to the library, so the possessive form is needed."
+  },
+  {
+    "id": "easy-rw-05",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "To ______ good grades, a student must be diligent and organized. Which word best completes the sentence?",
+    "choices": {
+      "A": "achieve",
+      "B": "except",
+      "C": "effect",
+      "D": "accept"
+    },
+    "correct_choice": "A",
+    "rationale": "'Achieve' is a verb meaning 'to successfully bring about or reach by effort,' which fits the context of working for good grades."
+  },
+  {
+    "id": "easy-rw-06",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The speaker's argument was so ______ that nearly everyone in the audience was persuaded. Which word best describes a convincing argument?",
+    "choices": {
+      "A": "tenuous",
+      "B": "fallacious",
+      "C": "cogent",
+      "D": "ambiguous"
+    },
+    "correct_choice": "C",
+    "rationale": "'Cogent' means clear, logical, and convincing. This word accurately describes an argument that would persuade an audience."
+  },
+  {
+    "id": "easy-rw-07",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "Neither the students nor their teacher ______ responsible for the power outage. Which verb form is correct?",
+    "choices": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "correct_choice": "C",
+    "rationale": "When using 'neither/nor', the verb agrees with the subject closer to it. 'Teacher' is singular, so the singular verb 'is' is correct."
+  },
+  {
+    "id": "easy-rw-08",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The manager praised the employee for her ______ work ethic, noting her consistent punctuality and dedication. Which word best describes the employee's work ethic?",
+    "choices": {
+      "A": "exemplary",
+      "B": "erratic",
+      "C": "deficient",
+      "D": "sluggish"
+    },
+    "correct_choice": "A",
+    "rationale": "'Exemplary' means serving as a desirable model; representing the best of its kind. This fits the context of being praised for punctuality and dedication."
+  },
+  {
+    "id": "easy-rw-09",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "I am going to the store ______ I need to buy milk and eggs. Which conjunction best shows the reason?",
+    "choices": {
+      "A": "but",
+      "B": "or",
+      "C": "so",
+      "D": "because"
+    },
+    "correct_choice": "D",
+    "rationale": "'Because' is a subordinating conjunction that introduces a reason or cause for the action in the main clause. The need for milk and eggs is the reason for going to the store."
+  },
+  {
+    "id": "easy-rw-10",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The number of people attending the concert ______ exceeded expectations. Which verb is correct?",
+    "choices": {
+      "A": "have",
+      "B": "were",
+      "C": "has",
+      "D": "are"
+    },
+    "correct_choice": "C",
+    "rationale": "The subject of the sentence is 'The number', which is a singular noun phrase. Therefore, the singular verb 'has' is required."
+  },
+  {
+    "id": "easy-rw-11",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The old castle, with ______ towering spires and massive stone walls, dominated the landscape. Which choice completes the sentence correctly?",
+    "choices": {
+      "A": "it's",
+      "B": "its'",
+      "C": "their",
+      "D": "its"
+    },
+    "correct_choice": "D",
+    "rationale": "'Its' is the possessive pronoun for the singular noun 'castle'. 'It's' is a contraction for 'it is'. The spires and walls belong to the castle, so the possessive form is needed."
+  },
+  {
+    "id": "easy-rw-12",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The scientist's research provided a ______ new perspective on the problem. Which word best fits the blank?",
+    "choices": {
+      "A": "valuable",
+      "B": "worthless",
+      "C": "trivial",
+      "D": "minor"
+    },
+    "correct_choice": "A",
+    "rationale": "'Valuable' means having considerable worth or importance. It correctly describes a new perspective that contributes positively to solving a problem."
+  },
+  {
+    "id": "easy-rw-13",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The committee members could not agree on a final decision, ______ they decided to vote on the matter. Which transition best indicates a result?",
+    "choices": {
+      "A": "however,",
+      "B": "similarly,",
+      "C": "therefore,",
+      "D": "for example,"
+    },
+    "correct_choice": "C",
+    "rationale": "'Therefore' is used to indicate a logical conclusion or result. The decision to vote is a direct result of the committee's inability to agree."
+  },
+  {
+    "id": "easy-rw-14",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "Each of the contestants ______ given a chance to answer the final question. Which verb form is correct?",
+    "choices": {
+      "A": "were",
+      "B": "was",
+      "C": "are",
+      "D": "have been"
+    },
+    "correct_choice": "B",
+    "rationale": "The subject 'Each' is singular, so it requires the singular verb 'was'."
+  },
+  {
+    "id": "easy-rw-15",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The CEO's speech was meant to ______ morale and inspire the employees to work harder. Which word best fits the context?",
+    "choices": {
+      "A": "diminish",
+      "B": "bolster",
+      "C": "criticize",
+      "D": "undermine"
+    },
+    "correct_choice": "B",
+    "rationale": "'Bolster' means to support or strengthen. This word accurately describes the intended positive effect of the speech on employee morale."
+  },
+  {
+    "id": "easy-rw-16",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "There are ______ opportunities for advancement in this company than in my previous one. Which word correctly completes the comparison?",
+    "choices": {
+      "A": "less",
+      "B": "fewer",
+      "C": "much",
+      "D": "more"
+    },
+    "correct_choice": "D",
+    "rationale": "'More' is used to form the comparative of many adjectives and adverbs. 'Opportunities' is a countable noun, and 'more' correctly indicates a greater number of them."
+  },
+  {
+    "id": "easy-rw-17",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The city council plans to ______ new regulations to reduce pollution. Which word means 'to introduce or establish'?",
+    "choices": {
+      "A": "implement",
+      "B": "implicate",
+      "C": "repeal",
+      "D": "ignore"
+    },
+    "correct_choice": "A",
+    "rationale": "'Implement' means to put a decision, plan, or agreement into effect, which is the exact meaning required in the sentence."
+  },
+  {
+    "id": "easy-rw-18",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The detective carefully examined the evidence, searching for any ______ details that might solve the case. Which word means 'extremely important'?",
+    "choices": {
+      "A": "trivial",
+      "B": "insignificant",
+      "C": "crucial",
+      "D": "superfluous"
+    },
+    "correct_choice": "C",
+    "rationale": "'Crucial' means decisive or critical, especially in the success or failure of something. It fits the context of a detail that could solve a case."
+  },
+  {
+    "id": "easy-rw-19",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The new software is not only faster ______ more user-friendly. Which correlative conjunction pair is correct?",
+    "choices": {
+      "A": "and also",
+      "B": "but also",
+      "C": "or",
+      "D": "yet"
+    },
+    "correct_choice": "B",
+    "rationale": "The phrase 'not only' must be paired with 'but also' to form a correct and standard correlative conjunction."
+  },
+  {
+    "id": "easy-rw-20",
+    "subject": "rw",
+    "difficulty": "easy",
+    "question_text": "The effects of climate change are becoming increasingly ______ around the world. Which word best completes the sentence?",
+    "choices": {
+      "A": "negligible",
+      "B": "apparent",
+      "C": "hidden",
+      "D": "questionable"
+    },
+    "correct_choice": "B",
+    "rationale": "'Apparent' means clearly visible or understood; obvious. This word accurately describes the growing visibility of climate change effects."
+  },
+  {
+    "id": "medium-math-01",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "If $2a - 3b = 10$ and $a + b = 5$, what is the value of $a$?",
+    "choices": {
+      "A": "1",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "correct_choice": "D",
+    "rationale": "From the second equation, $b = 5 - a$. Substitute this into the first equation: $2a - 3(5 - a) = 10$. This simplifies to $2a - 15 + 3a = 10$, then $5a = 25$, so $a = 5$."
+  },
+  {
+    "id": "medium-math-02",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "A rectangular prism has a volume of 192 cubic inches. If the length is 8 inches and the width is 6 inches, what is the height of the prism?",
+    "choices": {
+      "A": "2 inches",
+      "B": "3 inches",
+      "C": "4 inches",
+      "D": "5 inches"
+    },
+    "correct_choice": "C",
+    "rationale": "The volume of a rectangular prism is given by the formula $V = lwh$. We are given $V = 192$, $l = 8$, and $w = 6$. So, $192 = 8 \\times 6 \\times h$, which simplifies to $192 = 48h$. Dividing both sides by 48 gives $h = 4$ inches."
+  },
+  {
+    "id": "medium-math-03",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "In the xy-plane, a line passes through the points (1, -2) and (4, 7). What is the equation of the line?",
+    "choices": {
+      "A": "y = 3x - 5",
+      "B": "y = 2x - 4",
+      "C": "y = 3x + 5",
+      "D": "y = -3x + 1"
+    },
+    "correct_choice": "A",
+    "rationale": "First, find the slope (m): $m = (7 - (-2)) / (4 - 1) = 9 / 3 = 3$. Then, use the point-slope form with the point (1, -2): $y - (-2) = 3(x - 1)$, which simplifies to $y + 2 = 3x - 3$. Subtracting 2 from both sides gives $y = 3x - 5$."
+  },
+  {
+    "id": "medium-math-04",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "The population of a town increases by 10% each year. If the population was 5,000 in 2020, what will be the approximate population in 2022?",
+    "choices": {
+      "A": "5,500",
+      "B": "6,000",
+      "C": "6,050",
+      "D": "6,100"
+    },
+    "correct_choice": "C",
+    "rationale": "Population in 2021: $5000 + 0.10(5000) = 5000 + 500 = 5500$. Population in 2022: $5500 + 0.10(5500) = 5500 + 550 = 6050$."
+  },
+  {
+    "id": "medium-math-05",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "What are the solutions to the quadratic equation $x^2 - 6x + 8 = 0$?",
+    "choices": {
+      "A": "x = -2 and x = -4",
+      "B": "x = 2 and x = 4",
+      "C": "x = -2 and x = 4",
+      "D": "x = 2 and x = -4"
+    },
+    "correct_choice": "B",
+    "rationale": "The quadratic equation can be factored as $(x - 2)(x - 4) = 0$. Setting each factor to zero gives the solutions $x = 2$ and $x = 4$."
+  },
+  {
+    "id": "medium-math-06",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "A circle has a circumference of $20\\pi$. What is the area of the circle?",
+    "choices": {
+      "A": "$10\\pi$",
+      "B": "$20\\pi$",
+      "C": "$100\\pi$",
+      "D": "$400\\pi$"
+    },
+    "correct_choice": "C",
+    "rationale": "The formula for circumference is $C = 2\\pi r$. Given $C = 20\\pi$, we have $20\\pi = 2\\pi r$, so $r = 10$. The formula for area is $A = \\pi r^2$. Substituting $r=10$, we get $A = \\pi (10)^2 = 100\\pi$."
+  },
+  {
+    "id": "medium-math-07",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "If $4^x = 64$, what is the value of $x$?",
+    "choices": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "16"
+    },
+    "correct_choice": "B",
+    "rationale": "We need to find the power to which 4 must be raised to get 64. We know that $4^1 = 4$, $4^2 = 16$, and $4^3 = 64$. Therefore, $x = 3$."
+  },
+  {
+    "id": "medium-math-08",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "The sum of three consecutive integers is 72. What is the largest of these integers?",
+    "choices": {
+      "A": "23",
+      "B": "24",
+      "C": "25",
+      "D": "26"
+    },
+    "correct_choice": "C",
+    "rationale": "Let the integers be $n$, $n+1$, and $n+2$. Their sum is $n + (n+1) + (n+2) = 3n + 3 = 72$. Solving for n: $3n = 69$, so $n = 23$. The integers are 23, 24, and 25. The largest is 25."
+  },
+  {
+    "id": "medium-math-09",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "In a right triangle, the length of the hypotenuse is 13 and the length of one leg is 5. What is the length of the other leg?",
+    "choices": {
+      "A": "8",
+      "B": "10",
+      "C": "12",
+      "D": "14"
+    },
+    "correct_choice": "C",
+    "rationale": "Using the Pythagorean theorem, $a^2 + b^2 = c^2$, where c is the hypotenuse. We have $5^2 + b^2 = 13^2$, so $25 + b^2 = 169$. Subtracting 25 from both sides gives $b^2 = 144$. Taking the square root gives $b = 12$."
+  },
+  {
+    "id": "medium-math-10",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "A survey of 200 students found that 120 students own a bike, 80 students own a skateboard, and 40 students own both. How many students own neither a bike nor a skateboard?",
+    "choices": {
+      "A": "20",
+      "B": "40",
+      "C": "60",
+      "D": "80"
+    },
+    "correct_choice": "B",
+    "rationale": "The number of students who own at least one is the sum of those who own a bike and those who own a skateboard, minus those who own both: $120 + 80 - 40 = 160$. The number of students who own neither is the total number of students minus this value: $200 - 160 = 40$."
+  },
+  {
+    "id": "medium-math-11",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "If $(x-3)^2 = 49$, which of the following could be the value of $x$?",
+    "choices": {
+      "A": "-10",
+      "B": "-7",
+      "C": "-4",
+      "D": "7"
+    },
+    "correct_choice": "C",
+    "rationale": "Take the square root of both sides: $x - 3 = \\pm 7$. This gives two possible equations: $x - 3 = 7$ (which gives $x=10$) and $x - 3 = -7$ (which gives $x=-4$). Of the choices provided, -4 is a possible value."
+  },
+  {
+    "id": "medium-math-12",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "The price of a stock increased by 20% in January, decreased by 10% in February, and increased by 5% in March. What was the approximate overall percentage change in the stock price from the beginning of January to the end of March?",
+    "choices": {
+      "A": "13.4% increase",
+      "B": "15% increase",
+      "C": "15.5% increase",
+      "D": "25% increase"
+    },
+    "correct_choice": "A",
+    "rationale": "Let the initial price be P. After January: $1.20P$. After February: $1.20P \\times 0.90 = 1.08P$. After March: $1.08P \\times 1.05 = 1.134P$. The overall increase is $1.134 - 1 = 0.134$, which is a 13.4% increase."
+  },
+  {
+    "id": "medium-math-13",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "If $f(x) = 3x^2 - 4x + k$ and $f(2) = 6$, what is the value of $k$?",
+    "choices": {
+      "A": "-2",
+      "B": "0",
+      "C": "2",
+      "D": "4"
+    },
+    "correct_choice": "C",
+    "rationale": "Substitute x=2 into the function: $f(2) = 3(2)^2 - 4(2) + k = 3(4) - 8 + k = 12 - 8 + k = 4 + k$. We are given that $f(2) = 6$, so $4 + k = 6$. Solving for k gives $k = 2$."
+  },
+  {
+    "id": "medium-math-14",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "A line in the xy-plane is parallel to the line $y = -2x + 5$ and passes through the point (3, -1). What is the equation of this line?",
+    "choices": {
+      "A": "y = -2x + 5",
+      "B": "y = -2x - 7",
+      "C": "y = (1/2)x - 2.5",
+      "D": "y = -2x + 7"
+    },
+    "correct_choice": "A",
+    "rationale": "Parallel lines have the same slope. The slope of the given line is -2. Using the point-slope form with the point (3, -1): $y - (-1) = -2(x - 3)$, which simplifies to $y + 1 = -2x + 6$. Subtracting 1 from both sides gives $y = -2x + 5$."
+  },
+  {
+    "id": "medium-math-15",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "What is the sum of the solutions to the equation $|2x - 3| = 7$?",
+    "choices": {
+      "A": "-2",
+      "B": "3",
+      "C": "5",
+      "D": "8"
+    },
+    "correct_choice": "B",
+    "rationale": "The equation $|2x - 3| = 7$ leads to two separate equations: $2x - 3 = 7$ and $2x - 3 = -7$. Solving the first gives $2x = 10$, so $x = 5$. Solving the second gives $2x = -4$, so $x = -2$. The sum of the solutions is $5 + (-2) = 3$."
+  },
+  {
+    "id": "medium-math-16",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "The median of the numbers 8, 12, 15, x, and 20 is 14. What is the value of x?",
+    "choices": {
+      "A": "13",
+      "B": "14",
+      "C": "16",
+      "D": "18"
+    },
+    "correct_choice": "B",
+    "rationale": "For the median to be 14, when the numbers are arranged in order, 14 must be the middle number. The current numbers in order are 8, 12, 15, 20. To make 14 the median of the five numbers, x must be 14, making the ordered list 8, 12, 14, 15, 20."
+  },
+  {
+    "id": "medium-math-17",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "If $\\frac{x+y}{x-y} = \\frac{3}{2}$, what is the value of $\\frac{x}{y}$?",
+    "choices": {
+      "A": "1/5",
+      "B": "1/3",
+      "C": "3",
+      "D": "5"
+    },
+    "correct_choice": "D",
+    "rationale": "Cross-multiply to get $2(x+y) = 3(x-y)$. Distribute the numbers: $2x + 2y = 3x - 3y$. Rearrange the terms to group x and y: $5y = x$. To find $x/y$, divide both sides by y: $x/y = 5$."
+  },
+  {
+    "id": "medium-math-18",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "A painter can paint 3 rooms in 5 hours. At this rate, how many hours will it take the painter to paint 12 rooms?",
+    "choices": {
+      "A": "15",
+      "B": "20",
+      "C": "25",
+      "D": "30"
+    },
+    "correct_choice": "B",
+    "rationale": "Set up a proportion: $\\frac{3 \\text{ rooms}}{5 \\text{ hours}} = \\frac{12 \\text{ rooms}}{x \\text{ hours}}$. Cross-multiply to get $3x = 5 \\times 12$, which is $3x = 60$. Divide by 3 to find $x = 20$ hours."
+  },
+  {
+    "id": "medium-math-19",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "Which of the following is equivalent to $\\frac{x^2 - 9}{x^2 + 6x + 9}$ for $x \\neq -3$?",
+    "choices": {
+      "A": "$\\frac{x-3}{x+3}$",
+      "B": "$\\frac{1}{x+3}$",
+      "C": "$\\frac{x-3}{x-3}$",
+      "D": "$\\frac{x+3}{x-3}$"
+    },
+    "correct_choice": "A",
+    "rationale": "Factor the numerator and the denominator. The numerator is a difference of squares: $(x-3)(x+3)$. The denominator is a perfect square trinomial: $(x+3)^2$. The expression becomes $\\frac{(x-3)(x+3)}{(x+3)(x+3)}$. Cancel one $(x+3)$ term from the top and bottom to get $\\frac{x-3}{x+3}$."
+  },
+  {
+    "id": "medium-math-20",
+    "subject": "math",
+    "difficulty": "medium",
+    "question_text": "The length of a rectangle is twice its width. If the area of the rectangle is 72 square units, what is its perimeter?",
+    "choices": {
+      "A": "18",
+      "B": "24",
+      "C": "36",
+      "D": "72"
+    },
+    "correct_choice": "C",
+    "rationale": "Let the width be w. Then the length is 2w. The area is $A = l \\times w = (2w)(w) = 2w^2 = 72$. Divide by 2 to get $w^2 = 36$, so the width $w = 6$. The length is $2w = 12$. The perimeter is $P = 2(l+w) = 2(12+6) = 2(18) = 36$."
+  },
+  {
+    "id": "medium-rw-01",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "Many urban planners argue that creating more green spaces in cities is not merely an aesthetic choice; rather, it is ______ for promoting public health and well-being. Which word best completes the sentence?",
+    "choices": {
+      "A": "trivial",
+      "B": "optional",
+      "C": "integral",
+      "D": "secondary"
+    },
+    "correct_choice": "C",
+    "rationale": "'Integral' means essential or fundamental. The sentence structure 'not merely... but rather' indicates a contrast, suggesting that green spaces are more than just decorative—they are essential."
+  },
+  {
+    "id": "medium-rw-02",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "Although the desert appears barren and inhospitable, it is actually teeming with life. Cacti have developed waxy coatings to prevent water loss, ______ small mammals have adapted to a nocturnal lifestyle to avoid the daytime heat. Which choice provides the most logical transition?",
+    "choices": {
+      "A": "while",
+      "B": "because",
+      "C": "so",
+      "D": "unless"
+    },
+    "correct_choice": "A",
+    "rationale": "'While' is used to contrast two different but related ideas. It effectively shows the different adaptations of cacti and mammals to the same environment."
+  },
+  {
+    "id": "medium-rw-03",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The politician's speech was criticized for being ______, filled with vague promises and platitudes instead of concrete policy proposals. Which word best fits the context?",
+    "choices": {
+      "A": "succinct",
+      "B": "empirical",
+      "C": "pragmatic",
+      "D": "vacuous"
+    },
+    "correct_choice": "D",
+    "rationale": "'Vacuous' means having or showing a lack of thought or intelligence; mindless. It accurately describes a speech that is empty of substance."
+  },
+  {
+    "id": "medium-rw-04",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The company, after reviewing its quarterly losses, decided to restructure ______ departments to improve efficiency. Which choice completes the sentence correctly?",
+    "choices": {
+      "A": "it's",
+      "B": "its'",
+      "C": "its",
+      "D": "their"
+    },
+    "correct_choice": "C",
+    "rationale": "'Its' is the possessive pronoun for the singular collective noun 'company'. 'Their' would be incorrect as 'company' is treated as a single entity here."
+  },
+  {
+    "id": "medium-rw-05",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "To ______ the influx of tourists, the small coastal town had to upgrade its infrastructure, including its roads and water supply systems. Which word best completes the sentence?",
+    "choices": {
+      "A": "accommodate",
+      "B": "deter",
+      "C": "expel",
+      "D": "ignore"
+    },
+    "correct_choice": "A",
+    "rationale": "'Accommodate' means to provide lodging or sufficient space for; to fit in with the wishes or needs of. This fits the context of making changes to handle more people."
+  },
+  {
+    "id": "medium-rw-06",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The artist was known for her ______ style, often combining elements from different historical periods and cultural traditions into a single work. Which word best describes this style?",
+    "choices": {
+      "A": "minimalist",
+      "B": "eclectic",
+      "C": "traditional",
+      "D": "dogmatic"
+    },
+    "correct_choice": "B",
+    "rationale": "'Eclectic' means deriving ideas, style, or taste from a broad and diverse range of sources. This word perfectly describes the artist's method of combining different elements."
+  },
+  {
+    "id": "medium-rw-07",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "A collection of rare manuscripts, some dating back to the 15th century, ______ recently donated to the university library. Which verb form is correct?",
+    "choices": {
+      "A": "were",
+      "B": "was",
+      "C": "are",
+      "D": "have been"
+    },
+    "correct_choice": "B",
+    "rationale": "The subject of the sentence is 'A collection' (singular), not 'manuscripts'. Therefore, the singular verb 'was' is required."
+  },
+  {
+    "id": "medium-rw-08",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "Despite the initial setbacks, the research team remained ______ in their pursuit of a breakthrough, demonstrating remarkable resilience. Which word best describes their attitude?",
+    "choices": {
+      "A": "disheartened",
+      "B": "indifferent",
+      "C": "steadfast",
+      "D": "capricious"
+    },
+    "correct_choice": "C",
+    "rationale": "'Steadfast' means resolutely or dutifully firm and unwavering. This accurately describes a team that persists despite setbacks."
+  },
+  {
+    "id": "medium-rw-09",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The government has implemented stricter regulations on industrial emissions. ______, many companies are now investing in cleaner technologies. Which transition best shows a cause-and-effect relationship?",
+    "choices": {
+      "A": "Nevertheless",
+      "B": "As a result",
+      "C": "For example",
+      "D": "Similarly"
+    },
+    "correct_choice": "B",
+    "rationale": "'As a result' indicates that the second sentence is a consequence of the first. The new regulations caused companies to invest in cleaner technologies."
+  },
+  {
+    "id": "medium-rw-10",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The committee is composed of experts from various fields, each of whom ______ a unique perspective to the discussion. Which verb is correct?",
+    "choices": {
+      "A": "bring",
+      "B": "are bringing",
+      "C": "brings",
+      "D": "have brought"
+    },
+    "correct_choice": "C",
+    "rationale": "The subject of the clause is 'each' (or 'each of whom'), which is singular. Therefore, the singular verb 'brings' is required."
+  },
+  {
+    "id": "medium-rw-11",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The defense attorney's primary goal was to ______ the prosecution's argument by exposing inconsistencies in the witness testimony. Which word best fits the context?",
+    "choices": {
+      "A": "bolster",
+      "B": "substantiate",
+      "C": "undermine",
+      "D": "replicate"
+    },
+    "correct_choice": "C",
+    "rationale": "'Undermine' means to erode the base or foundation of; to weaken. This word accurately describes the act of discrediting an argument by finding flaws in its evidence."
+  },
+  {
+    "id": "medium-rw-12",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The novel's protagonist is a ______ character, full of contradictions that make her both frustrating and deeply relatable. Which word best describes the character?",
+    "choices": {
+      "A": "simplistic",
+      "B": "virtuous",
+      "C": "enigmatic",
+      "D": "predictable"
+    },
+    "correct_choice": "C",
+    "rationale": "'Enigmatic' means difficult to interpret or understand; mysterious. This fits the description of a character who is full of contradictions."
+  },
+  {
+    "id": "medium-rw-13",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "Advances in genetics have raised complex ethical questions. For instance, the ability to edit genes ______ the potential to eradicate diseases but also to create 'designer babies.' Which choice most effectively completes the sentence?",
+    "choices": {
+      "A": "presents",
+      "B": "presented",
+      "C": "had presented",
+      "D": "will have presented"
+    },
+    "correct_choice": "A",
+    "rationale": "The sentence is discussing a current capability and its ongoing implications. The present tense verb 'presents' is the most appropriate choice to convey this current state."
+  },
+  {
+    "id": "medium-rw-14",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The manager, along with her two assistants, ______ scheduled to attend the conference in London next month. Which verb form is correct?",
+    "choices": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "correct_choice": "C",
+    "rationale": "The subject of the sentence is 'manager' (singular). The phrase 'along with her two assistants' is an intervening phrase that does not affect subject-verb agreement. Therefore, the singular verb 'is' is correct."
+  },
+  {
+    "id": "medium-rw-15",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The historical document was so fragile that it had to be handled with ______ care. Which word best completes the sentence?",
+    "choices": {
+      "A": "considerable",
+      "B": "abundant",
+      "C": "meticulous",
+      "D": "casual"
+    },
+    "correct_choice": "C",
+    "rationale": "'Meticulous' means showing great attention to detail; very careful and precise. This is the most appropriate word to describe the type of care needed for a fragile document."
+  },
+  {
+    "id": "medium-rw-16",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "While some critics ______ the film for its slow pace, others praised its deliberate and meditative style. Which word creates the most logical contrast?",
+    "choices": {
+      "A": "lauded",
+      "B": "celebrated",
+      "C": "panicked",
+      "D": "panned"
+    },
+    "correct_choice": "D",
+    "rationale": "'Panned' means to criticize severely. This creates a direct contrast with the critics who 'praised' the film, as indicated by the word 'While'."
+  },
+  {
+    "id": "medium-rw-17",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The discovery of penicillin was ______; Alexander Fleming noticed the mold's antibacterial properties by chance after returning from a holiday. Which word best fits the context?",
+    "choices": {
+      "A": "intentional",
+      "B": "methodical",
+      "C": "serendipitous",
+      "D": "predictable"
+    },
+    "correct_choice": "C",
+    "rationale": "'Serendipitous' means occurring or discovered by chance in a happy or beneficial way. This perfectly describes the accidental nature of Fleming's discovery."
+  },
+  {
+    "id": "medium-rw-18",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The new CEO's plan to ______ the company involved selling off unprofitable divisions and focusing on core products. Which word best completes the sentence?",
+    "choices": {
+      "A": "expand",
+      "B": "diversify",
+      "C": "streamline",
+      "D": "complicate"
+    },
+    "correct_choice": "C",
+    "rationale": "'Streamline' means to make an organization or system more efficient and effective by employing simpler working methods. This aligns with the actions of selling unprofitable divisions and focusing on core products."
+  },
+  {
+    "id": "medium-rw-19",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The team's victory was not a result of individual brilliance but of a ______ effort, with every player contributing to the success. Which word best describes the effort?",
+    "choices": {
+      "A": "singular",
+      "B": "disjointed",
+      "C": "sporadic",
+      "D": "synergistic"
+    },
+    "correct_choice": "D",
+    "rationale": "'Synergistic' refers to the interaction of elements that when combined produce a total effect that is greater than the sum of the individual elements. This perfectly describes a team effort where the whole is greater than its parts."
+  },
+  {
+    "id": "medium-rw-20",
+    "subject": "rw",
+    "difficulty": "medium",
+    "question_text": "The senator was known for her ______; she could articulate complex ideas with remarkable clarity and elegance. Which word best fits the blank?",
+    "choices": {
+      "A": "ambiguity",
+      "B": "eloquence",
+      "C": "hesitation",
+      "D": "verbosity"
+    },
+    "correct_choice": "B",
+    "rationale": "'Eloquence' is fluent or persuasive speaking or writing. It accurately describes the ability to articulate complex ideas clearly and elegantly."
+  },
+  {
+    "id": "hard-math-01",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "The function $f$ is defined by $f(x) = (x-a)(x-b)$, where $a$ and $b$ are constants. If the vertex of the graph of $y=f(x)$ is at $(4, -9)$, what is the value of $a+b$?",
+    "choices": {
+      "A": "-9",
+      "B": "4",
+      "C": "8",
+      "D": "18"
+    },
+    "correct_choice": "C",
+    "rationale": "The x-coordinate of the vertex of a parabola $y=(x-a)(x-b)$ is the average of the x-intercepts, $a$ and $b$. Therefore, the x-coordinate of the vertex is $(a+b)/2$. We are given that the vertex is at $(4, -9)$, so $(a+b)/2 = 4$. Multiplying by 2 gives $a+b = 8$."
+  },
+  {
+    "id": "hard-math-02",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "In a circle with center O, an arc XY has a length of $5\\pi$. If the circumference of the circle is $15\\pi$, what is the measure, in degrees, of the central angle XOY?",
+    "choices": {
+      "A": "60",
+      "B": "75",
+      "C": "120",
+      "D": "150"
+    },
+    "correct_choice": "C",
+    "rationale": "The ratio of the arc length to the circumference is equal to the ratio of the central angle to 360 degrees. Let $\\theta$ be the central angle. Then, $\\frac{5\\pi}{15\\pi} = \\frac{\\theta}{360}$. This simplifies to $\\frac{1}{3} = \\frac{\\theta}{360}$. Solving for $\\theta$ gives $\\theta = \\frac{360}{3} = 120$ degrees."
+  },
+  {
+    "id": "hard-math-03",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "If $x > 0$, which of the following is equivalent to $\\frac{1}{\\frac{1}{x+2} + \\frac{1}{x+3}}$?",
+    "choices": {
+      "A": "$\\frac{(x+2)(x+3)}{2x+5}$",
+      "B": "$\\frac{2x+5}{(x+2)(x+3)}$",
+      "C": "$\\frac{1}{2x+5}$",
+      "D": "$2x+5$"
+    },
+    "correct_choice": "A",
+    "rationale": "First, find a common denominator for the fractions in the denominator: $\\frac{1(x+3)}{(x+2)(x+3)} + \\frac{1(x+2)}{(x+2)(x+3)} = \\frac{x+3+x+2}{(x+2)(x+3)} = \\frac{2x+5}{(x+2)(x+3)}$. The original expression is the reciprocal of this, which is $\\frac{(x+2)(x+3)}{2x+5}$."
+  },
+  {
+    "id": "hard-math-04",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "The equation $x^2 + kx + 4 = 0$, where k is a constant, has exactly one real solution. What is the value of $k^2$?",
+    "choices": {
+      "A": "4",
+      "B": "8",
+      "C": "16",
+      "D": "32"
+    },
+    "correct_choice": "C",
+    "rationale": "For a quadratic equation $ax^2 + bx + c = 0$ to have exactly one real solution, the discriminant ($b^2 - 4ac$) must be equal to 0. In this equation, $a=1, b=k, c=4$. So, $k^2 - 4(1)(4) = 0$. This simplifies to $k^2 - 16 = 0$, so $k^2 = 16$."
+  },
+  {
+    "id": "hard-math-05",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "If $i = \\sqrt{-1}$, which of the following is equivalent to $(3 + 2i)(4 - 5i)$?",
+    "choices": {
+      "A": "2 + 7i",
+      "B": "12 - 10i",
+      "C": "22 - 7i",
+      "D": "22 + 7i"
+    },
+    "correct_choice": "C",
+    "rationale": "Use the FOIL method to multiply the complex numbers: $(3)(4) + (3)(-5i) + (2i)(4) + (2i)(-5i) = 12 - 15i + 8i - 10i^2$. Since $i^2 = -1$, this becomes $12 - 15i + 8i - 10(-1) = 12 - 7i + 10 = 22 - 7i$."
+  },
+  {
+    "id": "hard-math-06",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "A radioactive substance decays at a rate of 15% per hour. If a sample initially contains 200 grams of the substance, which function models the amount of the substance, $A(t)$, remaining after $t$ hours?",
+    "choices": {
+      "A": "$A(t) = 200(1.15)^t$",
+      "B": "$A(t) = 200(0.15)^t$",
+      "C": "$A(t) = 200(0.85)^t$",
+      "D": "$A(t) = 200(t - 0.15)$"
+    },
+    "correct_choice": "C",
+    "rationale": "Exponential decay is modeled by the formula $A(t) = P(1-r)^t$, where P is the initial amount and r is the decay rate. In this case, $P=200$ and $r=0.15$. The decay factor is $1 - 0.15 = 0.85$. Therefore, the function is $A(t) = 200(0.85)^t$."
+  },
+  {
+    "id": "hard-math-07",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "In the xy-plane, the graph of the polynomial function $f(x) = x^3 - 2x^2 - 5x + 6$ intersects the x-axis at three points. What is the sum of the x-coordinates of these points?",
+    "choices": {
+      "A": "-6",
+      "B": "-2",
+      "C": "2",
+      "D": "5"
+    },
+    "correct_choice": "C",
+    "rationale": "For a polynomial function of the form $ax^n + bx^{n-1} + ... + d$, the sum of the roots (the x-coordinates of the x-intercepts) is given by $-b/a$. In this case, $a=1$ and $b=-2$. The sum of the roots is $-(-2)/1 = 2$."
+  },
+  {
+    "id": "hard-math-08",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "If $\\sin(x) = 3/5$ and $x$ is in Quadrant II, what is the value of $\\cos(x)$?",
+    "choices": {
+      "A": "-4/5",
+      "B": "-3/5",
+      "C": "3/5",
+      "D": "4/5"
+    },
+    "correct_choice": "A",
+    "rationale": "Use the Pythagorean identity $\\sin^2(x) + \\cos^2(x) = 1$. So, $(3/5)^2 + \\cos^2(x) = 1$, which gives $9/25 + \\cos^2(x) = 1$. Then $\\cos^2(x) = 1 - 9/25 = 16/25$. Taking the square root gives $\\cos(x) = \\pm 4/5$. Since x is in Quadrant II, cosine is negative, so $\\cos(x) = -4/5$."
+  },
+  {
+    "id": "hard-math-09",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "For the system of equations $y = x^2 - 4x + 3$ and $y = 2x - 5$, what is the sum of the x-coordinates of the intersection points?",
+    "choices": {
+      "A": "-6",
+      "B": "2",
+      "C": "6",
+      "D": "8"
+    },
+    "correct_choice": "C",
+    "rationale": "Set the equations equal to each other: $x^2 - 4x + 3 = 2x - 5$. Rearrange into a standard quadratic form: $x^2 - 6x + 8 = 0$. The sum of the roots of a quadratic equation $ax^2+bx+c=0$ is $-b/a$. Here, $a=1$ and $b=-6$, so the sum of the x-coordinates is $-(-6)/1 = 6$."
+  },
+  {
+    "id": "hard-math-10",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "An equilateral triangle is inscribed in a circle with a radius of 6. What is the perimeter of the triangle?",
+    "choices": {
+      "A": "18",
+      "B": "$18\\sqrt{3}$",
+      "C": "36",
+      "D": "$36\\sqrt{3}$"
+    },
+    "correct_choice": "B",
+    "rationale": "The side length, s, of an equilateral triangle inscribed in a circle with radius r is given by the formula $s = r\\sqrt{3}$. With $r=6$, the side length is $s = 6\\sqrt{3}$. The perimeter is $3s = 3(6\\sqrt{3}) = 18\\sqrt{3}$."
+  },
+  {
+    "id": "hard-math-11",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "If $g(x) = 2x+1$ and $h(x) = x^2$, what is $g(h(3)) - h(g(3))$?",
+    "choices": {
+      "A": "-32",
+      "B": "-30",
+      "C": "12",
+      "D": "49"
+    },
+    "correct_choice": "B",
+    "rationale": "First, calculate $g(h(3))$. $h(3) = 3^2 = 9$. Then $g(9) = 2(9)+1 = 19$. Next, calculate $h(g(3))$. $g(3) = 2(3)+1 = 7$. Then $h(7) = 7^2 = 49$. The final result is $19 - 49 = -30$."
+  },
+  {
+    "id": "hard-math-12",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "The equation of a circle in the xy-plane is $x^2 + y^2 - 8x + 6y + 21 = 0$. What is the radius of the circle?",
+    "choices": {
+      "A": "2",
+      "B": "4",
+      "C": "5",
+      "D": "16"
+    },
+    "correct_choice": "A",
+    "rationale": "Complete the square for both x and y terms. Rearrange: $(x^2 - 8x) + (y^2 + 6y) = -21$. Complete the square: $(x^2 - 8x + 16) + (y^2 + 6y + 9) = -21 + 16 + 9$. This simplifies to $(x-4)^2 + (y+3)^2 = 4$. The equation is in the form $(x-h)^2 + (y-k)^2 = r^2$, so $r^2 = 4$, and the radius $r=2$."
+  },
+  {
+    "id": "hard-math-13",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "A car's value depreciates by 20% each year. If the car was purchased for $25,000, after how many years will its value first be less than $10,000?",
+    "choices": {
+      "A": "2 years",
+      "B": "3 years",
+      "C": "4 years",
+      "D": "5 years"
+    },
+    "correct_choice": "C",
+    "rationale": "The value of the car after \\( t \\) years is given by \\( V(t) = 25000(0.80)^t \\). We need to find the smallest integer \\( t \\) such that \\( V(t) < 10000 \\), or \\( 25000(0.8)^t < 10000 \\Rightarrow (0.8)^t < 0.4 \\). Testing values: \\( (0.8)^4 = 0.4096 \\), \\( (0.8)^5 = 0.32768 \\). Since 0.4096 is not less than 0.4 but 0.32768 is, the smallest integer \\( t \\) is 5. Therefore, the value drops below \\$10,000 after 5 years."
+  },
+  {
+    "id": "hard-math-14",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "A survey of 115 pet owners showed that 60 own a dog and 45 own a cat. If the number of pet owners who own neither a dog nor a cat is three times the number who own both, how many pet owners own both a dog and a cat?",
+    "choices": {
+      "A": "5",
+      "B": "10",
+      "C": "15",
+      "D": "20"
+    },
+    "correct_choice": "A",
+    "rationale": "Let \\( B \\) be the number who own both a dog and a cat. Then \\( 60 + 45 - B \\) own at least one pet, and \\( 3B \\) own neither. The total is \\( 60 + 45 - B + 3B = 105 + 2B \\). Setting this equal to 115 gives \\( 2B = 10 \\Rightarrow B = 5 \\)."
+  },
+  {
+    "id": "hard-math-15",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "A regular hexagon with side length 6 is inscribed in a circle. What is the area of the shaded region between the circle and the hexagon?",
+    "choices": {
+      "A": "$36\\pi - 54\\sqrt{3}$",
+      "B": "$36\\pi - 36\\sqrt{3}$",
+      "C": "$12\\pi - 18\\sqrt{3}$",
+      "D": "$36\\pi - 27\\sqrt{3}$"
+    },
+    "correct_choice": "A",
+    "rationale": "In a regular hexagon inscribed in a circle, the radius of the circle is equal to the side length of the hexagon. So, r=6. The area of the circle is $\\pi r^2 = 36\\pi$. The area of a regular hexagon is $\\frac{3\\sqrt{3}}{2}s^2$. With s=6, the area is $\\frac{3\\sqrt{3}}{2}(6^2) = \\frac{3\\sqrt{3}}{2}(36) = 54\\sqrt{3}$. The shaded area is the area of the circle minus the area of the hexagon: $36\\pi - 54\\sqrt{3}$."
+  },
+  {
+    "id": "hard-math-16",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "If $\\frac{4x^2 - 2x + 5}{2x-1} = 2x + q + \\frac{r}{2x-1}$, where q and r are constants, what is the value of r?",
+    "choices": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "correct_choice": "D",
+    "rationale": "This question involves polynomial long division. Divide $4x^2 - 2x + 5$ by $2x-1$. First, $4x^2 / (2x) = 2x$. Multiply $2x(2x-1) = 4x^2 - 2x$. Subtract this from the dividend: $(4x^2 - 2x + 5) - (4x^2 - 2x) = 5$. The remainder is 5. Therefore, the expression is equivalent to $2x + \\frac{5}{2x-1}$. Comparing this to the given form, we see that $q=0$ and the remainder $r=5$."
+  },
+  {
+    "id": "hard-math-17",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "The vertex of the parabola defined by $y = ax^2 + bx + c$ is at $(2, 3)$. If the parabola passes through the point $(4, 11)$, what is the value of $a$?",
+    "choices": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
+    },
+    "correct_choice": "B",
+    "rationale": "Use the vertex form of a parabola: $y = a(x-h)^2 + k$, where $(h,k)$ is the vertex. We have $y = a(x-2)^2 + 3$. The parabola passes through $(4, 11)$, so substitute these values into the equation: $11 = a(4-2)^2 + 3$. This simplifies to $11 = a(2)^2 + 3$, or $11 = 4a + 3$. Solving for a: $8 = 4a$, so $a = 2$."
+  },
+  {
+    "id": "hard-math-18",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "In a right triangle ABC, where the right angle is at C, $\\tan(A) = 3/4$. What is the value of $\\sin(B)$?",
+    "choices": {
+      "A": "3/5",
+      "B": "4/5",
+      "C": "3/4",
+      "D": "4/3"
+    },
+    "correct_choice": "B",
+    "rationale": "If $\\tan(A) = 3/4$, then the side opposite angle A is 3 and the side adjacent to angle A is 4. By the Pythagorean theorem, the hypotenuse is $\\sqrt{3^2 + 4^2} = 5$. In a right triangle, the angles A and B are complementary, so $\\sin(B) = \\cos(A)$. From the side lengths, $\\cos(A) = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = 4/5$. Therefore, $\\sin(B) = 4/5$."
+  },
+  {
+    "id": "hard-math-19",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "If $a$ and $b$ are the roots of the equation $x^2 - 7x + 11 = 0$, what is the value of $(a+1)(b+1)$?",
+    "choices": {
+      "A": "11",
+      "B": "18",
+      "C": "19",
+      "D": "20"
+    },
+    "correct_choice": "C",
+    "rationale": "Expand the expression: $(a+1)(b+1) = ab + a + b + 1$. For a quadratic equation $x^2 - 7x + 11 = 0$, the sum of the roots $a+b = -(-7)/1 = 7$, and the product of the roots $ab = 11/1 = 11$. Substitute these values into the expanded expression: $11 + 7 + 1 = 19$."
+  },
+  {
+    "id": "hard-math-20",
+    "subject": "math",
+    "difficulty": "hard",
+    "question_text": "The system of inequalities $y \\leq -x + 4$ and $y \\geq x - 2$ defines a triangular region in the xy-plane. What is the area of this region?",
+    "choices": {
+      "A": "8",
+      "B": "9",
+      "C": "12",
+      "D": "16"
+    },
+    "correct_choice": "B",
+    "rationale": "The question describes a region bounded by $y=-x+4$, $y=x-2$, and it implies a third boundary. Since it's a triangular region, the third boundary is likely one of the axes. The inequalities define a region bounded by these two lines and the y-axis ($x \\ge 0$). Let's find the vertices of this triangle. Vertex 1 (intersection of the two lines): $-x+4 = x-2 \\implies 2x=6 \\implies x=3$. Then $y=3-2=1$. So, (3,1). Vertex 2 (y-intercept of $y=-x+4$): (0,4). Vertex 3 (y-intercept of $y=x-2$): (0,-2). The base of the triangle is the distance between (0,4) and (0,-2), which is 6. The height is the x-coordinate of the intersection point, which is 3. The area is $(1/2) \\times \\text{base} \\times \\text{height} = (1/2) \\times 6 \\times 3 = 9$."
+  },
+  {
+    "id": "hard-rw-01",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The philosopher's work is often described as ______, as it deliberately avoids taking a definitive stance and explores the nuances of opposing viewpoints with equal rigor. Which word best fits the context?",
+    "choices": {
+      "A": "didactic",
+      "B": "dogmatic",
+      "C": "tendentious",
+      "D": "equivocal"
+    },
+    "correct_choice": "D",
+    "rationale": "'Equivocal' means open to more than one interpretation; ambiguous. This word best describes a work that intentionally avoids a single, clear position and explores multiple perspectives."
+  },
+  {
+    "id": "hard-rw-02",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The discovery of the ancient manuscript was a moment of pure ______ for the historian, an unexpected stroke of luck that fundamentally changed her research. Which word best completes the sentence?",
+    "choices": {
+      "A": "serendipity",
+      "B": "methodology",
+      "C": "inevitability",
+      "D": "drudgery"
+    },
+    "correct_choice": "A",
+    "rationale": "'Serendipity' is the occurrence of events by chance in a happy or beneficial way. This perfectly captures the sense of a fortunate and unexpected discovery."
+  },
+  {
+    "id": "hard-rw-03",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "Despite his reputation for being a ______ and solitary figure, the artist was surprisingly gregarious in private, enjoying long conversations with his close friends. Which word best fits the context?",
+    "choices": {
+      "A": "convivial",
+      "B": "garrulous",
+      "C": "reclusive",
+      "D": "magnanimous"
+    },
+    "correct_choice": "C",
+    "rationale": "'Reclusive' means avoiding the company of other people; solitary. This word provides the necessary contrast to the description of the artist as 'surprisingly gregarious'."
+  },
+  {
+    "id": "hard-rw-04",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The manager's ______ praise, which she doled out for even the most trivial accomplishments, ultimately had the effect of devaluing genuine achievement. Which word best describes the praise?",
+    "choices": {
+      "A": "sincere",
+      "B": "parsimonious",
+      "C": "measured",
+      "D": "indiscriminate"
+    },
+    "correct_choice": "D",
+    "rationale": "'Indiscriminate' means done at random or without careful judgment. This word accurately describes praise given out so freely that it loses its meaning."
+  },
+  {
+    "id": "hard-rw-05",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The new biography attempts to ______ the revolutionary leader, portraying him not as a flawless icon but as a complex and often contradictory human being. Which word best completes the sentence?",
+    "choices": {
+      "A": "lionize",
+      "B": "deify",
+      "C": "demystify",
+      "D": "aggrandize"
+    },
+    "correct_choice": "C",
+    "rationale": "'Demystify' means to make a difficult subject clearer and easier to understand. This fits the context of revealing the human complexity behind a larger-than-life figure."
+  },
+  {
+    "id": "hard-rw-06",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The senator's speech was a masterpiece of ______, skillfully weaving together emotional appeals and logical fallacies to obscure the weakness of his position. Which word best describes the speech?",
+    "choices": {
+      "A": "candor",
+      "B": "probity",
+      "C": "sophistry",
+      "D": "veracity"
+    },
+    "correct_choice": "C",
+    "rationale": "'Sophistry' is the use of fallacious arguments, especially with the intention of deceiving. This word precisely describes the act of using clever but false arguments to manipulate an audience."
+  },
+  {
+    "id": "hard-rw-07",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The scientific community was initially skeptical of the new theory, but the ______ of evidence presented in the subsequent studies was too compelling to ignore. Which word best fits the context?",
+    "choices": {
+      "A": "paucity",
+      "B": "dearth",
+      "C": "preponderance",
+      "D": "scarcity"
+    },
+    "correct_choice": "C",
+    "rationale": "'Preponderance' means the quality or fact of being greater in number, quantity, or importance. It correctly conveys the idea of an overwhelming amount of evidence."
+  },
+  {
+    "id": "hard-rw-08",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "Her writing style is anything but ____; she uses ornate language and complex sentence structures to create a dense, challenging prose. Which word best fits the blank?",
+    "choices": {
+      "A": "florid",
+      "B": "turgid",
+      "C": "bombastic",
+      "D": "spartan"
+    },
+    "correct_choice": "D",
+    "rationale": "'Spartan' means showing indifference to comfort or luxury; austere. In the context of writing, it implies a plain, unadorned style. The phrase 'anything but' indicates a contrast, making 'spartan' the correct choice."
+  },
+  {
+    "id": "hard-rw-09",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The committee's final report was a ______ document, the result of months of compromise between members with widely divergent views. Which word best describes the document?",
+    "choices": {
+      "A": "doctrinaire",
+      "B": "partisan",
+      "C": "quixotic",
+      "D": "heterogeneous"
+    },
+    "correct_choice": "D",
+    "rationale": "'Heterogeneous' means diverse in character or content. This word accurately describes a document created from many different and conflicting viewpoints."
+  },
+  {
+    "id": "hard-rw-10",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The CEO's ______ for micromanagement stifled creativity and created a culture of fear within the company. Which word best completes the sentence?",
+    "choices": {
+      "A": "aversion",
+      "B": "penchant",
+      "C": "antipathy",
+      "D": "disdain"
+    },
+    "correct_choice": "B",
+    "rationale": "'Penchant' is a strong or habitual liking for something or tendency to do something. It correctly identifies the CEO's inclination towards micromanagement."
+  },
+  {
+    "id": "hard-rw-11",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The ancient philosopher's teachings were not meant to be a rigid dogma, but rather a ______ framework for ethical inquiry, adaptable to different times and cultures. Which word best fits the blank?",
+    "choices": {
+      "A": "didactic",
+      "B": "prescriptive",
+      "C": "heuristic",
+      "D": "peremptory"
+    },
+    "correct_choice": "C",
+    "rationale": "'Heuristic' means enabling a person to discover or learn something for themselves. This contrasts with rigid dogma and aligns with the idea of a flexible framework for inquiry."
+  },
+  {
+    "id": "hard-rw-12",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The politician tried to ______ his opponent's proposal by misrepresenting its key provisions and creating a straw man argument. Which word best completes the sentence?",
+    "choices": {
+      "A": "elucidate",
+      "B": "corroborate",
+      "C": "disparage",
+      "D": "endorse"
+    },
+    "correct_choice": "C",
+    "rationale": "'Disparage' means to regard or represent as being of little worth. This word accurately describes the act of attacking a proposal through misrepresentation."
+  },
+  {
+    "id": "hard-rw-13",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The novel's ______ structure, which jumps between different timelines and perspectives, challenges the reader to piece together the narrative. Which word best describes the structure?",
+    "choices": {
+      "A": "linear",
+      "B": "chronological",
+      "C": "discursive",
+      "D": "non-linear"
+    },
+    "correct_choice": "D",
+    "rationale": "'Non-linear' describes a narrative that does not follow a straight, chronological path. This fits the description of a structure that jumps between timelines."
+  },
+  {
+    "id": "hard-rw-14",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The artist's work is characterized by a ______ of styles, seamlessly blending elements of classical painting with modern abstraction. Which word best fits the context?",
+    "choices": {
+      "A": "pastiche",
+      "B": "homogeneity",
+      "C": "purity",
+      "D": "dichotomy"
+    },
+    "correct_choice": "A",
+    "rationale": "'Pastiche' is an artistic work in a style that imitates that of another work, artist, or period. It can also refer to a work that is a medley of different styles, which is the meaning here."
+  },
+  {
+    "id": "hard-rw-15",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The CEO's apology was seen as ______, a calculated gesture designed to placate shareholders rather than a sincere admission of wrongdoing. Which word best completes the sentence?",
+    "choices": {
+      "A": "contrite",
+      "B": "perfunctory",
+      "C": "heartfelt",
+      "D": "effusive"
+    },
+    "correct_choice": "B",
+    "rationale": "'Perfunctory' means carried out with a minimum of effort or reflection. This word captures the sense of an apology that is done merely as a duty, without genuine feeling."
+  },
+  {
+    "id": "hard-rw-16",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The dictator maintained his power through a combination of brutal repression and a carefully crafted cult of personality, demanding ______ from his subjects. Which word best completes the sentence?",
+    "choices": {
+      "A": "dissent",
+      "B": "scrutiny",
+      "C": "adulation",
+      "D": "autonomy"
+    },
+    "correct_choice": "C",
+    "rationale": "'Adulation' means excessive admiration or praise. This is the type of response a dictator with a cult of personality would demand from his people."
+  },
+  {
+    "id": "hard-rw-17",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The committee's investigation was hampered by the ______ of the available evidence, making it difficult to draw any firm conclusions. Which word best fits the context?",
+    "choices": {
+      "A": "plethora",
+      "B": "surfeit",
+      "C": "paucity",
+      "D": "abundance"
+    },
+    "correct_choice": "C",
+    "rationale": "'Paucity' means the presence of something only in small or insufficient quantities or amounts; scarcity. This word explains why it was difficult to draw firm conclusions."
+  },
+  {
+    "id": "hard-rw-18",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The protest movement was initially a ______ coalition of different groups, but it soon fractured over ideological disagreements. Which word best describes the coalition?",
+    "choices": {
+      "A": "monolithic",
+      "B": "homogeneous",
+      "C": "nascent",
+      "D": "cohesive"
+    },
+    "correct_choice": "C",
+    "rationale": "'Nascent' means just coming into existence and beginning to display signs of future potential. It accurately describes a new, developing movement that has not yet solidified."
+  },
+  {
+    "id": "hard-rw-19",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The judge's ruling was praised for its ______; it was based on a thorough and impartial analysis of the law and the facts. Which word best completes the sentence?",
+    "choices": {
+      "A": "arbitrariness",
+      "B": "partisanship",
+      "C": "equanimity",
+      "D": "judiciousness"
+    },
+    "correct_choice": "D",
+    "rationale": "'Judiciousness' is the quality of having, showing, or done with good judgment or sense. This word perfectly describes a well-reasoned and impartial legal ruling."
+  },
+  {
+    "id": "hard-rw-20",
+    "subject": "rw",
+    "difficulty": "hard",
+    "question_text": "The author's ______ prose, packed with obscure allusions and complex metaphors, can be daunting for the casual reader. Which word best describes the prose?",
+    "choices": {
+      "A": "lucid",
+      "B": "pellucid",
+      "C": "recondite",
+      "D": "accessible"
+    },
+    "correct_choice": "C",
+    "rationale": "'Recondite' means little known; abstruse. It accurately describes a writing style that is difficult for a non-specialist to understand due to its complexity and obscure references."
+  }
+]

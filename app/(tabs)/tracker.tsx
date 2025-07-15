@@ -1,6 +1,3 @@
-import { useEffect, useMemo, useState } from "react";
-import { ScrollView, StyleSheet, View, useColorScheme } from "react-native";
-
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
@@ -8,8 +5,11 @@ import ThemedText from "@/components/ui/ThemedText";
 import type { AnswerRow } from "@/types";
 import initDB, { fetchAnswers } from "@/utils/db";
 import renderLatex from "@/utils/renderLatex";
+import { useFocusEffect } from "@react-navigation/native";
+import { useCallback, useMemo, useState } from "react";
+import { ScrollView, StyleSheet, View, useColorScheme } from "react-native";
 
-const SUBJECTS = ["math", "english"] as const;
+const SUBJECTS = ["math", "rw"] as const;
 const DIFFICULTIES = ["easy", "medium", "hard"] as const;
 const TYPES = ["solved", "guessed", "mistake"] as const;
 
@@ -18,10 +18,11 @@ const PAGE_SIZE = 20;
 const Tracker = () => {
   const [answers, setAnswers] = useState<AnswerRow[]>([]);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const [subjectFilters, setSubjectFilters] = useState<string[]>([
     "math",
-    "english",
+    "rw",
   ]);
   const [difficultyFilters, setDifficultyFilters] = useState<string[]>([
     "easy",
@@ -35,18 +36,22 @@ const Tracker = () => {
 
   const colorScheme = useColorScheme();
 
-  useEffect(() => {
-    const loadAnswers = async () => {
-      try {
-        const db = await initDB();
-        const data = await fetchAnswers(db);
-        setAnswers(data);
-      } catch {
-        setAnswers([]);
-      }
-    };
-    loadAnswers();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      const loadAnswers = async () => {
+        try {
+          const db = await initDB();
+          const data = await fetchAnswers(db);
+          setAnswers(data);
+        } catch {
+          setAnswers([]);
+        } finally {
+          setLoading(false);
+        }
+      };
+      loadAnswers();
+    }, [])
+  );
 
   const toggleFilter = (
     value: string,
@@ -101,15 +106,24 @@ const Tracker = () => {
     label: string,
     active: boolean,
     onPress: () => void
-  ) => (
-    <Button
-      key={label}
-      title={label}
-      onPress={onPress}
-      style={{ marginRight: 16, marginVertical: 12 }}
-      variant={active ? "primary" : "secondary"}
-    />
-  );
+  ) => {
+    let formattedLabel;
+    if (label === "rw") {
+      formattedLabel = "RW";
+    } else {
+      formattedLabel = label.charAt(0).toUpperCase() + label.slice(1);
+    }
+
+    return (
+      <Button
+        key={label}
+        title={formattedLabel}
+        onPress={onPress}
+        style={{ marginRight: 16, marginVertical: 12 }}
+        variant={active ? "primary" : "secondary"}
+      />
+    );
+  };
 
   const getRowBackgroundColor = (answer: AnswerRow) => {
     const isSolved =
@@ -125,13 +139,27 @@ const Tracker = () => {
     return colorScheme === "dark" ? "#333" : "#eee";
   };
 
+  if (loading) {
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
+        <Container>
+          <Header title="Mistake tracker" />
+          <ThemedText style={{ textAlign: "center", marginTop: 100 }}>
+            Loading...
+          </ThemedText>
+        </Container>
+      </ScrollView>
+    );
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
         <View>
           <Header title="Mistake tracker" />
-          <ThemedText>Total: {filteredAnswers.length}</ThemedText>
-
+          <ThemedText style={styles.heading}>
+            Total: {filteredAnswers.length}
+          </ThemedText>
           <ThemedText style={styles.heading}>Filter by Subject</ThemedText>
           <View style={styles.filterRow}>
             {SUBJECTS.map((subj) =>
@@ -140,7 +168,6 @@ const Tracker = () => {
               )
             )}
           </View>
-
           <ThemedText style={styles.heading}>Filter by Difficulty</ThemedText>
           <View style={styles.filterRow}>
             {DIFFICULTIES.map((diff) =>
@@ -149,7 +176,6 @@ const Tracker = () => {
               )
             )}
           </View>
-
           <ThemedText style={styles.heading}>Filter by Status</ThemedText>
           <View style={styles.filterRow}>
             {TYPES.map((type) =>
@@ -158,7 +184,6 @@ const Tracker = () => {
               )
             )}
           </View>
-
           <View style={{ marginTop: 20 }}>
             {paginatedAnswers.map((answer, index) => (
               <View
@@ -171,28 +196,38 @@ const Tracker = () => {
                 <View style={styles.section}>
                   <ThemedText>
                     <ThemedText style={styles.bold}>Question: </ThemedText>
-                    {renderLatex(String(answer.questionText))}
+                    {renderLatex(String(answer.questionText), colorScheme)}
                   </ThemedText>
                 </View>
-
                 {answer.rationale && (
                   <View style={styles.section}>
                     <ThemedText>
                       <ThemedText style={styles.bold}>Rationale: </ThemedText>
-                      {renderLatex(String(answer.rationale))}
+                      {renderLatex(String(answer.rationale), colorScheme)}
                     </ThemedText>
                   </View>
                 )}
-
                 {!answer.isCorrect && (
                   <View style={styles.section}>
                     <ThemedText>
-                      <ThemedText style={styles.bold}>Your answer: </ThemedText>
-                      {renderLatex(String(answer.selectedChoiceValue))}
+                      {answer.selectedChoiceValue ? (
+                        <>
+                          <ThemedText style={styles.bold}>
+                            Your answer:{" "}
+                          </ThemedText>
+                          {renderLatex(
+                            String(answer.selectedChoiceValue),
+                            colorScheme
+                          )}
+                        </>
+                      ) : (
+                        <ThemedText style={styles.bold}>
+                          You left this unanswered
+                        </ThemedText>
+                      )}
                     </ThemedText>
                   </View>
                 )}
-
                 {answer.reasonForMistake && (
                   <View style={styles.section}>
                     <ThemedText>
@@ -203,7 +238,6 @@ const Tracker = () => {
                     </ThemedText>
                   </View>
                 )}
-
                 {answer.howToAvoidMistake && (
                   <View style={styles.section}>
                     <ThemedText>
@@ -214,7 +248,6 @@ const Tracker = () => {
                     </ThemedText>
                   </View>
                 )}
-
                 {answer.reasonForGuess && (
                   <View style={styles.section}>
                     <ThemedText>
@@ -225,7 +258,6 @@ const Tracker = () => {
                     </ThemedText>
                   </View>
                 )}
-
                 {answer.howToAvoidGuess && (
                   <View style={styles.section}>
                     <ThemedText>
@@ -239,7 +271,6 @@ const Tracker = () => {
               </View>
             ))}
           </View>
-
           <View style={{ marginTop: 20, marginBottom: 50 }}>
             {canLoadMore ? (
               <Button

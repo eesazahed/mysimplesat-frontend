@@ -21,7 +21,7 @@ export interface UserAnswer {
   questionText: string;
   subject: Subject;
   difficulty: Difficulty;
-  selectedChoiceValue: string;
+  selectedChoiceValue: string | null;
   isCorrect: boolean;
   rationale: string;
   reviewStatus?: "solved" | "guessed" | "incorrect";
@@ -37,7 +37,7 @@ export interface AnswerRow {
   subject: Subject;
   difficulty: Difficulty;
   isCorrect: boolean;
-  selectedChoiceValue: string;
+  selectedChoiceValue: string | null;
   rationale?: string | null;
   reasonForMistake?: string | null;
   howToAvoidMistake?: string | null;
@@ -46,7 +46,7 @@ export interface AnswerRow {
 }
 
 export type RootStackParamList = {
-  questions: { questions: any[] };
+  questions: { questions: any[]; timer: number };
   review: { userAnswers: UserAnswer[] };
   test: undefined;
 };

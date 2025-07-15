@@ -5,7 +5,7 @@ import TextArea from "@/components/ui/TextArea";
 import ThemedText from "@/components/ui/ThemedText";
 import { RouteProp, useFocusEffect, useRoute } from "@react-navigation/native";
 import React, { useCallback, useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, useColorScheme, View } from "react-native";
 
 import type { RootStackParamList } from "@/types";
 import initDB, { saveAnswers } from "@/utils/db";
@@ -38,6 +38,8 @@ const Review = () => {
   const [incorrectSubmitted, setIncorrectSubmitted] = useState(false);
   const [inputReason, setInputReason] = useState("");
   const [inputAvoid, setInputAvoid] = useState("");
+
+  const colorScheme = useColorScheme();
 
   useFocusEffect(
     useCallback(() => {
@@ -212,6 +214,64 @@ const Review = () => {
     setInputAvoid("");
   };
 
+  const handleSkipReason = () => {
+    setInputReason("Skipped");
+    if (isCorrect) {
+      if (guessStep === 1) {
+        setGuessedQuestions((prev) => ({
+          ...prev,
+          [currentAnswer.questionId]: {
+            reasonForGuess: "Skipped",
+            howToAvoidGuess: "Skipped",
+          },
+        }));
+        setGuessSubmitted(true);
+      } else {
+        setGuessSubmitted(true);
+      }
+    } else {
+      if (incorrectStep === 0) {
+        setIncorrectQuestions((prev) => ({
+          ...prev,
+          [currentAnswer.questionId]: {
+            reasonForMistake: "Skipped",
+            howToAvoidMistake: "Skipped",
+          },
+        }));
+        setIncorrectSubmitted(true);
+      } else {
+        setIncorrectSubmitted(true);
+      }
+    }
+  };
+
+  const handleSkipAvoid = () => {
+    setInputAvoid("Skipped");
+    if (isCorrect) {
+      if (guessStep === 2) {
+        setGuessedQuestions((prev) => ({
+          ...prev,
+          [currentAnswer.questionId]: {
+            ...prev[currentAnswer.questionId],
+            howToAvoidGuess: "Skipped",
+          },
+        }));
+        setGuessSubmitted(true);
+      }
+    } else {
+      if (incorrectStep === 1) {
+        setIncorrectQuestions((prev) => ({
+          ...prev,
+          [currentAnswer.questionId]: {
+            ...prev[currentAnswer.questionId],
+            howToAvoidMistake: "Skipped",
+          },
+        }));
+        setIncorrectSubmitted(true);
+      }
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
@@ -224,13 +284,13 @@ const Review = () => {
             style={{ marginBottom: 8 }}
             key={`question-${currentIndex}`}
           >
-            Question: {renderLatex(currentAnswer.questionText)}
+            Question: {renderLatex(currentAnswer.questionText, colorScheme)}
           </ThemedText>
           <ThemedText
             style={{ marginBottom: 24 }}
             key={`rationale-${currentIndex}`}
           >
-            Rationale: {renderLatex(currentAnswer.rationale)}
+            Rationale: {renderLatex(currentAnswer.rationale, colorScheme)}
           </ThemedText>
           {isCorrect ? (
             <>
@@ -260,6 +320,11 @@ const Review = () => {
                     placeholder="Explain your thought process"
                   />
                   <Button
+                    title="Skip"
+                    onPress={handleSkipReason}
+                    style={{ backgroundColor: "gray", marginTop: 8 }}
+                  />
+                  <Button
                     title="Submit"
                     onPress={handleGuessNextStep}
                     disabled={inputReason.trim() === ""}
@@ -280,6 +345,11 @@ const Review = () => {
                     placeholder="Strategies to avoid guessing..."
                   />
                   <Button
+                    title="Skip"
+                    onPress={handleSkipAvoid}
+                    style={{ backgroundColor: "gray", marginTop: 8 }}
+                  />
+                  <Button
                     title="Submit"
                     onPress={handleGuessNextStep}
                     disabled={inputAvoid.trim() === ""}
@@ -298,8 +368,14 @@ const Review = () => {
           ) : (
             <>
               <ThemedText style={{ color: "red", marginVertical: 16 }}>
-                You answered: {currentAnswer.selectedChoiceValue}, which was
-                incorrect
+                {currentAnswer.selectedChoiceValue ? (
+                  <>
+                    You answered: {currentAnswer.selectedChoiceValue}, which was
+                    incorrect
+                  </>
+                ) : (
+                  "You left this unanswered"
+                )}
               </ThemedText>
 
               {incorrectStep === 0 && !incorrectSubmitted && (
@@ -311,6 +387,11 @@ const Review = () => {
                     value={inputReason}
                     onChangeText={setInputReason}
                     placeholder="Explain why you made this mistake..."
+                  />
+                  <Button
+                    title="Skip"
+                    onPress={handleSkipReason}
+                    style={{ backgroundColor: "gray", marginTop: 8 }}
                   />
                   <Button
                     title="Submit"
@@ -330,6 +411,11 @@ const Review = () => {
                     value={inputAvoid}
                     onChangeText={setInputAvoid}
                     placeholder="Your ideas to avoid this mistake..."
+                  />
+                  <Button
+                    title="Skip"
+                    onPress={handleSkipAvoid}
+                    style={{ backgroundColor: "gray", marginTop: 8 }}
                   />
                   <Button
                     title="Submit"
