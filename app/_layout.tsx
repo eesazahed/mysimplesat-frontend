@@ -1,3 +1,4 @@
+import { InTestProvider } from "@/context/InTestContext";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { CustomDarkTheme, CustomLightTheme } from "@/themes";
 import initDB from "@/utils/db";
@@ -33,10 +34,12 @@ const RootLayout = () => {
     <ThemeProvider
       value={colorScheme === "dark" ? CustomDarkTheme : CustomLightTheme}
     >
-      <View style={styles.container}>
-        <Stack screenOptions={{ headerShown: false }} />
-        <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-      </View>
+      <InTestProvider>
+        <View style={styles.container}>
+          <Stack screenOptions={{ headerShown: false }} />
+          <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+        </View>
+      </InTestProvider>
     </ThemeProvider>
   );
 };

@@ -129,15 +129,15 @@
     "id": "easy-math-10",
     "subject": "math",
     "difficulty": "easy",
-    "question_text": "A shirt originally priced at \\$40 is on sale for 25% off. What is the sale price?",
+    "question_text": "A shirt originally priced at $40 is on sale for 25% off. What is the sale price?",
     "choices": {
-      "A": "\\$10",
-      "B": "\\$20",
-      "C": "\\$30",
-      "D": "\\$35"
+      "A": "$10",
+      "B": "$20",
+      "C": "$30",
+      "D": "$35"
     },
     "correct_choice": "C",
-    "rationale": "First, calculate the discount amount: $25\\% \\text{ of } \\$40 = 0.25 \\times \\$40 = \\$10$. Then, subtract the discount from the original price: $\\$40 - \\$10 = \\$30$."
+    "rationale": "First, calculate the discount amount: $25\\% \\text{ of } 40 = 0.25 \\times 40 = 10$. Then, subtract the discount from the original price: $40 - 10 = 30$."
   },
   {
     "id": "easy-math-11",

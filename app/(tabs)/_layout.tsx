@@ -1,10 +1,13 @@
 import HapticTab from "@/components/HapticTab";
+import { useInTest } from "@/context/InTestContext";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
 
 const TabLayout = () => {
+  const { inTest } = useInTest();
+
   return (
     <Tabs
       screenOptions={{
@@ -33,7 +36,7 @@ const TabLayout = () => {
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="home" color={color} size={28} />
           ),
-          href: "/(tabs)",
+          href: !inTest ? "/(tabs)" : null,
         }}
       />
 
@@ -44,7 +47,7 @@ const TabLayout = () => {
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="book" color={color} size={28} />
           ),
-          href: "/(tabs)/test",
+          href: !inTest ? "/(tabs)/test" : null,
         }}
       />
 
@@ -69,7 +72,7 @@ const TabLayout = () => {
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="checklist" color={color} size={28} />
           ),
-          href: "/(tabs)/tracker",
+          href: !inTest ? "/(tabs)/tracker" : null,
         }}
       />
 

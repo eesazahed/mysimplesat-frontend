@@ -43,6 +43,7 @@ export interface AnswerRow {
   howToAvoidMistake?: string | null;
   reasonForGuess?: string | null;
   howToAvoidGuess?: string | null;
+  updatedAt?: string | null;
 }
 
 export type RootStackParamList = {

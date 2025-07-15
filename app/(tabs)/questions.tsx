@@ -2,6 +2,7 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
+import { useInTest } from "@/context/InTestContext";
 import type {
   Difficulty,
   RootStackParamList,
@@ -46,6 +47,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 const Questions = () => {
   const route = useRoute<RouteProp<RootStackParamList, "questions">>();
   const navigation = useNavigation<NavigationProp>();
+  const { setInTest } = useInTest();
 
   const [rawQuestions, setRawQuestions] = useState<any[] | null>(null);
   const colorScheme = useColorScheme();
@@ -56,6 +58,8 @@ const Questions = () => {
 
   useFocusEffect(
     useCallback(() => {
+      setInTest(true);
+
       const questionsFromParams = route.params?.questions ?? null;
       const timerMinutes = route.params?.timer ?? 0;
 
@@ -81,7 +85,7 @@ const Questions = () => {
         }
         setSecondsLeft(null);
       };
-    }, [route.params?.questions, route.params?.timer])
+    }, [route.params?.questions, route.params?.timer, setInTest])
   );
 
   const autoSubmit = useCallback(() => {
@@ -224,7 +228,12 @@ const Questions = () => {
           />
           {secondsLeft !== null && (
             <ThemedText
-              style={{ marginBottom: 16, fontSize: 16, fontWeight: "600" }}
+              style={{
+                marginBottom: 48,
+                fontSize: 16,
+                fontWeight: "600",
+                textAlign: "center",
+              }}
             >
               Time Remaining: {formatTime(secondsLeft)}
             </ThemedText>

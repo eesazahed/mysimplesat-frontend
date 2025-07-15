@@ -3,8 +3,9 @@ import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import TextArea from "@/components/ui/TextArea";
 import ThemedText from "@/components/ui/ThemedText";
+import { useInTest } from "@/context/InTestContext";
 import { RouteProp, useFocusEffect, useRoute } from "@react-navigation/native";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ScrollView, StyleSheet, useColorScheme, View } from "react-native";
 
 import type { RootStackParamList } from "@/types";
@@ -24,6 +25,7 @@ type IncorrectState = {
 const Review = () => {
   const route = useRoute<RouteProp<RootStackParamList, "review">>();
   const userAnswers = route.params?.userAnswers;
+  const { setInTest } = useInTest();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [guessedQuestions, setGuessedQuestions] = useState<
@@ -77,6 +79,58 @@ const Review = () => {
         typeof a.isCorrect === "boolean"
     );
 
+  const currentAnswer = userAnswers ? userAnswers[currentIndex] : undefined;
+
+  useEffect(() => {
+    if (!currentAnswer && userAnswers && userAnswers.length > 0) {
+      const saveData = async () => {
+        const db = await initDB();
+        const combinedAnswers = userAnswers.map((answer) => {
+          const base = {
+            ...answer,
+            reasonForGuess: null,
+            howToAvoidGuess: null,
+            reasonForMistake: null,
+            howToAvoidMistake: null,
+          };
+
+          if (answer.isCorrect && guessedQuestions[answer.questionId]) {
+            return {
+              ...base,
+              reasonForGuess:
+                guessedQuestions[answer.questionId].reasonForGuess,
+              howToAvoidGuess:
+                guessedQuestions[answer.questionId].howToAvoidGuess,
+            };
+          } else if (
+            !answer.isCorrect &&
+            incorrectQuestions[answer.questionId]
+          ) {
+            return {
+              ...base,
+              reasonForMistake:
+                incorrectQuestions[answer.questionId].reasonForMistake,
+              howToAvoidMistake:
+                incorrectQuestions[answer.questionId].howToAvoidMistake,
+            };
+          }
+          return base;
+        });
+
+        await saveAnswers(db, combinedAnswers);
+      };
+
+      setInTest(false);
+      saveData();
+    }
+  }, [
+    currentAnswer,
+    userAnswers,
+    guessedQuestions,
+    incorrectQuestions,
+    setInTest,
+  ]);
+
   if (!isValidUserAnswers || !userAnswers || userAnswers.length === 0) {
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -88,42 +142,7 @@ const Review = () => {
     );
   }
 
-  const currentAnswer = userAnswers[currentIndex];
   if (!currentAnswer) {
-    const combinedAnswers = userAnswers.map((answer) => {
-      const base = {
-        ...answer,
-        reasonForGuess: null,
-        howToAvoidGuess: null,
-        reasonForMistake: null,
-        howToAvoidMistake: null,
-      };
-
-      if (answer.isCorrect && guessedQuestions[answer.questionId]) {
-        return {
-          ...base,
-          reasonForGuess: guessedQuestions[answer.questionId].reasonForGuess,
-          howToAvoidGuess: guessedQuestions[answer.questionId].howToAvoidGuess,
-        };
-      } else if (!answer.isCorrect && incorrectQuestions[answer.questionId]) {
-        return {
-          ...base,
-          reasonForMistake:
-            incorrectQuestions[answer.questionId].reasonForMistake,
-          howToAvoidMistake:
-            incorrectQuestions[answer.questionId].howToAvoidMistake,
-        };
-      }
-      return base;
-    });
-
-    const saveData = async () => {
-      const db = await initDB();
-      await saveAnswers(db, combinedAnswers);
-    };
-
-    saveData();
-
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Container>
@@ -133,6 +152,10 @@ const Review = () => {
       </ScrollView>
     );
   }
+
+  const correctCount = userAnswers.filter((a) => a.isCorrect).length;
+  const score = correctCount;
+  const percentage = Math.round((correctCount / userAnswers.length) * 100);
 
   const isCorrect = currentAnswer.isCorrect;
 
@@ -278,6 +301,16 @@ const Review = () => {
         <Header
           title={`Review (${currentIndex + 1} / ${userAnswers.length})`}
         />
+        <ThemedText
+          style={{
+            marginBottom: 48,
+            fontSize: 16,
+            fontWeight: "600",
+            textAlign: "center",
+          }}
+        >
+          Score: {score}/{userAnswers.length} ({percentage}%)
+        </ThemedText>
 
         <View style={{ marginBottom: 20 }}>
           <ThemedText
@@ -317,12 +350,12 @@ const Review = () => {
                   <TextArea
                     value={inputReason}
                     onChangeText={setInputReason}
-                    placeholder="Explain your thought process"
+                    placeholder="Explain your process"
                   />
                   <Button
                     title="Skip"
                     onPress={handleSkipReason}
-                    style={{ backgroundColor: "gray", marginTop: 8 }}
+                    style={{ backgroundColor: "purple", marginTop: 8 }}
                   />
                   <Button
                     title="Submit"
@@ -347,7 +380,7 @@ const Review = () => {
                   <Button
                     title="Skip"
                     onPress={handleSkipAvoid}
-                    style={{ backgroundColor: "gray", marginTop: 8 }}
+                    style={{ backgroundColor: "purple", marginTop: 8 }}
                   />
                   <Button
                     title="Submit"
@@ -386,12 +419,12 @@ const Review = () => {
                   <TextArea
                     value={inputReason}
                     onChangeText={setInputReason}
-                    placeholder="Explain why you made this mistake..."
+                    placeholder="Explain your process"
                   />
                   <Button
                     title="Skip"
                     onPress={handleSkipReason}
-                    style={{ backgroundColor: "gray", marginTop: 8 }}
+                    style={{ backgroundColor: "purple", marginTop: 8 }}
                   />
                   <Button
                     title="Submit"
@@ -410,12 +443,12 @@ const Review = () => {
                   <TextArea
                     value={inputAvoid}
                     onChangeText={setInputAvoid}
-                    placeholder="Your ideas to avoid this mistake..."
+                    placeholder="Strategies to avoid this mistake..."
                   />
                   <Button
                     title="Skip"
                     onPress={handleSkipAvoid}
-                    style={{ backgroundColor: "gray", marginTop: 8 }}
+                    style={{ backgroundColor: "purple", marginTop: 8 }}
                   />
                   <Button
                     title="Submit"
