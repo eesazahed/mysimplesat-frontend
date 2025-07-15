@@ -122,7 +122,7 @@ const Test = () => {
 export default Test;
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, paddingBottom: 150 },
+  container: { flexGrow: 1, paddingBottom: 100 },
   selectedButton: { backgroundColor: "#007AFF" },
   buttonGroup: { flexDirection: "row", flexWrap: "wrap", marginBottom: 16 },
   buttonMargin: { marginRight: 16, marginVertical: 12 },

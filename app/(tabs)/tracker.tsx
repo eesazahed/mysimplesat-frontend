@@ -306,7 +306,7 @@ const Tracker = () => {
 export default Tracker;
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, paddingBottom: 150 },
+  container: { flexGrow: 1, paddingBottom: 50 },
   filterRow: { flexDirection: "row", flexWrap: "wrap", marginBottom: 8 },
   row: {
     marginBottom: 24,

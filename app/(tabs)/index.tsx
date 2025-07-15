@@ -33,6 +33,11 @@ const Home = () => {
             title="Take a test"
             onPress={() => navigation.navigate("test")}
           />
+          <View style={{ marginVertical: 16 }} />
+          <Button
+            title="View your mistake tracker"
+            onPress={() => navigation.navigate("tracker")}
+          />
         </View>
       </Container>
     </ScrollView>
@@ -42,5 +47,5 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, paddingBottom: 150 },
+  container: { flexGrow: 1, paddingBottom: 50 },
 });

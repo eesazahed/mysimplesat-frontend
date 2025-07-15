@@ -9,7 +9,7 @@ const initDB = async (): Promise<SQLiteDatabase> => {
   await db.execAsync(`
     CREATE TABLE IF NOT EXISTS answers (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      questionId TEXT UNIQUE,
+      questionId TEXT,
       questionText TEXT,
       subject TEXT,
       difficulty TEXT,
@@ -50,16 +50,16 @@ const initDB = async (): Promise<SQLiteDatabase> => {
 
 const saveAnswers = async (combinedAnswers: AnswerRow[]): Promise<void> => {
   try {
-    const db = await SQLite.openDatabaseAsync("mistake_tracker");
+    const timestamp = new Date().toISOString();
 
-    await db.runAsync(
-      `INSERT INTO sessions (createdAt) VALUES (datetime('now'))`
-    );
+    const db = await SQLite.openDatabaseAsync("mistake_tracker");
+    await db.runAsync(`INSERT INTO sessions (createdAt) VALUES (?)`, [
+      timestamp,
+    ]);
     const rows = await db.getAllAsync<{ id: number }>(
       `SELECT last_insert_rowid() AS id;`
     );
     const sessionId = rows[0].id;
-    const timestamp = new Date().toISOString();
 
     for (const answer of combinedAnswers) {
       await db.runAsync(
@@ -77,21 +77,7 @@ const saveAnswers = async (combinedAnswers: AnswerRow[]): Promise<void> => {
           howToAvoidGuess,
           updatedAt,
           sessionId
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON CONFLICT(questionId) DO UPDATE SET
-          questionText=excluded.questionText,
-          subject=excluded.subject,
-          difficulty=excluded.difficulty,
-          isCorrect=excluded.isCorrect,
-          selectedChoiceValue=excluded.selectedChoiceValue,
-          rationale=excluded.rationale,
-          reasonForMistake=excluded.reasonForMistake,
-          howToAvoidMistake=excluded.howToAvoidMistake,
-          reasonForGuess=excluded.reasonForGuess,
-          howToAvoidGuess=excluded.howToAvoidGuess,
-          updatedAt=excluded.updatedAt,
-          sessionId=excluded.sessionId;
-        `,
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
         [
           answer.questionId,
           answer.questionText ?? null,
@@ -152,7 +138,9 @@ const fetchQuestionsFromDB = async (
 const fetchAnswers = async (): Promise<AnswerRow[]> => {
   const db = await SQLite.openDatabaseAsync("mistake_tracker");
 
-  const rows = await db.getAllAsync<any>(`SELECT * FROM answers;`);
+  const rows = await db.getAllAsync<any>(
+    `SELECT * FROM answers ORDER BY updatedAt DESC;`
+  );
 
   return rows.map((row) => ({
     questionId: row.questionId,
@@ -171,11 +159,35 @@ const fetchAnswers = async (): Promise<AnswerRow[]> => {
   }));
 };
 
+const fetchSessionStats = async () => {
+  const db = await SQLite.openDatabaseAsync("mistake_tracker");
+
+  const rows = await db.getAllAsync<any>(
+    `SELECT 
+       s.id, 
+       s.createdAt, 
+       SUM(CASE WHEN a.isCorrect = 1 THEN 1 ELSE 0 END) AS correct, 
+       COUNT(*) AS total 
+     FROM sessions s
+     JOIN answers a ON s.id = a.sessionId
+     GROUP BY s.id
+     ORDER BY s.createdAt DESC`
+  );
+
+  return rows.map((row) => ({
+    id: row.id,
+    createdAt: row.createdAt,
+    correct: row.correct,
+    total: row.total,
+  }));
+};
+
 const dropTables = async () => {
   try {
     const db = await SQLite.openDatabaseAsync("mistake_tracker");
     await db.execAsync(`DROP TABLE IF EXISTS answers;`);
     await db.execAsync(`DROP TABLE IF EXISTS sessions;`);
+    await initDB();
     console.log(`Tables answers and sessions dropped successfully.`);
   } catch (error) {
     console.error(`Failed to drop tables answers and sessions:`, error);
@@ -197,5 +209,6 @@ export {
   dropTables,
   fetchAnswers,
   fetchQuestionsFromDB,
+  fetchSessionStats,
   saveAnswers,
 };

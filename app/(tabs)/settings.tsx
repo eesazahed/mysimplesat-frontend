@@ -29,7 +29,8 @@ const Settings = () => {
           <Header title="Settings" />
 
           <ThemedText style={{ marginBottom: 32 }}>
-            Here&apos;s the settings page.
+            Here&apos;s the settings page. Not much now. Maybe notifications
+            later.
           </ThemedText>
           <Button
             title={buttonText}
@@ -45,5 +46,5 @@ const Settings = () => {
 export default Settings;
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, paddingBottom: 150 },
+  container: { flexGrow: 1, paddingBottom: 50 },
 });

@@ -14,12 +14,9 @@ const TabLayout = () => {
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarStyle: Platform.select({
-          ios: {
-            position: "absolute",
-            height: 100,
-          },
           default: {
-            height: 100,
+            height: 120,
+            display: !inTest ? "flex" : "none",
           },
         }),
         tabBarLabelPosition: "below-icon",
@@ -73,6 +70,17 @@ const TabLayout = () => {
             <MaterialIcons name="checklist" color={color} size={28} />
           ),
           href: !inTest ? "/(tabs)/tracker" : null,
+        }}
+      />
+
+      <Tabs.Screen
+        name="stats"
+        options={{
+          title: "Stats",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="bar-chart" color={color} size={28} />
+          ),
+          href: !inTest ? "/(tabs)/stats" : null,
         }}
       />
 

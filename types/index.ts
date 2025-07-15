@@ -50,4 +50,5 @@ export type RootStackParamList = {
   questions: { questions: any[]; timer: number };
   review: { userAnswers: UserAnswer[] };
   test: undefined;
+  tracker: undefined;
 };
