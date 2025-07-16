@@ -1,8 +1,10 @@
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
+import Score from "@/components/ui/Score";
 import ThemedText from "@/components/ui/ThemedText";
 import { AnswerRow, RootStackParamList } from "@/types";
 import { fetchSessionAnswers } from "@/utils/db";
+import formatCategory from "@/utils/formatCategory";
 import renderLatex from "@/utils/renderLatex";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
@@ -66,7 +68,13 @@ const SessionDetail = () => {
           <Header title="Test Details" />
           <ThemedText style={styles.stats}>Session ID: {session.id}</ThemedText>
           <ThemedText style={styles.stats}>
-            Created At:{" "}
+            Subject: {formatCategory(session.subject)}
+          </ThemedText>
+          <ThemedText style={styles.stats}>
+            Difficulty: {formatCategory(session.difficulty)}
+          </ThemedText>
+          <ThemedText style={styles.stats}>
+            Time:{" "}
             {new Date(session.createdAt).toLocaleString(undefined, {
               month: "2-digit",
               day: "2-digit",
@@ -76,17 +84,12 @@ const SessionDetail = () => {
               hour12: true,
             })}
           </ThemedText>
-          <ThemedText style={styles.stats}>
-            Correct: {session.correct}
-          </ThemedText>
-          <ThemedText style={styles.stats}>Total: {session.total}</ThemedText>
-          <ThemedText style={styles.stats}>
-            Percent:{" "}
-            {session.total === 0
-              ? 0
-              : Math.round((session.correct / session.total) * 100)}
-            %
-          </ThemedText>
+
+          <Score
+            colorScheme={colorScheme}
+            correct={session.correct}
+            total={session.total}
+          />
 
           <View style={{ marginTop: 20 }}>
             {answers.map((answer, index) => (

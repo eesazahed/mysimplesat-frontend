@@ -4,6 +4,7 @@ import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
 import type { AnswerRow } from "@/types";
 import { fetchAnswers } from "@/utils/db";
+import formatCategory from "@/utils/formatCategory";
 import renderLatex from "@/utils/renderLatex";
 import { useFocusEffect } from "@react-navigation/native";
 import { useCallback, useMemo, useState } from "react";
@@ -106,17 +107,10 @@ const Tracker = () => {
     active: boolean,
     onPress: () => void
   ) => {
-    let formattedLabel;
-    if (label === "rw") {
-      formattedLabel = "RW";
-    } else {
-      formattedLabel = label.charAt(0).toUpperCase() + label.slice(1);
-    }
-
     return (
       <Button
         key={label}
-        title={formattedLabel}
+        title={formatCategory(label)}
         onPress={onPress}
         style={{ marginRight: 16, marginVertical: 12 }}
         variant={active ? "primary" : "secondary"}

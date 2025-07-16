@@ -2,6 +2,7 @@ import AIExplanation from "@/components/ui/AIExplanation";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
+import Score from "@/components/ui/Score";
 import TextArea from "@/components/ui/TextArea";
 import ThemedText from "@/components/ui/ThemedText";
 import { useInTest } from "@/context/InTestContext";
@@ -11,7 +12,13 @@ import { saveAnswers } from "@/utils/db";
 import renderLatex from "@/utils/renderLatex";
 import { RouteProp, useFocusEffect, useRoute } from "@react-navigation/native";
 import React, { useCallback, useEffect, useState } from "react";
-import { ScrollView, StyleSheet, useColorScheme, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from "react-native";
 
 type GuessState = {
   reasonForGuess: string;
@@ -119,9 +126,6 @@ const Review = () => {
 
   const correctCount = userAnswers?.filter((a) => a.isCorrect).length ?? 0;
   const score = correctCount;
-  const percentage = userAnswers
-    ? Math.round((correctCount / userAnswers.length) * 100)
-    : 0;
 
   const handleSolved = () => {
     resetAllStates();
@@ -304,23 +308,20 @@ const Review = () => {
         <Header
           title={`Review (${currentIndex + 1} / ${userAnswers.length})`}
         />
-        <ThemedText
-          style={{
-            marginBottom: 48,
-            fontSize: 16,
-            fontWeight: "600",
-            textAlign: "center",
-          }}
-        >
-          Score: {score}/{userAnswers.length} ({percentage}%)
-        </ThemedText>
+        <Score
+          colorScheme={colorScheme}
+          correct={score}
+          total={userAnswers.length}
+        />
 
-        <View style={{ marginBottom: 20 }}>
-          <ThemedText style={{ marginBottom: 8 }}>
-            Question: {renderLatex(currentAnswer.questionText, colorScheme)}
-          </ThemedText>
+        <View style={{ marginTop: 20 }}>
           <ThemedText style={{ marginBottom: 24 }}>
-            Rationale: {renderLatex(currentAnswer.rationale, colorScheme)}
+            <Text style={{ fontWeight: "bold" }}>Question:</Text>{" "}
+            {renderLatex(currentAnswer.questionText, colorScheme)}
+          </ThemedText>
+          <ThemedText style={{ marginBottom: 20 }}>
+            <Text style={{ fontWeight: "bold" }}>Rationale:</Text>{" "}
+            {renderLatex(currentAnswer.rationale, colorScheme)}
           </ThemedText>
 
           {isCorrect ? (
@@ -351,9 +352,9 @@ const Review = () => {
                   />
                   <Button
                     title="Submit"
+                    style={{ marginVertical: 24 }}
                     onPress={handleGuessNextStep}
                     disabled={inputReason.trim() === ""}
-                    style={{ marginTop: 8 }}
                   />
                   <Button
                     title="Skip"
@@ -382,9 +383,9 @@ const Review = () => {
                   />
                   <Button
                     title="Submit"
+                    style={{ marginVertical: 24 }}
                     onPress={handleGuessNextStep}
                     disabled={inputAvoid.trim() === ""}
-                    style={{ marginTop: 8 }}
                   />
                   <Button
                     title="Skip"
@@ -421,9 +422,9 @@ const Review = () => {
                   />
                   <Button
                     title="Submit"
+                    style={{ marginVertical: 24 }}
                     onPress={handleIncorrectNextStep}
                     disabled={inputReason.trim() === ""}
-                    style={{ marginBottom: 8 }}
                   />
                   <Button
                     title="Skip"
@@ -451,9 +452,9 @@ const Review = () => {
                   />
                   <Button
                     title="Submit"
+                    style={{ marginVertical: 24 }}
                     onPress={handleIncorrectNextStep}
                     disabled={inputAvoid.trim() === ""}
-                    style={{ marginBottom: 8 }}
                   />
                   <Button
                     title="Skip"

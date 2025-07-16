@@ -4,6 +4,7 @@ import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
 import { RootStackParamList } from "@/types";
 import { fetchSessionStats } from "@/utils/db";
+import formatCategory from "@/utils/formatCategory";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useCallback, useMemo, useState } from "react";
@@ -137,7 +138,14 @@ const Stats = () => {
           contentContainerStyle={styles.tableContainer}
         >
           <View style={styles.table}>
-            <View style={[styles.tableRow, { backgroundColor: "transparent" }]}>
+            <View
+              style={[
+                styles.tableRow,
+                {
+                  backgroundColor: colorScheme === "dark" ? "#2a2a2a" : "#ccc",
+                },
+              ]}
+            >
               <ThemedText style={styles.idCell}>ID</ThemedText>
               <ThemedText style={styles.dateCell}>Date</ThemedText>
               <ThemedText style={styles.timeCell}>Time</ThemedText>
@@ -184,10 +192,10 @@ const Stats = () => {
                     })}
                   </ThemedText>
                   <ThemedText style={styles.subjectCell}>
-                    {sesh.subject}
+                    {formatCategory(sesh.subject)}
                   </ThemedText>
                   <ThemedText style={styles.difficultyCell}>
-                    {sesh.difficulty}
+                    {formatCategory(sesh.difficulty)}
                   </ThemedText>
                   <ThemedText style={styles.correctCell}>
                     {sesh.correct}
