@@ -15,34 +15,37 @@ const Home = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
-        <View>
-          <Header title="SAT Prep App" />
-          <ThemedText style={{ marginBottom: 36 }}>
-            Are you preparing for your next SAT?
-          </ThemedText>
-          <ThemedText style={{ marginBottom: 36 }}>
-            This app gives you real SAT-style practice problems and an
-            interactive review session.
-          </ThemedText>
-          <ThemedText style={{ marginBottom: 64 }}>
-            After each problem, you&apos;ll reflect on mistakes and guesses,
-            helping you track patterns and avoid similar errors on the actual
-            test.
-          </ThemedText>
-          <Button
-            title="Take a test"
-            onPress={() => navigation.navigate("test")}
-          />
-          <View style={{ marginVertical: 16 }} />
-          <Button
-            title="View your mistake tracker"
-            onPress={() => navigation.navigate("tracker")}
-          />
-        </View>
+        <Header title="SAT Prep App" />
+        <ThemedText style={{ marginBottom: 32 }}>
+          Are you preparing for your next SAT?
+        </ThemedText>
+        <ThemedText style={{ marginBottom: 32 }}>
+          This app gives you real SAT-style practice problems and an interactive
+          review session.
+        </ThemedText>
+        <ThemedText style={{ marginBottom: 64 }}>
+          After each problem, you&apos;ll reflect on mistakes and guesses,
+          helping you track patterns and avoid similar errors on the actual
+          test.
+        </ThemedText>
+        <Button
+          title="Take a test"
+          onPress={() => navigation.navigate("test")}
+        />
+        <View style={{ marginVertical: 16 }} />
+        <Button
+          title="View your mistake tracker"
+          onPress={() => navigation.navigate("tracker")}
+        />
+        <View style={{ marginVertical: 32 }} />
+        <ThemedText style={{ marginBottom: 32 }}>Updates:</ThemedText>
+        <ThemedText style={{ marginBottom: 64 }}>blah blah blah</ThemedText>
       </Container>
     </ScrollView>
   );
 };
+
+// todo: add updates
 
 export default Home;
 
