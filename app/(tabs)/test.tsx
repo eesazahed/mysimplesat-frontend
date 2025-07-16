@@ -80,40 +80,42 @@ const Test = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
-        <View>
-          <Header title="Take a test" />
+        <Header title="Take a test" />
 
-          <View style={{ marginBottom: 16 }}>
-            <ThemedText>Select Subject</ThemedText>
-            {renderButtonGroup(subjects, subject, setSubject)}
+        <View style={{ marginBottom: 16 }}>
+          <ThemedText>Select Subject</ThemedText>
+          {renderButtonGroup(subjects, subject, setSubject)}
 
-            <ThemedText>Select Difficulty</ThemedText>
-            {renderButtonGroup(difficulties, difficulty, setDifficulty)}
+          <ThemedText>Select Difficulty</ThemedText>
+          {renderButtonGroup(difficulties, difficulty, setDifficulty)}
 
-            <ThemedText>Select Number of Questions</ThemedText>
-            {renderButtonGroup(
-              questionCounts.map((v) => ({ label: v.toString(), value: v })),
-              count,
-              setCount
-            )}
+          <ThemedText>Select Number of Questions</ThemedText>
+          {renderButtonGroup(
+            questionCounts.map((v) => ({ label: v.toString(), value: v })),
+            count,
+            setCount
+          )}
 
-            <ThemedText>Select Time Limit (minutes)</ThemedText>
-            {renderButtonGroup(timers, timer, setTimer)}
+          <ThemedText>Select Time Limit (minutes)</ThemedText>
+          {renderButtonGroup(timers, timer, setTimer)}
 
-            <ThemedText
-              style={{ marginVertical: 16, color: "red", fontStyle: "italic" }}
-            >
-              Once you start a test, exiting will reset all progress. Make sure
-              you&apos;re ready and focused.
-            </ThemedText>
-          </View>
-
-          <Button
-            title={loading ? "Loading..." : "Ready to start?"}
-            onPress={fetchQuestions}
-            disabled={!canStart || loading}
-          />
+          <ThemedText
+            style={{
+              marginVertical: 16,
+              color: "#d32f2f",
+              fontStyle: "italic",
+            }}
+          >
+            Once you start a test, exiting will reset all progress. Make sure
+            you&apos;re ready and focused.
+          </ThemedText>
         </View>
+
+        <Button
+          title={loading ? "Loading..." : "Ready to start?"}
+          onPress={fetchQuestions}
+          disabled={!canStart || loading}
+        />
       </Container>
     </ScrollView>
   );

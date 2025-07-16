@@ -38,6 +38,13 @@ const TabLayout = () => {
       />
 
       <Tabs.Screen
+        name="chat"
+        options={{
+          href: null,
+        }}
+      />
+
+      <Tabs.Screen
         name="test"
         options={{
           title: "Take a test",

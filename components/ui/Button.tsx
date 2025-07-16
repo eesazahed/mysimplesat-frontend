@@ -68,7 +68,7 @@ const Button = ({
           backgroundColor: getBackgroundColor(),
           borderWidth: 1,
           borderColor: colors.border,
-          borderRadius: 8,
+          borderRadius: 12,
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",

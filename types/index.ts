@@ -56,7 +56,15 @@ export type Session = {
   difficulty: string;
 };
 
+export type Update = {
+  id: number;
+  title: string;
+  body: string;
+  timestamp: number;
+};
+
 export type RootStackParamList = {
+  chat: undefined;
   questions: { questions: any[]; timer: number };
   review: { userAnswers: UserAnswer[] };
   test: undefined;

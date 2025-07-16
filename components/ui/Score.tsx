@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
     marginBottom: 24,
     padding: 24,
-    borderRadius: 8,
+    borderRadius: 12,
     borderWidth: 1,
   },
   darkContainer: {

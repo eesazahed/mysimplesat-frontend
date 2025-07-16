@@ -237,7 +237,7 @@ const Stats = () => {
 export default Stats;
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, paddingBottom: 150 },
+  container: { flexGrow: 1, paddingBottom: 50 },
   summaryContainer: {
     marginBottom: 40,
     borderWidth: 1,

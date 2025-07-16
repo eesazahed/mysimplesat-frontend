@@ -64,120 +64,118 @@ const SessionDetail = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
-        <View>
-          <Header title="Test Details" />
-          <ThemedText style={styles.stats}>Session ID: {session.id}</ThemedText>
-          <ThemedText style={styles.stats}>
-            Subject: {formatCategory(session.subject)}
-          </ThemedText>
-          <ThemedText style={styles.stats}>
-            Difficulty: {formatCategory(session.difficulty)}
-          </ThemedText>
-          <ThemedText style={styles.stats}>
-            Time:{" "}
-            {new Date(session.createdAt).toLocaleString(undefined, {
-              month: "2-digit",
-              day: "2-digit",
-              year: "numeric",
-              hour: "numeric",
-              minute: "2-digit",
-              hour12: true,
-            })}
-          </ThemedText>
+        <Header title="Test Details" />
+        <ThemedText style={styles.stats}>Session ID: {session.id}</ThemedText>
+        <ThemedText style={styles.stats}>
+          Subject: {formatCategory(session.subject)}
+        </ThemedText>
+        <ThemedText style={styles.stats}>
+          Difficulty: {formatCategory(session.difficulty)}
+        </ThemedText>
+        <ThemedText style={styles.stats}>
+          Time:{" "}
+          {new Date(session.createdAt).toLocaleString(undefined, {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+          })}
+        </ThemedText>
 
-          <Score
-            colorScheme={colorScheme}
-            correct={session.correct}
-            total={session.total}
-          />
+        <Score
+          colorScheme={colorScheme}
+          correct={session.correct}
+          total={session.total}
+        />
 
-          <View style={{ marginTop: 20 }}>
-            {answers.map((answer, index) => (
-              <View
-                key={index}
-                style={[
-                  styles.row,
-                  { backgroundColor: getRowBackgroundColor(answer) },
-                ]}
-              >
+        <View style={{ marginTop: 20 }}>
+          {answers.map((answer, index) => (
+            <View
+              key={index}
+              style={[
+                styles.row,
+                { backgroundColor: getRowBackgroundColor(answer) },
+              ]}
+            >
+              <View style={styles.section}>
+                <ThemedText>
+                  <ThemedText style={styles.bold}>Question: </ThemedText>
+                  {renderLatex(String(answer.questionText), colorScheme)}
+                </ThemedText>
+              </View>
+              {answer.rationale && (
                 <View style={styles.section}>
                   <ThemedText>
-                    <ThemedText style={styles.bold}>Question: </ThemedText>
-                    {renderLatex(String(answer.questionText), colorScheme)}
+                    <ThemedText style={styles.bold}>Rationale: </ThemedText>
+                    {renderLatex(String(answer.rationale), colorScheme)}
                   </ThemedText>
                 </View>
-                {answer.rationale && (
-                  <View style={styles.section}>
-                    <ThemedText>
-                      <ThemedText style={styles.bold}>Rationale: </ThemedText>
-                      {renderLatex(String(answer.rationale), colorScheme)}
-                    </ThemedText>
-                  </View>
-                )}
-                {!answer.isCorrect && (
-                  <View style={styles.section}>
-                    <ThemedText>
-                      {answer.selectedChoiceValue ? (
-                        <>
-                          <ThemedText style={styles.bold}>
-                            Your answer:{" "}
-                          </ThemedText>
-                          {renderLatex(
-                            String(answer.selectedChoiceValue),
-                            colorScheme
-                          )}
-                        </>
-                      ) : (
+              )}
+              {!answer.isCorrect && (
+                <View style={styles.section}>
+                  <ThemedText>
+                    {answer.selectedChoiceValue ? (
+                      <>
                         <ThemedText style={styles.bold}>
-                          You left this unanswered
+                          Your answer:{" "}
                         </ThemedText>
-                      )}
-                    </ThemedText>
-                  </View>
-                )}
-                {answer.reasonForMistake && (
-                  <View style={styles.section}>
-                    <ThemedText>
+                        {renderLatex(
+                          String(answer.selectedChoiceValue),
+                          colorScheme
+                        )}
+                      </>
+                    ) : (
                       <ThemedText style={styles.bold}>
-                        Reason for Mistake:{" "}
+                        You left this unanswered
                       </ThemedText>
-                      {answer.reasonForMistake}
+                    )}
+                  </ThemedText>
+                </View>
+              )}
+              {answer.reasonForMistake && (
+                <View style={styles.section}>
+                  <ThemedText>
+                    <ThemedText style={styles.bold}>
+                      Reason for Mistake:{" "}
                     </ThemedText>
-                  </View>
-                )}
-                {answer.howToAvoidMistake && (
-                  <View style={styles.section}>
-                    <ThemedText>
-                      <ThemedText style={styles.bold}>
-                        How to Avoid Mistake:{" "}
-                      </ThemedText>
-                      {answer.howToAvoidMistake}
+                    {answer.reasonForMistake}
+                  </ThemedText>
+                </View>
+              )}
+              {answer.howToAvoidMistake && (
+                <View style={styles.section}>
+                  <ThemedText>
+                    <ThemedText style={styles.bold}>
+                      How to Avoid Mistake:{" "}
                     </ThemedText>
-                  </View>
-                )}
-                {answer.reasonForGuess && (
-                  <View style={styles.section}>
-                    <ThemedText>
-                      <ThemedText style={styles.bold}>
-                        Reason for Guess:{" "}
-                      </ThemedText>
-                      {answer.reasonForGuess}
+                    {answer.howToAvoidMistake}
+                  </ThemedText>
+                </View>
+              )}
+              {answer.reasonForGuess && (
+                <View style={styles.section}>
+                  <ThemedText>
+                    <ThemedText style={styles.bold}>
+                      Reason for Guess:{" "}
                     </ThemedText>
-                  </View>
-                )}
-                {answer.howToAvoidGuess && (
-                  <View style={styles.section}>
-                    <ThemedText>
-                      <ThemedText style={styles.bold}>
-                        How to Avoid Guess:{" "}
-                      </ThemedText>
-                      {answer.howToAvoidGuess}
+                    {answer.reasonForGuess}
+                  </ThemedText>
+                </View>
+              )}
+              {answer.howToAvoidGuess && (
+                <View style={styles.section}>
+                  <ThemedText>
+                    <ThemedText style={styles.bold}>
+                      How to Avoid Guess:{" "}
                     </ThemedText>
-                  </View>
-                )}
-              </View>
-            ))}
-          </View>
+                    {answer.howToAvoidGuess}
+                  </ThemedText>
+                </View>
+              )}
+            </View>
+          ))}
         </View>
       </Container>
     </ScrollView>
@@ -191,7 +189,7 @@ const styles = StyleSheet.create({
   row: {
     marginBottom: 24,
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 12,
   },
   stats: {
     marginBottom: 8,

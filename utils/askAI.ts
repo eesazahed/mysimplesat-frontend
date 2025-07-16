@@ -1,4 +1,4 @@
-const systemPrompt = `
+export const systemPrompt = `
 You are an AI tutor addressing the student directly using second-person pronouns (you, your).
 
 Follow these strict rules without exception:
@@ -19,24 +19,25 @@ Follow these strict rules without exception:
 Respond only in plain text. 
 `;
 
-// 5. For math expressions, use only valid LaTeX that renders perfectly, with no errors or partial formulas.
-
-const askAI = async (userMessage: string): Promise<string | null> => {
+const askAI = async (
+  userMessage: string,
+  historyOn = false,
+  history: { role: string; content: string }[] = []
+): Promise<string | null> => {
   try {
+    const messages = historyOn
+      ? [...history, { role: "user", content: userMessage }]
+      : [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userMessage },
+        ];
+
     const response = await fetch("https://ai.hackclub.com/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        messages: [
-          { role: "system", content: systemPrompt },
-          {
-            role: "user",
-            content: userMessage,
-          },
-        ],
-      }),
+      body: JSON.stringify({ messages }),
     });
 
     if (!response.ok) {

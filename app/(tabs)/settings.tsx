@@ -4,40 +4,37 @@ import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
 import { dropTables } from "@/utils/db";
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 
 const Settings = () => {
-  const [buttonText, setButtonText] = useState("Clear your mistake tracker");
+  const [buttonText, setButtonText] = useState("Reset mistake tracker");
 
   const handleDropTables = async () => {
     try {
-      setButtonText("Clearing...");
+      setButtonText("Resetting...");
       await dropTables();
       setTimeout(() => {
-        setButtonText("Clear your mistake tracker");
+        setButtonText("Reset mistake tracker");
       }, 1000);
     } catch (error) {
       console.error("Failed to drop answers table", error);
-      setButtonText("Clear your mistake tracker");
+      setButtonText("Reset mistake tracker");
     }
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
-        <View>
-          <Header title="Settings" />
+        <Header title="Settings" />
 
-          <ThemedText style={{ marginBottom: 32 }}>
-            Here&apos;s the settings page. Not much now. Maybe notifications
-            later.
-          </ThemedText>
-          <Button
-            title={buttonText}
-            style={{ backgroundColor: "red" }}
-            onPress={handleDropTables}
-          />
-        </View>
+        <ThemedText style={{ marginBottom: 32 }}>
+          Would you like to reset your mistake tracker?
+        </ThemedText>
+        <Button
+          title={buttonText}
+          style={{ backgroundColor: "#d32f2f" }}
+          onPress={handleDropTables}
+        />
       </Container>
     </ScrollView>
   );

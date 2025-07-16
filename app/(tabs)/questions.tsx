@@ -222,82 +222,78 @@ const Questions = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
-        <View>
-          <Header
-            title={`Question ${currentQuestionIndex + 1} of ${
-              questions.length
-            }`}
-          />
-          {secondsLeft !== null && (
-            <ThemedText
-              style={{
-                marginBottom: 48,
-                fontSize: 16,
-                fontWeight: "600",
-                textAlign: "center",
-              }}
-            >
-              Time Remaining: {formatTime(secondsLeft)}
-            </ThemedText>
-          )}
-
+        <Header
+          title={`Question ${currentQuestionIndex + 1} of ${questions.length}`}
+        />
+        {secondsLeft !== null && (
           <ThemedText
-            style={{ marginBottom: 24 }}
-            key={`question-${currentQuestionIndex}`}
+            style={{
+              marginBottom: 48,
+              fontSize: 16,
+              fontWeight: "600",
+              textAlign: "center",
+            }}
           >
-            {renderLatex(currentQuestion.question_text, colorScheme)}
+            Time Remaining: {formatTime(secondsLeft)}
           </ThemedText>
+        )}
 
-          {currentQuestion.options.map((option, index) => {
-            const isSelected = answers[currentQuestion.id] === option.id;
+        <ThemedText
+          style={{ marginBottom: 24 }}
+          key={`question-${currentQuestionIndex}`}
+        >
+          {renderLatex(currentQuestion.question_text, colorScheme)}
+        </ThemedText>
 
-            const optionButtonStyle = [
-              styles.optionButton,
-              {
-                backgroundColor:
-                  colorScheme === "dark" ? "#323232" : "transparent",
-                borderColor: colorScheme === "dark" ? "#323232" : "#ccc",
-              },
-              isSelected && selectedOptionStyle,
-            ];
+        {currentQuestion.options.map((option, index) => {
+          const isSelected = answers[currentQuestion.id] === option.id;
 
-            return (
-              <View key={option.id} style={styles.optionContainer}>
-                <TouchableOpacity
-                  onPress={() => selectOption(option.id)}
-                  style={optionButtonStyle}
+          const optionButtonStyle = [
+            styles.optionButton,
+            {
+              backgroundColor:
+                colorScheme === "dark" ? "#323232" : "transparent",
+              borderColor: colorScheme === "dark" ? "#323232" : "#ccc",
+            },
+            isSelected && selectedOptionStyle,
+          ];
+
+          return (
+            <View key={option.id} style={styles.optionContainer}>
+              <TouchableOpacity
+                onPress={() => selectOption(option.id)}
+                style={optionButtonStyle}
+              >
+                <ThemedText
+                  style={styles.optionText}
+                  key={`option-${currentQuestionIndex}-${index}`}
                 >
-                  <ThemedText
-                    style={styles.optionText}
-                    key={`option-${currentQuestionIndex}-${index}`}
-                  >
-                    {renderLatex(option.text, colorScheme)}
-                  </ThemedText>
-                </TouchableOpacity>
-              </View>
-            );
-          })}
+                  {renderLatex(option.text, colorScheme)}
+                </ThemedText>
+              </TouchableOpacity>
+            </View>
+          );
+        })}
 
-          <View style={styles.navigationButtons}>
+        <View style={styles.navigationButtons}>
+          <Button
+            title="Back"
+            onPress={goBack}
+            disabled={currentQuestionIndex === 0}
+          />
+          {currentQuestionIndex < questions.length - 1 ? (
             <Button
-              title="Back"
-              onPress={goBack}
-              disabled={currentQuestionIndex === 0}
+              title="Next"
+              onPress={goNext}
+              disabled={!answers[currentQuestion.id]}
             />
-            {currentQuestionIndex < questions.length - 1 ? (
-              <Button
-                title="Next"
-                onPress={goNext}
-                disabled={!answers[currentQuestion.id]}
-              />
-            ) : (
-              <Button
-                title="Submit"
-                onPress={onSubmit}
-                disabled={!answers[currentQuestion.id]}
-              />
-            )}
-          </View>
+          ) : (
+            <Button
+              title="Submit"
+              onPress={onSubmit}
+              disabled={!answers[currentQuestion.id]}
+            />
+          )}
         </View>
       </Container>
     </ScrollView>
@@ -317,7 +313,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     borderWidth: 1,
-    borderRadius: 6,
+    borderRadius: 12,
   },
   optionText: {
     fontSize: 16,

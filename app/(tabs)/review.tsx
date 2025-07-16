@@ -398,7 +398,11 @@ const Review = () => {
           ) : (
             <>
               <ThemedText
-                style={{ color: "red", marginVertical: 16, marginBottom: 24 }}
+                style={{
+                  color: "#d32f2f",
+                  marginVertical: 16,
+                  marginBottom: 24,
+                }}
               >
                 {currentAnswer.selectedChoiceValue ? (
                   <>

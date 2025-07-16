@@ -49,7 +49,7 @@ const Input = ({
             backgroundColor,
             borderWidth: 1,
             borderColor,
-            borderRadius: 8,
+            borderRadius: 12,
             padding: 12,
             fontSize: 16,
             color: textColor,
@@ -62,7 +62,7 @@ const Input = ({
       {error ? (
         <ThemedText
           style={{
-            color: "red",
+            color: "#d32f2f",
             fontSize: 14,
             marginTop: 4,
           }}
