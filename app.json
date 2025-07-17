@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.eszhd.MySimpleSAT"
     },
     "web": {
       "bundler": "metro",
@@ -53,6 +54,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "dff2a0e4-05a4-4a8f-93b7-00a4558d1809"
+      }
     }
   }
 }
