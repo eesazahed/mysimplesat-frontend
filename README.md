@@ -13,3 +13,7 @@ I created this app while I was studying for the SAT. It started as a personal pr
 If you have any thoughts, suggestions, or feedback, I'd love to hear them.
 
 eesa [at] hackclub [dot] app
+
+<br />
+<br />
+<img src="https://raw.githubusercontent.com/eesazahed/sat-prep-app/refs/heads/main/assets/images/home.png" alt="homepage" width="300" />

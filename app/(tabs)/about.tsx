@@ -40,7 +40,7 @@ const About = () => {
         </ThemedText>
         <ThemedText style={{ marginBottom: 16, marginLeft: 16 }}>
           3. I saw this as an opportunity to practice and improve my mobile
-          development skills. I also used this app to apply for a grmant through{" "}
+          development skills. I also used this app to apply for a grant through{" "}
           <Link style={styles.link} href="https://gemini.hackclub.com">
             Hack Club
           </Link>
