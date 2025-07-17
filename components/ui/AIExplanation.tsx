@@ -1,5 +1,4 @@
 import ThemedText from "@/components/ui/ThemedText";
-import renderLatex from "@/utils/renderLatex";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -19,13 +18,16 @@ const AIExplanation = ({
   const [typedExplanation, setTypedExplanation] = useState("");
 
   useEffect(() => {
-    if (!explanation) {
+    if (!explanation || typeof explanation !== "string") {
       setTypedExplanation("");
       return;
     }
 
-    const words = explanation.split(" ");
+    const clean = explanation.replace(/\s*undefined\s*$/, "").trim();
+    const words = clean.split(" ").filter(Boolean);
+
     let index = 0;
+    let currentText = "";
     setTypedExplanation("");
 
     const interval = setInterval(() => {
@@ -33,7 +35,9 @@ const AIExplanation = ({
         clearInterval(interval);
         return;
       }
-      setTypedExplanation((prev) => (prev ? prev + " " : "") + words[index]);
+
+      currentText += (index === 0 ? "" : " ") + words[index];
+      setTypedExplanation(currentText);
       index++;
     }, delay);
 
@@ -53,7 +57,8 @@ const AIExplanation = ({
         <>
           <ThemedText style={styles.title}>AI explanation:</ThemedText>
           <ThemedText style={styles.explanation}>
-            &quot;{renderLatex(typedExplanation, colorScheme)}&quot;
+            {typedExplanation}
+            {/* {renderLatex(typedExplanation, colorScheme)} */}
           </ThemedText>
         </>
       ) : null}
@@ -82,7 +87,6 @@ const styles = StyleSheet.create({
     marginVertical: 4,
   },
   explanation: {
-    fontStyle: "italic",
     marginVertical: 4,
   },
 });

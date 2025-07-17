@@ -21,6 +21,20 @@ const About = () => {
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
         <Header title="About" />
+        <ThemedText style={{ marginBottom: 16 }}>
+          Are you preparing for your next SAT?
+        </ThemedText>
+
+        <ThemedText style={{ marginBottom: 16 }}>
+          This app gives you real SAT-style practice problems and an interactive
+          review session.
+        </ThemedText>
+
+        <ThemedText style={{ marginBottom: 16 }}>
+          After each problem, you&apos;ll reflect on mistakes and guesses,
+          helping you track patterns and avoid similar errors on the actual
+          test.
+        </ThemedText>
 
         <ThemedText style={{ marginBottom: 16 }}>
           I created this app while I was studying for the SAT. It started as a
