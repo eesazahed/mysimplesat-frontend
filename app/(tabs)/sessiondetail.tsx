@@ -1,16 +1,22 @@
+import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import Score from "@/components/ui/Score";
 import ThemedText from "@/components/ui/ThemedText";
 import { AnswerRow, RootStackParamList } from "@/types";
+import copyToClipboard from "@/utils/copyToClipboard";
 import { fetchSessionAnswers } from "@/utils/db";
 import formatCategory from "@/utils/formatCategory";
 import renderLatex from "@/utils/renderLatex";
-import { RouteProp, useRoute } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View, useColorScheme } from "react-native";
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 const SessionDetail = () => {
+  const navigation = useNavigation<NavigationProp>();
   const route = useRoute<RouteProp<RootStackParamList, "sessiondetail">>();
   const session = route.params.session;
 
@@ -134,27 +140,29 @@ const SessionDetail = () => {
                   </ThemedText>
                 </View>
               )}
-              {answer.reasonForMistake && (
-                <View style={styles.section}>
-                  <ThemedText>
-                    <ThemedText style={styles.bold}>
-                      Reason for Mistake:{" "}
+              {answer.reasonForMistake &&
+                answer.reasonForMistake !== "Skipped" && (
+                  <View style={styles.section}>
+                    <ThemedText>
+                      <ThemedText style={styles.bold}>
+                        Reason for Mistake:{" "}
+                      </ThemedText>
+                      {answer.reasonForMistake}
                     </ThemedText>
-                    {answer.reasonForMistake}
-                  </ThemedText>
-                </View>
-              )}
-              {answer.howToAvoidMistake && (
-                <View style={styles.section}>
-                  <ThemedText>
-                    <ThemedText style={styles.bold}>
-                      How to Avoid Mistake:{" "}
+                  </View>
+                )}
+              {answer.howToAvoidMistake &&
+                answer.howToAvoidMistake !== "Skipped" && (
+                  <View style={styles.section}>
+                    <ThemedText>
+                      <ThemedText style={styles.bold}>
+                        How to Avoid Mistake:{" "}
+                      </ThemedText>
+                      {answer.howToAvoidMistake}
                     </ThemedText>
-                    {answer.howToAvoidMistake}
-                  </ThemedText>
-                </View>
-              )}
-              {answer.reasonForGuess && (
+                  </View>
+                )}
+              {answer.reasonForGuess && answer.reasonForGuess !== "Skipped" && (
                 <View style={styles.section}>
                   <ThemedText>
                     <ThemedText style={styles.bold}>
@@ -164,16 +172,36 @@ const SessionDetail = () => {
                   </ThemedText>
                 </View>
               )}
-              {answer.howToAvoidGuess && (
-                <View style={styles.section}>
-                  <ThemedText>
-                    <ThemedText style={styles.bold}>
-                      How to Avoid Guess:{" "}
+              {answer.howToAvoidGuess &&
+                answer.howToAvoidGuess !== "Skipped" && (
+                  <View style={styles.section}>
+                    <ThemedText>
+                      <ThemedText style={styles.bold}>
+                        How to Avoid Guess:{" "}
+                      </ThemedText>
+                      {answer.howToAvoidGuess}
                     </ThemedText>
-                    {answer.howToAvoidGuess}
-                  </ThemedText>
+                  </View>
+                )}
+
+              <View style={{ flexDirection: "row", marginTop: 32 }}>
+                <View style={{ width: "50%", padding: 8 }}>
+                  <Button
+                    style={{ borderWidth: 0 }}
+                    onPress={() =>
+                      navigation.navigate("chat", { userAnswer: answer })
+                    }
+                    title="AI Tutor"
+                  />
                 </View>
-              )}
+                <View style={{ width: "50%", padding: 8 }}>
+                  <Button
+                    style={{ borderWidth: 0, backgroundColor: "gray" }}
+                    onPress={() => copyToClipboard(answer)}
+                    title="Copy details"
+                  />
+                </View>
+              </View>
             </View>
           ))}
         </View>

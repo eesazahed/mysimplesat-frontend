@@ -3,8 +3,12 @@ import Container from "@/components/ui/Container";
 import TextArea from "@/components/ui/TextArea";
 import ThemedText from "@/components/ui/ThemedText";
 import TypewriterMessage from "@/components/ui/TypewriterMessage";
+import { RootStackParamList } from "@/types";
 import askAI, { systemPrompt } from "@/utils/askAI";
-import { useRef, useState } from "react";
+import feedbackPrompt from "@/utils/feedbackPrompt";
+import renderLatex from "@/utils/renderLatex";
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { useEffect, useRef, useState } from "react";
 import { ScrollView, StyleSheet, useColorScheme, View } from "react-native";
 
 interface Message {
@@ -26,6 +30,9 @@ const systemMessage: ChatMessage = {
 const Chat = () => {
   const colorScheme = useColorScheme();
 
+  const route = useRoute<RouteProp<RootStackParamList, "chat">>();
+  const userAnswer = route.params?.userAnswer;
+
   const [clearButtonText, setClearButtonText] = useState("Clear Chat");
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -37,14 +44,14 @@ const Chat = () => {
 
   const scrollViewRef = useRef<ScrollView>(null);
 
-  const addMessage = (newMessage: Omit<Message, "id">) => {
+  const addMessage = async (newMessage: Omit<Message, "id">) => {
     setMessages((prevMessages) => [
       ...prevMessages,
       { ...newMessage, id: prevMessages.length },
     ]);
   };
 
-  const updateLastMessage = (newContent: string) => {
+  const updateLastMessage = async (newContent: string) => {
     setMessages((prevMessages) => {
       const updatedMessages = [...prevMessages];
       const lastIndex = updatedMessages.length - 1;
@@ -74,7 +81,9 @@ const Chat = () => {
       ]);
     }
 
-    updateLastMessage(AIResponse || "Failed to generate. Please try again.");
+    await updateLastMessage(
+      AIResponse || "Failed to generate. Please try again."
+    );
 
     setLoading(false);
 
@@ -92,6 +101,13 @@ const Chat = () => {
       setClearButtonText("Clear Chat");
     }, 1000);
   };
+
+  useEffect(() => {
+    if (userAnswer) {
+      clearChat();
+      setInput(feedbackPrompt(userAnswer));
+    }
+  }, [userAnswer]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -123,13 +139,10 @@ const Chat = () => {
                 ]}
               >
                 {message.sender === "ai" ? (
-                  <TypewriterMessage
-                    content={message.content}
-                    colorScheme={colorScheme}
-                  />
+                  <TypewriterMessage content={message.content} />
                 ) : (
                   <ThemedText style={styles.userMessageText}>
-                    {message.content}
+                    {renderLatex(message.content, "dark")}
                   </ThemedText>
                 )}
               </View>
@@ -214,6 +227,5 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 0,
     backgroundColor: "#007AFF",
     color: "white",
-    textAlign: "right",
   },
 });

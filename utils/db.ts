@@ -1,4 +1,4 @@
-import { AnswerRow } from "@/types";
+import { AnswerRow, Notes } from "@/types";
 import type { SQLiteDatabase } from "expo-sqlite";
 import * as SQLite from "expo-sqlite";
 import insertQuestions from "./insertQuestions";
@@ -7,7 +7,7 @@ let dbInstance: SQLiteDatabase | null = null;
 
 const getDB = async (): Promise<SQLiteDatabase> => {
   if (!dbInstance) {
-    dbInstance = await SQLite.openDatabaseAsync("mistake_tracker", {
+    dbInstance = await SQLite.openDatabaseAsync("app_db", {
       useNewConnection: true,
     });
   }
@@ -52,6 +52,13 @@ const initDB = async (): Promise<SQLiteDatabase> => {
       choices TEXT,
       correct_choice TEXT,
       rationale TEXT
+    );
+  `);
+
+  await db.execAsync(`
+    CREATE TABLE IF NOT EXISTS notes (
+      id TEXT PRIMARY KEY,
+      textContent TEXT DEFAULT '1 + 1 = 2'
     );
   `);
 
@@ -222,6 +229,23 @@ const fetchSessionAnswers = async (sessionId: number) => {
   }));
 };
 
+const saveNotes = async (textContent: string) => {
+  const db = await getDB();
+
+  await db.runAsync(
+    `INSERT OR REPLACE INTO notes (id, textContent) VALUES (?, ?)`,
+    [1, textContent]
+  );
+};
+
+const fetchNotes = async (): Promise<Notes> => {
+  const db = await getDB();
+
+  const notes = await db.getAllAsync<any>(`SELECT * FROM notes LIMIT 1;`);
+
+  return notes[0];
+};
+
 const dropTables = async () => {
   try {
     const db = await getDB();
@@ -236,10 +260,10 @@ const dropTables = async () => {
 
 const deleteDatabase = async () => {
   try {
-    await SQLite.deleteDatabaseAsync("mistake_tracker");
-    console.log(`Database mistake_tracker deleted successfully.`);
+    await SQLite.deleteDatabaseAsync("app_db");
+    console.log(`Database app_db deleted successfully.`);
   } catch (error) {
-    console.error(`Failed to delete database mistake_tracker:`, error);
+    console.error(`Failed to delete database app_db:`, error);
   }
 };
 
@@ -248,8 +272,10 @@ export {
   deleteDatabase,
   dropTables,
   fetchAnswers,
+  fetchNotes,
   fetchQuestionsFromDB,
   fetchSessionAnswers,
   fetchSessionStats,
   saveAnswers,
+  saveNotes,
 };

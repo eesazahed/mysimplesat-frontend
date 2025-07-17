@@ -40,7 +40,7 @@ const Button = ({
   const { colors } = useTheme();
 
   const getBackgroundColor = (): string => {
-    if (disabled) return colors.border; // TODO: fix this
+    if (disabled) return colors.border;
     if (variant === "primary") return colors.primary;
     if (variant === "secondary") return colors.card;
     return "transparent";

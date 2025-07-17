@@ -110,6 +110,27 @@ const TabLayout = () => {
       />
 
       <Tabs.Screen
+        name="notes"
+        options={{
+          href: null,
+        }}
+      />
+
+      <Tabs.Screen
+        name="about"
+        options={{
+          href: null,
+        }}
+      />
+
+      <Tabs.Screen
+        name="privacypolicy"
+        options={{
+          href: null,
+        }}
+      />
+
+      <Tabs.Screen
         name="example"
         options={{
           href: null,

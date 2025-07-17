@@ -1,5 +1,5 @@
 import { useTheme } from "@react-navigation/native";
-import { StyleProp, View, ViewStyle } from "react-native";
+import { StyleProp, View, ViewStyle, useWindowDimensions } from "react-native";
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -10,6 +10,9 @@ interface ContainerProps {
 
 const Container = ({ children, style, backgroundColor }: ContainerProps) => {
   const { colors } = useTheme();
+  const { width } = useWindowDimensions();
+
+  const containerWidth = width >= 700 ? 500 : "85%";
 
   return (
     <View
@@ -17,8 +20,8 @@ const Container = ({ children, style, backgroundColor }: ContainerProps) => {
         {
           backgroundColor: backgroundColor ?? colors.background,
           flex: 1,
-          width: "85%",
-          marginHorizontal: "auto",
+          width: containerWidth,
+          alignSelf: "center",
         },
         style,
       ]}

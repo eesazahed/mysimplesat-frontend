@@ -2,11 +2,13 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
-import type { AnswerRow } from "@/types";
+import type { AnswerRow, RootStackParamList } from "@/types";
+import copyToClipboard from "@/utils/copyToClipboard";
 import { fetchAnswers } from "@/utils/db";
 import formatCategory from "@/utils/formatCategory";
 import renderLatex from "@/utils/renderLatex";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useCallback, useMemo, useState } from "react";
 import { ScrollView, StyleSheet, View, useColorScheme } from "react-native";
 
@@ -16,7 +18,11 @@ const TYPES = ["solved", "guessed", "mistake"] as const;
 
 const PAGE_SIZE = 20;
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 const Tracker = () => {
+  const navigation = useNavigation<NavigationProp>();
+
   const [answers, setAnswers] = useState<AnswerRow[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -220,27 +226,29 @@ const Tracker = () => {
                   </ThemedText>
                 </View>
               )}
-              {answer.reasonForMistake && (
-                <View style={styles.section}>
-                  <ThemedText>
-                    <ThemedText style={styles.bold}>
-                      Reason for Mistake:{" "}
+              {answer.reasonForMistake &&
+                answer.reasonForMistake !== "Skipped" && (
+                  <View style={styles.section}>
+                    <ThemedText>
+                      <ThemedText style={styles.bold}>
+                        Reason for Mistake:{" "}
+                      </ThemedText>
+                      {answer.reasonForMistake}
                     </ThemedText>
-                    {answer.reasonForMistake}
-                  </ThemedText>
-                </View>
-              )}
-              {answer.howToAvoidMistake && (
-                <View style={styles.section}>
-                  <ThemedText>
-                    <ThemedText style={styles.bold}>
-                      How to Avoid Mistake:{" "}
+                  </View>
+                )}
+              {answer.howToAvoidMistake &&
+                answer.howToAvoidMistake !== "Skipped" && (
+                  <View style={styles.section}>
+                    <ThemedText>
+                      <ThemedText style={styles.bold}>
+                        How to Avoid Mistake:{" "}
+                      </ThemedText>
+                      {answer.howToAvoidMistake}
                     </ThemedText>
-                    {answer.howToAvoidMistake}
-                  </ThemedText>
-                </View>
-              )}
-              {answer.reasonForGuess && (
+                  </View>
+                )}
+              {answer.reasonForGuess && answer.reasonForGuess !== "Skipped" && (
                 <View style={styles.section}>
                   <ThemedText>
                     <ThemedText style={styles.bold}>
@@ -250,16 +258,17 @@ const Tracker = () => {
                   </ThemedText>
                 </View>
               )}
-              {answer.howToAvoidGuess && (
-                <View style={styles.section}>
-                  <ThemedText>
-                    <ThemedText style={styles.bold}>
-                      How to Avoid Guess:{" "}
+              {answer.howToAvoidGuess &&
+                answer.howToAvoidGuess !== "Skipped" && (
+                  <View style={styles.section}>
+                    <ThemedText>
+                      <ThemedText style={styles.bold}>
+                        How to Avoid Guess:{" "}
+                      </ThemedText>
+                      {answer.howToAvoidGuess}
                     </ThemedText>
-                    {answer.howToAvoidGuess}
-                  </ThemedText>
-                </View>
-              )}
+                  </View>
+                )}
               {answer.updatedAt && (
                 <View style={{ marginTop: 12, alignItems: "flex-end" }}>
                   <ThemedText style={{ fontSize: 12 }}>
@@ -274,6 +283,25 @@ const Tracker = () => {
                   </ThemedText>
                 </View>
               )}
+
+              <View style={{ flexDirection: "row", marginTop: 32 }}>
+                <View style={{ width: "50%", padding: 8 }}>
+                  <Button
+                    style={{ borderWidth: 0 }}
+                    onPress={() =>
+                      navigation.navigate("chat", { userAnswer: answer })
+                    }
+                    title="AI Tutor"
+                  />
+                </View>
+                <View style={{ width: "50%", padding: 8 }}>
+                  <Button
+                    style={{ borderWidth: 0, backgroundColor: "gray" }}
+                    onPress={() => copyToClipboard(answer)}
+                    title="Copy details"
+                  />
+                </View>
+              </View>
             </View>
           ))}
         </View>

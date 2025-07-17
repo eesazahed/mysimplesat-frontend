@@ -35,9 +35,9 @@ const Home = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
-        <Header title="SAT Prep App" />
+        <Header title="BestPrepSAT" />
         <ThemedText style={{ marginBottom: 32 }}>
-          Are you preparing for your next SAT?.
+          Are you preparing for your next SAT?
         </ThemedText>
         <ThemedText style={{ marginBottom: 32 }}>
           This app gives you real SAT-style practice problems and an interactive
@@ -48,21 +48,61 @@ const Home = () => {
           helping you track patterns and avoid similar errors on the actual
           test.
         </ThemedText>
-        <Button
-          title="Take a test"
-          onPress={() => navigation.navigate("test")}
-        />
-        <View style={{ marginVertical: 16 }} />
-        <Button
-          title="View your mistake tracker"
-          onPress={() => navigation.navigate("tracker")}
-        />
-        <View style={{ marginVertical: 16 }} />
-        <Button title="AI Tutor" onPress={() => navigation.navigate("chat")} />
+
+        <View>
+          <View style={[styles.buttonRow, { marginVertical: 8 }]}>
+            <View style={[styles.buttonContainer, { paddingRight: 8 }]}>
+              <Button
+                title="Take a test"
+                onPress={() => navigation.navigate("test")}
+              />
+            </View>
+            <View style={[styles.buttonContainer, { paddingLeft: 8 }]}>
+              <Button
+                title="Mistake tracker"
+                onPress={() => navigation.navigate("tracker")}
+              />
+            </View>
+          </View>
+          <View style={[styles.buttonRow, { marginVertical: 8 }]}>
+            <View style={[styles.buttonContainer, { paddingRight: 8 }]}>
+              <Button
+                title="AI Tutor"
+                onPress={() => navigation.navigate("chat")}
+              />
+            </View>
+            <View style={[styles.buttonContainer, { paddingLeft: 8 }]}>
+              <Button
+                title="Your notes"
+                onPress={() => navigation.navigate("notes")}
+              />
+            </View>
+          </View>
+          <View style={[styles.buttonRow, { marginVertical: 8 }]}>
+            <View style={[styles.buttonContainer, { paddingRight: 8 }]}>
+              <Button
+                title="About"
+                onPress={() => navigation.navigate("about")}
+                style={{ backgroundColor: "gray" }}
+              />
+            </View>
+            <View style={[styles.buttonContainer, { paddingLeft: 8 }]}>
+              <Button
+                title="Privacy Policy"
+                onPress={() => navigation.navigate("privacypolicy")}
+                style={{ backgroundColor: "gray" }}
+              />
+            </View>
+          </View>
+        </View>
+
         <View style={{ marginVertical: 32 }} />
+
         {updates && updates.length > 0 && (
           <View>
-            <ThemedText style={{ marginBottom: 32 }}>Updates:</ThemedText>
+            <ThemedText style={{ marginBottom: 32 }}>
+              Updates from developer:
+            </ThemedText>
             {updates.map((update) => {
               return (
                 <View
@@ -120,4 +160,8 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     borderColor: "#ccc",
   },
+  buttonRow: {
+    flexDirection: "row",
+  },
+  buttonContainer: { width: "50%" },
 });

@@ -5,11 +5,10 @@ import { StyleSheet } from "react-native";
 
 interface Props {
   content: string;
-  colorScheme: "light" | "dark" | null | undefined;
   delay?: number;
 }
 
-const TypewriterMessage = ({ content, colorScheme, delay = 50 }: Props) => {
+const TypewriterMessage = ({ content, delay = 50 }: Props) => {
   const [typedContent, setTypedContent] = useState("");
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const TypewriterMessage = ({ content, colorScheme, delay = 50 }: Props) => {
 
   return (
     <ThemedText style={styles.aiMessageText}>
-      {renderLatex(typedContent, colorScheme)}
+      {renderLatex(typedContent, "dark")}
     </ThemedText>
   );
 };

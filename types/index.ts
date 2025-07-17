@@ -63,11 +63,19 @@ export type Update = {
   timestamp: number;
 };
 
+export type Notes = {
+  id: number;
+  textContent: string;
+};
+
 export type RootStackParamList = {
-  chat: undefined;
+  chat: undefined | { userAnswer: AnswerRow };
   questions: { questions: any[]; timer: number };
   review: { userAnswers: UserAnswer[] };
   test: undefined;
   tracker: undefined;
   sessiondetail: { session: Session };
+  notes: undefined;
+  about: undefined;
+  privacypolicy: undefined;
 };
