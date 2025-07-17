@@ -58,7 +58,7 @@ const initDB = async (): Promise<SQLiteDatabase> => {
   await db.execAsync(`
     CREATE TABLE IF NOT EXISTS notes (
       id TEXT PRIMARY KEY,
-      textContent TEXT DEFAULT '1 + 1 = 2'
+      textContent TEXT
     );
   `);
 
@@ -251,10 +251,11 @@ const dropTables = async () => {
     const db = await getDB();
     await db.execAsync(`DROP TABLE IF EXISTS answers;`);
     await db.execAsync(`DROP TABLE IF EXISTS sessions;`);
+    await db.execAsync(`DROP TABLE IF EXISTS notes;`);
     await initDB();
-    console.log(`Tables answers and sessions dropped successfully.`);
+    console.log("Tables dropped successfully.");
   } catch (error) {
-    console.error(`Failed to drop tables answers and sessions:`, error);
+    console.error("Failed to drop tables answers and sessions:", error);
   }
 };
 

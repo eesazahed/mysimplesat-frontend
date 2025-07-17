@@ -3,11 +3,21 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { CustomDarkTheme, CustomLightTheme } from "@/themes";
 import initDB from "@/utils/db";
 import { ThemeProvider } from "@react-navigation/native";
+import * as Notifications from "expo-notifications";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import "react-native-reanimated";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+    shouldShowBanner: true,
+    shouldShowList: true,
+  }),
+});
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
@@ -16,6 +26,10 @@ const RootLayout = () => {
     const createTable = async () => {
       try {
         await initDB();
+        const { status } = await Notifications.requestPermissionsAsync();
+        if (status !== "granted") {
+          console.log("Notification permission not granted");
+        }
       } catch {
         return;
       }

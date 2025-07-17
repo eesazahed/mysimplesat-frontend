@@ -1,5 +1,4 @@
 import Button from "@/components/ui/Button";
-import Container from "@/components/ui/Container";
 import TextArea from "@/components/ui/TextArea";
 import ThemedText from "@/components/ui/ThemedText";
 import TypewriterMessage from "@/components/ui/TypewriterMessage";
@@ -9,7 +8,14 @@ import feedbackPrompt from "@/utils/feedbackPrompt";
 import renderLatex from "@/utils/renderLatex";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { useEffect, useRef, useState } from "react";
-import { ScrollView, StyleSheet, useColorScheme, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  useColorScheme,
+  View,
+} from "react-native";
 
 interface Message {
   id: number;
@@ -110,17 +116,16 @@ const Chat = () => {
   }, [userAnswer]);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Container>
-        <View
-          style={[
-            styles.chatContainer,
-            {
-              borderRadius: 12,
-              backgroundColor: colorScheme === "dark" ? "#323232" : "#ccc",
-            },
-          ]}
-        >
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={64}
+    >
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={[styles.chatContainer]}>
           <ScrollView
             ref={scrollViewRef}
             style={styles.messagesContainer}
@@ -148,11 +153,12 @@ const Chat = () => {
               </View>
             ))}
           </ScrollView>
-
           <View
             style={[
               styles.inputContainer,
-              { backgroundColor: colorScheme === "dark" ? "black" : "#6c6c6c" },
+              {
+                backgroundColor: colorScheme === "dark" ? "#323232" : "#ccc",
+              },
             ]}
           >
             <TextArea
@@ -166,23 +172,25 @@ const Chat = () => {
                 marginTop: 0,
               }}
             />
-            <Button
-              title="Send"
-              style={styles.button}
-              onPress={handleSendMessage}
-              disabled={!!(input.trim().length === 0 || loading)}
-            />
+            <View style={{ marginVertical: 20 }}>
+              <Button
+                title="Send"
+                style={styles.button}
+                onPress={handleSendMessage}
+                disabled={!!(input.trim().length === 0 || loading)}
+              />
+              <View style={{ marginVertical: 10 }} />
+              <Button
+                title={clearButtonText}
+                style={[styles.button, { backgroundColor: "gray" }]}
+                onPress={clearChat}
+                disabled={messages.length === 0}
+              />
+            </View>
           </View>
         </View>
-
-        <Button
-          title={clearButtonText}
-          style={{ marginVertical: 32, backgroundColor: "#d32f2f" }}
-          onPress={clearChat}
-          disabled={messages.length === 0}
-        />
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -200,8 +208,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputContainer: {
-    borderBottomLeftRadius: 12,
-    borderBottomRightRadius: 12,
     paddingTop: 12,
   },
   input: {
@@ -211,9 +217,7 @@ const styles = StyleSheet.create({
     maxHeight: 200,
   },
   button: {
-    marginBottom: 16,
     marginHorizontal: 12,
-    marginTop: 10,
     borderWidth: 0,
   },
   message: {

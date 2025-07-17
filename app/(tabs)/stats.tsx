@@ -121,114 +121,127 @@ const Stats = () => {
           ))}
         </View>
 
-        <ThemedText
-          style={{
-            fontSize: 18,
-            marginBottom: 32,
-            textAlign: "center",
-            fontWeight: "bold",
-          }}
-        >
-          Your previous tests
-        </ThemedText>
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator
-          contentContainerStyle={styles.tableContainer}
-        >
-          <View style={styles.table}>
-            <View
-              style={[
-                styles.tableRow,
-                {
-                  backgroundColor: colorScheme === "dark" ? "#2a2a2a" : "#ccc",
-                },
-              ]}
+        {paginatedSessions && paginatedSessions.length > 0 && (
+          <View>
+            <ThemedText
+              style={{
+                fontSize: 18,
+                marginBottom: 32,
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
             >
-              <ThemedText style={styles.idCell}>ID</ThemedText>
-              <ThemedText style={styles.dateCell}>Date</ThemedText>
-              <ThemedText style={styles.timeCell}>Time</ThemedText>
-              <ThemedText style={styles.subjectCell}>Subject</ThemedText>
-              <ThemedText style={styles.difficultyCell}>Difficulty</ThemedText>
-              <ThemedText style={styles.correctCell}>Correct</ThemedText>
-              <ThemedText style={styles.totalCell}>Total</ThemedText>
-              <ThemedText style={styles.percentCell}>%</ThemedText>
-              <ThemedText style={styles.detailsCell}>Questions</ThemedText>
-            </View>
+              Your previous tests
+            </ThemedText>
 
-            {paginatedSessions.map((sesh, index) => {
-              const percent =
-                sesh.total === 0
-                  ? 0
-                  : Math.round((sesh.correct / sesh.total) * 100);
-
-              const date = new Date(sesh.createdAt);
-              const isLastRow = index === paginatedSessions.length - 1;
-
-              return (
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator
+              contentContainerStyle={styles.tableContainer}
+            >
+              <View style={styles.table}>
                 <View
-                  key={sesh.id}
                   style={[
                     styles.tableRow,
-                    isLastRow && styles.tableRowLast,
-                    colorScheme === "dark" && styles.tableRowDarkBg,
+                    {
+                      backgroundColor:
+                        colorScheme === "dark" ? "#2a2a2a" : "#ccc",
+                    },
                   ]}
                 >
-                  <ThemedText style={styles.idCell}>{sesh.id}</ThemedText>
-                  <ThemedText style={styles.dateCell}>
-                    {date
-                      .toLocaleDateString(undefined, {
-                        month: "2-digit",
-                        day: "2-digit",
-                      })
-                      .replace("-", "/")}
-                  </ThemedText>
-                  <ThemedText style={styles.timeCell}>
-                    {date.toLocaleTimeString(undefined, {
-                      hour: "numeric",
-                      minute: "2-digit",
-                      hour12: true,
-                    })}
-                  </ThemedText>
-                  <ThemedText style={styles.subjectCell}>
-                    {formatCategory(sesh.subject)}
-                  </ThemedText>
+                  <ThemedText style={styles.idCell}>ID</ThemedText>
+                  <ThemedText style={styles.dateCell}>Date</ThemedText>
+                  <ThemedText style={styles.timeCell}>Time</ThemedText>
+                  <ThemedText style={styles.subjectCell}>Subject</ThemedText>
                   <ThemedText style={styles.difficultyCell}>
-                    {formatCategory(sesh.difficulty)}
+                    Difficulty
                   </ThemedText>
-                  <ThemedText style={styles.correctCell}>
-                    {sesh.correct}
-                  </ThemedText>
-                  <ThemedText style={styles.totalCell}>{sesh.total}</ThemedText>
-                  <ThemedText style={styles.percentCell}>{percent}%</ThemedText>
-                  <Pressable
-                    onPress={() =>
-                      navigation.navigate("sessiondetail", { session: sesh })
-                    }
-                    style={styles.detailsCell}
-                  >
-                    <ThemedText
-                      style={{ color: "#007aff", textAlign: "center" }}
-                    >
-                      View
-                    </ThemedText>
-                  </Pressable>
+                  <ThemedText style={styles.correctCell}>Correct</ThemedText>
+                  <ThemedText style={styles.totalCell}>Total</ThemedText>
+                  <ThemedText style={styles.percentCell}>%</ThemedText>
+                  <ThemedText style={styles.detailsCell}>Questions</ThemedText>
                 </View>
-              );
-            })}
-          </View>
-        </ScrollView>
 
-        <View style={{ marginTop: 20, marginBottom: 50 }}>
-          {canLoadMore && (
-            <Button
-              title="Load More"
-              onPress={() => setPage((p) => p + 1)}
-              variant="primary"
-            />
-          )}
-        </View>
+                {paginatedSessions.map((sesh, index) => {
+                  const percent =
+                    sesh.total === 0
+                      ? 0
+                      : Math.round((sesh.correct / sesh.total) * 100);
+
+                  const date = new Date(sesh.createdAt);
+                  const isLastRow = index === paginatedSessions.length - 1;
+
+                  return (
+                    <View
+                      key={sesh.id}
+                      style={[
+                        styles.tableRow,
+                        isLastRow && styles.tableRowLast,
+                        colorScheme === "dark" && styles.tableRowDarkBg,
+                      ]}
+                    >
+                      <ThemedText style={styles.idCell}>{sesh.id}</ThemedText>
+                      <ThemedText style={styles.dateCell}>
+                        {date
+                          .toLocaleDateString(undefined, {
+                            month: "2-digit",
+                            day: "2-digit",
+                          })
+                          .replace("-", "/")}
+                      </ThemedText>
+                      <ThemedText style={styles.timeCell}>
+                        {date.toLocaleTimeString(undefined, {
+                          hour: "numeric",
+                          minute: "2-digit",
+                          hour12: true,
+                        })}
+                      </ThemedText>
+                      <ThemedText style={styles.subjectCell}>
+                        {formatCategory(sesh.subject)}
+                      </ThemedText>
+                      <ThemedText style={styles.difficultyCell}>
+                        {formatCategory(sesh.difficulty)}
+                      </ThemedText>
+                      <ThemedText style={styles.correctCell}>
+                        {sesh.correct}
+                      </ThemedText>
+                      <ThemedText style={styles.totalCell}>
+                        {sesh.total}
+                      </ThemedText>
+                      <ThemedText style={styles.percentCell}>
+                        {percent}%
+                      </ThemedText>
+                      <Pressable
+                        onPress={() =>
+                          navigation.navigate("sessiondetail", {
+                            session: sesh,
+                          })
+                        }
+                        style={styles.detailsCell}
+                      >
+                        <ThemedText
+                          style={{ color: "#007aff", textAlign: "center" }}
+                        >
+                          View
+                        </ThemedText>
+                      </Pressable>
+                    </View>
+                  );
+                })}
+              </View>
+            </ScrollView>
+
+            <View style={{ marginTop: 20, marginBottom: 50 }}>
+              {canLoadMore && (
+                <Button
+                  title="Load More"
+                  onPress={() => setPage((p) => p + 1)}
+                  variant="primary"
+                />
+              )}
+            </View>
+          </View>
+        )}
       </Container>
     </ScrollView>
   );
@@ -237,7 +250,10 @@ const Stats = () => {
 export default Stats;
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, paddingBottom: 50 },
+  container: {
+    paddingBottom: 50,
+    //  flexGrow: 1,
+  },
   summaryContainer: {
     marginBottom: 40,
     borderWidth: 1,

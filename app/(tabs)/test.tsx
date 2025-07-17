@@ -23,7 +23,7 @@ const difficulties = [
 const questionCounts = [5, 10, 15, 20];
 
 const timers = [
-  { label: "60", value: 60 },
+  { label: "45", value: 45 },
   { label: "30", value: 30 },
   { label: "15", value: 15 },
   { label: "None", value: 0 },

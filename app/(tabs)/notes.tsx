@@ -14,7 +14,9 @@ const Notes = () => {
   useEffect(() => {
     const fetchNotesTextContent = async () => {
       const result = await fetchNotes();
-      setNotesTextContent(result?.textContent || "");
+      setNotesTextContent(
+        result?.textContent || "Write down some things you've learned!\n\n"
+      );
     };
 
     fetchNotesTextContent();

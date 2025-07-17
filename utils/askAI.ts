@@ -41,16 +41,14 @@ const askAI = async (
     });
 
     if (!response.ok) {
-      console.error("AI API error", await response.text());
-      return null;
+      return "AI API error";
     }
 
     const data = await response.json();
     const content = data?.choices?.[0]?.message?.content ?? null;
     return content;
-  } catch (error) {
-    console.error("AI request failed", error);
-    return null;
+  } catch {
+    return "AI request failed";
   }
 };
 

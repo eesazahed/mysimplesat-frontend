@@ -22,6 +22,7 @@ interface Props {
   style?: StyleProp<ViewStyle>;
   noLoading?: boolean;
   icon?: "remove" | "add";
+  customColor?: string;
 }
 
 const Button = ({
@@ -36,6 +37,7 @@ const Button = ({
   style,
   noLoading = false,
   icon,
+  customColor,
 }: Props) => {
   const { colors } = useTheme();
 
@@ -88,7 +90,7 @@ const Button = ({
       ) : (
         <ThemedText
           style={{
-            color: getTextColor(),
+            color: customColor || getTextColor(),
             fontSize: fontSize ?? 16,
             fontWeight: "500",
           }}

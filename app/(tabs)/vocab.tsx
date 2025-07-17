@@ -40,7 +40,7 @@ const Vocab = () => {
             "correct": "A"
           }
   
-          Make sure the question is challenging and the vocabulary words are advanced. Use only valid JSON. No commentary or explanation.`
+          Make sure the question is challenging and the vocabulary words are advanced. Be unique and creative each time. Create different contexts. For fill in the blanks, just use a string of 10 underscores. Use only valid JSON. No commentary or explanation. Make sure to be VERY careful not to include any form of markdown, such as three backticks`
       );
 
       const response: VocabQuestion =
