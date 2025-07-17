@@ -92,7 +92,7 @@ const Button = ({
           style={{
             color: customColor || getTextColor(),
             fontSize: fontSize ?? 16,
-            fontWeight: "500",
+            fontFamily: "LatoBold",
           }}
         >
           {title}

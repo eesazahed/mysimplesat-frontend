@@ -316,11 +316,11 @@ const Review = () => {
 
         <View style={{ marginTop: 20 }}>
           <ThemedText style={{ marginBottom: 24 }}>
-            <Text style={{ fontWeight: "bold" }}>Question:</Text>{" "}
+            <Text style={{ fontFamily: "LatoBold" }}>Question:</Text>{" "}
             {renderLatex(currentAnswer.questionText, colorScheme)}
           </ThemedText>
           <ThemedText style={{ marginBottom: 20 }}>
-            <Text style={{ fontWeight: "bold" }}>Rationale:</Text>{" "}
+            <Text style={{ fontFamily: "LatoBold" }}>Rationale:</Text>{" "}
             {renderLatex(currentAnswer.rationale, colorScheme)}
           </ThemedText>
 

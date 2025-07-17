@@ -230,7 +230,7 @@ const Questions = () => {
             style={{
               marginBottom: 48,
               fontSize: 16,
-              fontWeight: "600",
+              fontFamily: "LatoBold",
               textAlign: "center",
             }}
           >

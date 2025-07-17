@@ -134,7 +134,7 @@ const Home = () => {
                       : styles.lightUpdate,
                   ]}
                 >
-                  <ThemedText style={{ fontWeight: "bold", fontSize: 24 }}>
+                  <ThemedText style={{ fontFamily: "LatoBold", fontSize: 24 }}>
                     {update.title}
                   </ThemedText>
                   <ThemedText style={{ marginTop: 16, marginBottom: 24 }}>

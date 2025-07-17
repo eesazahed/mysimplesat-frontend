@@ -36,10 +36,12 @@ const styles = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 24,
+    fontFamily: "Lato",
   },
   link: {
     fontSize: 16,
     lineHeight: 24,
     color: "#20a9d5",
+    fontFamily: "Lato",
   },
 });

@@ -22,7 +22,7 @@ const Header = ({ title, style, fontSize = 34 }: HeaderProps) => {
       <ThemedText
         style={{
           fontSize: fontSize,
-          fontWeight: 600,
+          fontFamily: "LatoBold",
           lineHeight: fontSize * 1.2,
           flex: 1,
           paddingVertical: 28,

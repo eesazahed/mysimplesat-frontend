@@ -195,10 +195,10 @@ const styles = StyleSheet.create({
   },
   heading: {
     marginTop: 16,
-    fontWeight: "bold",
+    fontFamily: "LatoBold",
   },
   bold: {
-    fontWeight: "bold",
+    fontFamily: "LatoBold",
   },
   section: {
     marginBottom: 12,

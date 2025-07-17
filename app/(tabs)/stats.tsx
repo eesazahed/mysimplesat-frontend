@@ -128,7 +128,7 @@ const Stats = () => {
                 fontSize: 18,
                 marginBottom: 32,
                 textAlign: "center",
-                fontWeight: "bold",
+                fontFamily: "LatoBold",
               }}
             >
               Your previous tests
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
   },
   label: {
-    fontWeight: "600",
+    fontFamily: "LatoBold",
     fontSize: 16,
   },
   value: {

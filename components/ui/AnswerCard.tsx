@@ -23,21 +23,29 @@ const AnswerCard = ({ answer, showTime = false }: Props) => {
     answer.isCorrect && !!answer.reasonForGuess && !!answer.howToAvoidGuess;
   const isMistake = !answer.isCorrect;
 
-  const backgroundColor = isSolved
-    ? colorScheme === "dark"
-      ? "#0a6d2f"
-      : "#a1d99b"
-    : isGuessed
-    ? colorScheme === "dark"
-      ? "#b58900"
-      : "#fff176"
-    : isMistake
-    ? colorScheme === "dark"
-      ? "#8b0000"
-      : "#f87171"
-    : colorScheme === "dark"
-    ? "#333"
-    : "#eee";
+  let backgroundColor;
+
+  if (colorScheme === "dark") {
+    if (isSolved) {
+      backgroundColor = "darkgreen";
+    } else if (isGuessed) {
+      backgroundColor = "#b58900";
+    } else if (isMistake) {
+      backgroundColor = "darkred";
+    } else {
+      backgroundColor = "#323232";
+    }
+  } else {
+    if (isSolved) {
+      backgroundColor = "lightgreen";
+    } else if (isGuessed) {
+      backgroundColor = "#fff176";
+    } else if (isMistake) {
+      backgroundColor = "#f29d9d";
+    } else {
+      backgroundColor = "transparent";
+    }
+  }
 
   return (
     <View style={[styles.row, { backgroundColor }]}>
@@ -157,6 +165,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   bold: {
-    fontWeight: "bold",
+    fontFamily: "LatoBold",
   },
 });

@@ -1,22 +1,10 @@
 import Container from "@/components/ui/Container";
 import Header from "@/components/ui/Header";
 import ThemedText from "@/components/ui/ThemedText";
-import { ExternalPathString, Link } from "expo-router";
-import { useState } from "react";
+import { Link } from "expo-router";
 import { ScrollView, StyleSheet } from "react-native";
 
 const About = () => {
-  const [mailto, setMailto] = useState<ExternalPathString | null>(null);
-  const [email, setEmail] = useState<string>("[click to reveal]");
-
-  const updateEmail = () => {
-    if (!mailto) {
-      const decrypted = atob("ZWVzYUBoYWNrY2x1Yi5hcHA=");
-      setMailto(`mailto:${decrypted}`);
-      setEmail(decrypted);
-    }
-  };
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
@@ -72,16 +60,33 @@ const About = () => {
         </ThemedText>
 
         <ThemedText style={{ marginBottom: 16 }}>
-          Contact me at{" "}
-          {mailto ? (
-            <Link href={mailto} style={styles.email}>
-              {email}
-            </Link>
-          ) : (
-            <ThemedText onPress={updateEmail} style={styles.email}>
-              {email}
-            </ThemedText>
-          )}
+          You can contact me at{" "}
+          <Link href="mailto:eesa@hackclub.app" style={styles.email}>
+            eesa@hackclub.app
+          </Link>
+          , I&apos;ll try to respond.
+        </ThemedText>
+
+        <ThemedText style={{ marginTop: 16, marginBottom: 16 }}>
+          I&apos;ve also built{" "}
+          <Link style={styles.link} href="https://gratefultime.app">
+            GratefulTime
+          </Link>
+          , a modern digital gratitude journal. If you have an iOS or MacOS
+          device, be sure to check it out! It&apos;s a simple, modern gratitude
+          journal with:
+        </ThemedText>
+
+        <ThemedText style={{ marginBottom: 16, marginLeft: 16 }}>
+          - Space to write three gratitude items + a daily prompt
+        </ThemedText>
+
+        <ThemedText style={{ marginBottom: 16, marginLeft: 16 }}>
+          - A calendar to browse and reflect on past entries
+        </ThemedText>
+
+        <ThemedText style={{ marginBottom: 16, marginLeft: 16 }}>
+          - AI-generated monthly summaries of what you&apos;ve written
         </ThemedText>
       </Container>
     </ScrollView>

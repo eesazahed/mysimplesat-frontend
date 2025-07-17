@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
   },
   title: {
-    fontWeight: "bold",
+    fontFamily: "LatoBold",
     marginVertical: 4,
   },
   explanation: {

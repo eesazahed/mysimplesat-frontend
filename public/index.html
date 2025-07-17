@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MySimpleSAT</title>
+    <link
+      rel="shortcut icon"
+      href="https://raw.githubusercontent.com/eesazahed/sat-prep-app/refs/heads/main/assets/images/icon.png"
+      type="image/x-icon"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+      * {
+        font-family: "Lato";
+      }
+
+      body {
+        max-width: 600px;
+        padding: 2rem;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>MySimpleSAT</h1>
+
+    <p>Are you preparing for your next SAT?</p>
+
+    <p>
+      This app gives you real SAT-style practice problems and an interactive
+      review session.
+    </p>
+
+    <p>
+      After each problem, you&apos;ll reflect on mistakes and guesses, helping
+      you track patterns and avoid similar errors on the actual test.
+    </p>
+
+    <p>
+      I created this app while I was studying for the SAT. It started as a
+      personal project, but I had three clear goals in mind from the beginning:
+    </p>
+
+    <ol>
+      <li>
+        I wanted to improve my own SAT preparation. By building this app, I had
+        the opportunity to solve a ton of practice problems.
+      </li>
+
+      <li>
+        I wanted to create a helpful and free resource for other students who
+        are preparing for the SAT.
+      </li>
+
+      <li>
+        I saw this as an opportunity to practice and improve my mobile
+        development skills. I also used this app to apply for a grmant through
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://gemini.hackclub.com"
+        >
+          Hack Club</a
+        >.
+      </li>
+    </ol>
+
+    <p>
+      This app is completely open source and available on
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/eesazahed/SAT-prep-app"
+      >
+        GitHub</a
+      >. If you have any thoughts, suggestions, or feedback, I&apos;d love to
+      hear them.
+    </p>
+
+    <p>
+      You can contact me at
+      <a id="email" target="_blank" rel="noopener noreferrer"
+        >[click to reveal]</a
+      >, I&apos;ll try to respond.
+    </p>
+
+    <p>
+      I&apos;ve also built
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://gratefultime.app"
+      >
+        GratefulTime</a
+      >, a modern digital gratitude journal. If you have an iOS or MacOS device,
+      be sure to check it out! It&apos;s a simple, modern gratitude journal
+      with:
+    </p>
+
+    <ul>
+      <li>Space to write three gratitude items + a daily prompt</li>
+
+      <li>A calendar to browse and reflect on past entries</li>
+
+      <li>AI-generated monthly summaries of what you&apos;ve written</li>
+    </ul>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const email = document.getElementById("email");
+        email.addEventListener("click", (e) => {
+          if (!email.href.includes("mailto:")) {
+            e.preventDefault();
+            email.textContent = atob("ZWVzYUBoYWNrY2x1Yi5hcHA=");
+            email.href = `mailto:${email.textContent}`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

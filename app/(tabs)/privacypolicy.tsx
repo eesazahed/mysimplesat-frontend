@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   sectionTitle: {
-    fontWeight: "bold",
+    fontFamily: "LatoBold",
     marginBottom: 8,
   },
   sectionDetails: {

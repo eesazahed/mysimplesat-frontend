@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   score: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "LatoBold",
   },
   percent: {
     fontSize: 12,

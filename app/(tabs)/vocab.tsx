@@ -98,7 +98,7 @@ const Vocab = () => {
                     if (isCorrect) {
                       bgColor = "lightgreen";
                     } else {
-                      bgColor = "salmon";
+                      bgColor = "#f29d9d";
                     }
                   } else {
                     bgColor = "transparent";

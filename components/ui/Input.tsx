@@ -36,7 +36,7 @@ const Input = ({
           style={{
             marginBottom: 8,
             fontSize: 16,
-            fontWeight: "500",
+            fontFamily: "LatoBold",
             color: textColor,
           }}
         >

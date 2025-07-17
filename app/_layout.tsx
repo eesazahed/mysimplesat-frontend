@@ -3,6 +3,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { CustomDarkTheme, CustomLightTheme } from "@/themes";
 import initDB from "@/utils/db";
 import { ThemeProvider } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 import * as Notifications from "expo-notifications";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -22,6 +23,11 @@ Notifications.setNotificationHandler({
 const RootLayout = () => {
   const colorScheme = useColorScheme();
 
+  const [loaded] = useFonts({
+    Lato: require("../assets/fonts/Lato-Regular.ttf"),
+    LatoBold: require("../assets/fonts/Lato-Bold.ttf"),
+  });
+
   useEffect(() => {
     const createTable = async () => {
       try {
@@ -36,6 +42,10 @@ const RootLayout = () => {
     };
     createTable();
   }, []);
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <ThemeProvider

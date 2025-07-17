@@ -97,10 +97,10 @@ const styles = StyleSheet.create({
   },
   stats: {
     marginBottom: 8,
-    fontWeight: "bold",
+    fontFamily: "LatoBold",
   },
   bold: {
-    fontWeight: "bold",
+    fontFamily: "LatoBold",
   },
   section: {
     marginBottom: 12,

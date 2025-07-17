@@ -71,7 +71,7 @@ const Settings = () => {
                 },
               ]}
             >
-              <ThemedText style={{ fontSize: 24, fontWeight: "bold" }}>
+              <ThemedText style={{ fontSize: 24, fontFamily: "LatoBold" }}>
                 {selectedHour}
               </ThemedText>
             </View>
