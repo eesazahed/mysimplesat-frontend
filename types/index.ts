@@ -68,6 +68,18 @@ export type Notes = {
   textContent: string;
 };
 
+export type VocabOption = {
+  definition: string;
+  label: QuestionChoiceKey;
+  word: string;
+};
+
+export type VocabQuestion = {
+  question: string;
+  correct: QuestionChoiceKey;
+  options: VocabOption[];
+};
+
 export type RootStackParamList = {
   chat: undefined | { userAnswer: AnswerRow };
   questions: { questions: any[]; timer: number };
@@ -78,4 +90,5 @@ export type RootStackParamList = {
   notes: undefined;
   about: undefined;
   privacypolicy: undefined;
+  vocab: undefined;
 };

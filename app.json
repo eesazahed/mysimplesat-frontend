@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "sat-prep-app",
-    "slug": "sat-prep-app",
+    "name": "MySimpleSAT",
+    "slug": "MySimpleSAT",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

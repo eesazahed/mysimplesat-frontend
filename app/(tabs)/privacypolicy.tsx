@@ -7,7 +7,7 @@ import { ScrollView, StyleSheet, View } from "react-native";
 const policies = [
   {
     title: `Introduction`,
-    details: `BestPrepSAT ("the App") prioritizes your privacy and data security. This policy explains what data we collect, how we use it, and your rights.`,
+    details: `MySimpleSAT ("the App") prioritizes your privacy and data security. This policy explains what data we collect, how we use it, and your rights.`,
   },
   {
     title: `Information We Collect`,

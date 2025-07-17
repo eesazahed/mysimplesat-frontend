@@ -6,7 +6,13 @@ import { RootStackParamList, Update } from "@/types";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, useColorScheme, View } from "react-native";
+import {
+  Linking,
+  ScrollView,
+  StyleSheet,
+  useColorScheme,
+  View,
+} from "react-native";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -35,7 +41,7 @@ const Home = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Container>
-        <Header title="BestPrepSAT" />
+        <Header title="MySimpleSAT" />
         <ThemedText style={{ marginBottom: 32 }}>
           Are you preparing for your next SAT?
         </ThemedText>
@@ -81,6 +87,22 @@ const Home = () => {
           <View style={[styles.buttonRow, { marginVertical: 8 }]}>
             <View style={[styles.buttonContainer, { paddingRight: 8 }]}>
               <Button
+                title="Vocab quiz"
+                onPress={() => navigation.navigate("vocab")}
+              />
+            </View>
+            <View style={[styles.buttonContainer, { paddingLeft: 8 }]}>
+              <Button
+                title="View on GitHub"
+                onPress={() =>
+                  Linking.openURL("https://github.com/eesazahed/SAT-prep-app")
+                }
+              />
+            </View>
+          </View>
+          <View style={[styles.buttonRow, { marginVertical: 8 }]}>
+            <View style={[styles.buttonContainer, { paddingRight: 8 }]}>
+              <Button
                 title="About"
                 onPress={() => navigation.navigate("about")}
                 style={{ backgroundColor: "gray" }}
@@ -95,9 +117,7 @@ const Home = () => {
             </View>
           </View>
         </View>
-
         <View style={{ marginVertical: 32 }} />
-
         {updates && updates.length > 0 && (
           <View>
             <ThemedText style={{ marginBottom: 32 }}>

@@ -131,6 +131,13 @@ const TabLayout = () => {
       />
 
       <Tabs.Screen
+        name="vocab"
+        options={{
+          href: null,
+        }}
+      />
+
+      <Tabs.Screen
         name="example"
         options={{
           href: null,

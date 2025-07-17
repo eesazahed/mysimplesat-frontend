@@ -27,7 +27,12 @@ const Settings = () => {
       <Container>
         <Header title="Settings" />
 
-        <ThemedText style={{ marginBottom: 32 }}>
+        <ThemedText
+          style={{
+            marginBottom: 32,
+            textAlign: "center",
+          }}
+        >
           Would you like to reset your mistake tracker?
         </ThemedText>
         <Button
