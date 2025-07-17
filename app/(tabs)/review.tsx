@@ -13,6 +13,8 @@ import renderLatex from "@/utils/renderLatex";
 import { RouteProp, useFocusEffect, useRoute } from "@react-navigation/native";
 import React, { useCallback, useEffect, useState } from "react";
 import {
+  KeyboardAvoidingView,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -303,175 +305,184 @@ const Review = () => {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Container>
-        <Header
-          title={`Review (${currentIndex + 1} / ${userAnswers.length})`}
-        />
-        <Score
-          colorScheme={colorScheme}
-          correct={score}
-          total={userAnswers.length}
-        />
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={64}
+    >
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Container>
+          <Header
+            title={`Review (${currentIndex + 1} / ${userAnswers.length})`}
+          />
+          <Score
+            colorScheme={colorScheme}
+            correct={score}
+            total={userAnswers.length}
+          />
 
-        <View style={{ marginTop: 20 }}>
-          <ThemedText style={{ marginBottom: 24 }}>
-            <Text style={{ fontFamily: "LatoBold" }}>Question:</Text>{" "}
-            {renderLatex(currentAnswer.questionText, colorScheme)}
-          </ThemedText>
-          <ThemedText style={{ marginBottom: 20 }}>
-            <Text style={{ fontFamily: "LatoBold" }}>Rationale:</Text>{" "}
-            {renderLatex(currentAnswer.rationale, colorScheme)}
-          </ThemedText>
+          <View style={{ marginTop: 20 }}>
+            <ThemedText style={{ marginBottom: 24 }}>
+              <Text style={{ fontFamily: "LatoBold" }}>Question:</Text>{" "}
+              {renderLatex(currentAnswer.questionText, colorScheme)}
+            </ThemedText>
+            <ThemedText style={{ marginBottom: 20 }}>
+              <Text style={{ fontFamily: "LatoBold" }}>Rationale:</Text>{" "}
+              {renderLatex(currentAnswer.rationale, colorScheme)}
+            </ThemedText>
 
-          {isCorrect ? (
-            <>
-              <ThemedText style={{ color: "green", marginBottom: 32 }}>
-                You answered this question correctly.
-              </ThemedText>
+            {isCorrect ? (
+              <>
+                <ThemedText style={{ color: "green", marginBottom: 32 }}>
+                  You answered this question correctly.
+                </ThemedText>
 
-              {guessStep === 0 && (
-                <View style={{ flexDirection: "row", gap: 20 }}>
-                  <Button title="I solved it" onPress={handleSolved} />
-                  <Button
-                    title="I guessed it"
-                    onPress={() => setGuessStep(1)}
-                  />
-                </View>
-              )}
-
-              {guessStep === 1 && (
-                <>
-                  <ThemedText style={{ marginTop: 20, marginBottom: 8 }}>
-                    Why did you guess this question?
-                  </ThemedText>
-                  <TextArea
-                    value={inputReason}
-                    onChangeText={setInputReason}
-                    placeholder="Explain your process"
-                  />
-                  <Button
-                    title="Submit"
-                    style={{ marginVertical: 24 }}
-                    onPress={handleGuessNextStep}
-                    disabled={inputReason.trim() === ""}
-                  />
-                  <Button
-                    title="Skip"
-                    onPress={handleSkipReason}
-                    style={{ backgroundColor: "#6B7280", marginTop: 12 }}
-                  />
-                </>
-              )}
-
-              {guessStep === 2 && (
-                <>
-                  <AIExplanation
-                    isLoading={isLoadingAI}
-                    explanation={aiExplanation}
-                    colorScheme={colorScheme}
-                  />
-
-                  <ThemedText style={{ marginTop: 20, marginBottom: 8 }}>
-                    How can you avoid guessing questions like this in the
-                    future?
-                  </ThemedText>
-                  <TextArea
-                    value={inputAvoid}
-                    onChangeText={setInputAvoid}
-                    placeholder="Strategies to avoid guessing..."
-                  />
-                  <Button
-                    title="Submit"
-                    style={{ marginVertical: 24 }}
-                    onPress={handleGuessNextStep}
-                    disabled={inputAvoid.trim() === ""}
-                  />
-                  <Button
-                    title="Skip"
-                    onPress={handleSkipAvoid}
-                    style={{ backgroundColor: "#6B7280", marginTop: 12 }}
-                  />
-                </>
-              )}
-            </>
-          ) : (
-            <>
-              <ThemedText
-                style={{
-                  color: "#d32f2f",
-                  marginVertical: 16,
-                  marginBottom: 24,
-                }}
-              >
-                {currentAnswer.selectedChoiceValue ? (
-                  <>
-                    You answered: {currentAnswer.selectedChoiceValue}, which was
-                    incorrect.
-                  </>
-                ) : (
-                  <>You did not select an answer.</>
+                {guessStep === 0 && (
+                  <View style={{ flexDirection: "row", gap: 20 }}>
+                    <Button title="I solved it" onPress={handleSolved} />
+                    <Button
+                      title="I guessed it"
+                      onPress={() => setGuessStep(1)}
+                    />
+                  </View>
                 )}
-              </ThemedText>
 
-              {incorrectStep === 0 && (
-                <>
-                  <ThemedText style={{ marginBottom: 8 }}>
-                    Why did you make this mistake?
-                  </ThemedText>
-                  <TextArea
-                    value={inputReason}
-                    onChangeText={setInputReason}
-                    placeholder="Explain your mistake"
-                  />
-                  <Button
-                    title="Submit"
-                    style={{ marginVertical: 24 }}
-                    onPress={handleIncorrectNextStep}
-                    disabled={inputReason.trim() === ""}
-                  />
-                  <Button
-                    title="Skip"
-                    onPress={handleSkipReason}
-                    style={{ backgroundColor: "#6B7280" }}
-                  />
-                </>
-              )}
+                {guessStep === 1 && (
+                  <>
+                    <ThemedText style={{ marginTop: 20, marginBottom: 8 }}>
+                      Why did you guess this question?
+                    </ThemedText>
+                    <TextArea
+                      value={inputReason}
+                      onChangeText={setInputReason}
+                      placeholder="Explain your process"
+                    />
+                    <Button
+                      title="Submit"
+                      style={{ marginVertical: 24 }}
+                      onPress={handleGuessNextStep}
+                      disabled={inputReason.trim() === ""}
+                    />
+                    <Button
+                      title="Skip"
+                      onPress={handleSkipReason}
+                      style={{ backgroundColor: "#6B7280", marginTop: 12 }}
+                    />
+                  </>
+                )}
 
-              {incorrectStep === 1 && (
-                <>
-                  <AIExplanation
-                    isLoading={isLoadingAI}
-                    explanation={aiExplanation}
-                    colorScheme={colorScheme}
-                  />
+                {guessStep === 2 && (
+                  <>
+                    <AIExplanation
+                      isLoading={isLoadingAI}
+                      explanation={aiExplanation}
+                      colorScheme={colorScheme}
+                    />
 
-                  <ThemedText style={{ marginTop: 20, marginBottom: 8 }}>
-                    How can you avoid this mistake in the future?
-                  </ThemedText>
-                  <TextArea
-                    value={inputAvoid}
-                    onChangeText={setInputAvoid}
-                    placeholder="Strategies to avoid this mistake"
-                  />
-                  <Button
-                    title="Submit"
-                    style={{ marginVertical: 24 }}
-                    onPress={handleIncorrectNextStep}
-                    disabled={inputAvoid.trim() === ""}
-                  />
-                  <Button
-                    title="Skip"
-                    onPress={handleSkipAvoid}
-                    style={{ backgroundColor: "#6B7280" }}
-                  />
-                </>
-              )}
-            </>
-          )}
-        </View>
-      </Container>
-    </ScrollView>
+                    <ThemedText style={{ marginTop: 20, marginBottom: 8 }}>
+                      How can you avoid guessing questions like this in the
+                      future?
+                    </ThemedText>
+                    <TextArea
+                      value={inputAvoid}
+                      onChangeText={setInputAvoid}
+                      placeholder="Strategies to avoid guessing..."
+                    />
+                    <Button
+                      title="Submit"
+                      style={{ marginVertical: 24 }}
+                      onPress={handleGuessNextStep}
+                      disabled={inputAvoid.trim() === ""}
+                    />
+                    <Button
+                      title="Skip"
+                      onPress={handleSkipAvoid}
+                      style={{ backgroundColor: "#6B7280", marginTop: 12 }}
+                    />
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <ThemedText
+                  style={{
+                    color: "#d32f2f",
+                    marginVertical: 16,
+                    marginBottom: 24,
+                  }}
+                >
+                  {currentAnswer.selectedChoiceValue ? (
+                    <>
+                      You answered: {currentAnswer.selectedChoiceValue}, which
+                      was incorrect.
+                    </>
+                  ) : (
+                    <>You did not select an answer.</>
+                  )}
+                </ThemedText>
+
+                {incorrectStep === 0 && (
+                  <>
+                    <ThemedText style={{ marginBottom: 8 }}>
+                      Why did you make this mistake?
+                    </ThemedText>
+                    <TextArea
+                      value={inputReason}
+                      onChangeText={setInputReason}
+                      placeholder="Explain your mistake"
+                    />
+                    <Button
+                      title="Submit"
+                      style={{ marginVertical: 24 }}
+                      onPress={handleIncorrectNextStep}
+                      disabled={inputReason.trim() === ""}
+                    />
+                    <Button
+                      title="Skip"
+                      onPress={handleSkipReason}
+                      style={{ backgroundColor: "#6B7280" }}
+                    />
+                  </>
+                )}
+
+                {incorrectStep === 1 && (
+                  <>
+                    <AIExplanation
+                      isLoading={isLoadingAI}
+                      explanation={aiExplanation}
+                      colorScheme={colorScheme}
+                    />
+
+                    <ThemedText style={{ marginTop: 20, marginBottom: 8 }}>
+                      How can you avoid this mistake in the future?
+                    </ThemedText>
+                    <TextArea
+                      value={inputAvoid}
+                      onChangeText={setInputAvoid}
+                      placeholder="Strategies to avoid this mistake"
+                    />
+                    <Button
+                      title="Submit"
+                      style={{ marginVertical: 24 }}
+                      onPress={handleIncorrectNextStep}
+                      disabled={inputAvoid.trim() === ""}
+                    />
+                    <Button
+                      title="Skip"
+                      onPress={handleSkipAvoid}
+                      style={{ backgroundColor: "#6B7280" }}
+                    />
+                  </>
+                )}
+              </>
+            )}
+          </View>
+        </Container>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
