@@ -24,9 +24,7 @@ const Home = () => {
   useEffect(() => {
     const fetchUpdates = async () => {
       try {
-        const response = await fetch(
-          "https://sat-question-bank-backend.eesa.hackclub.app/updates"
-        );
+        const response = await fetch("https://sat.eesa.hackclub.app/updates");
 
         const data = await response.json();
         setUpdates(data.reverse());
