@@ -93,7 +93,9 @@ const Home = () => {
               <Button
                 title="View on GitHub"
                 onPress={() =>
-                  Linking.openURL("https://github.com/eesazahed/SAT-prep-app")
+                  Linking.openURL(
+                    "https://github.com/eesazahed/mysimplesat-frontend"
+                  )
                 }
               />
             </View>

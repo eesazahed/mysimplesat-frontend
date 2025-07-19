@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
           This app is completely open source and available on{" "}
           <Link
             style={styles.link}
-            href="https://github.com/eesazahed/SAT-prep-app"
+            href="https://github.com/eesazahed/mysimplesat-frontend"
           >
             GitHub
           </Link>

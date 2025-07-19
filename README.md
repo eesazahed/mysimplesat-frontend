@@ -16,4 +16,4 @@ eesa [at] hackclub [dot] app
 
 <br />
 <br />
-<img src="https://raw.githubusercontent.com/eesazahed/sat-prep-app/refs/heads/main/assets/images/home.png" alt="homepage" width="300" />
+<img src="https://raw.githubusercontent.com/eesazahed/mysimplesat-frontend/refs/heads/main/assets/images/home.png" alt="homepage" width="300" />
