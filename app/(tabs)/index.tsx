@@ -6,13 +6,7 @@ import { RootStackParamList, Update } from "@/types";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
-import {
-  Linking,
-  ScrollView,
-  StyleSheet,
-  useColorScheme,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, useColorScheme, View } from "react-native";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -76,13 +70,17 @@ const Home = () => {
               />
             </View>
             <View style={[styles.buttonContainer, { paddingLeft: 8 }]}>
-              <Button
+              {/* <Button
                 title="Your notes"
                 onPress={() => navigation.navigate("notes")}
+              /> */}
+              <Button
+                title="Vocab quiz"
+                onPress={() => navigation.navigate("vocab")}
               />
             </View>
           </View>
-          <View style={[styles.buttonRow, { marginVertical: 8 }]}>
+          {/* <View style={[styles.buttonRow, { marginVertical: 8 }]}>
             <View style={[styles.buttonContainer, { paddingRight: 8 }]}>
               <Button
                 title="Vocab quiz"
@@ -99,7 +97,7 @@ const Home = () => {
                 }
               />
             </View>
-          </View>
+          </View> */}
           <View style={[styles.buttonRow, { marginVertical: 8 }]}>
             <View style={[styles.buttonContainer, { paddingRight: 8 }]}>
               <Button

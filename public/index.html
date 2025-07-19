@@ -12,6 +12,10 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       * {
         font-family: "Lato";
       }
@@ -33,8 +37,42 @@
         overflow: hidden;
         border-radius: 2rem;
         padding: 1rem;
-        margin: auto;
+        margin: 4rem auto 0rem auto;
         display: block;
+      }
+
+      a {
+        color: #0488b4;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .privacy-policy {
+        margin-top: 2rem;
+        padding-top: 2rem;
+      }
+
+      .privacy-policy h2 {
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .privacy-policy section {
+        margin-bottom: 2rem;
+      }
+
+      .privacy-policy section h3 {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .privacy-policy section p {
+        margin-left: 1rem;
+        margin-top: 0;
       }
     </style>
   </head>
@@ -96,9 +134,8 @@
 
     <p>
       You can contact me at
-      <a id="email" target="_blank" rel="noopener noreferrer"
-        >[click to reveal]</a
-      >, I&apos;ll try to respond.
+      <a href="mailto:eesa@hackclub.app">eesa@hackclub.app</a>, I&apos;ll try to
+      respond.
     </p>
 
     <p>
@@ -122,29 +159,100 @@
       <li>AI-generated monthly summaries of what you&apos;ve written</li>
     </ul>
 
-    <br />
-    <br />
-    <br />
     <img
       src="https://raw.githubusercontent.com/eesazahed/mysimplesat-frontend/refs/heads/main/assets/images/home.png"
       alt="homepage"
       width="300"
     />
-    <br />
-    <br />
-    <br />
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const email = document.getElementById("email");
-        email.addEventListener("click", (e) => {
-          if (!email.href.includes("mailto:")) {
-            e.preventDefault();
-            email.textContent = atob("ZWVzYUBoYWNrY2x1Yi5hcHA=");
-            email.href = `mailto:${email.textContent}`;
-          }
-        });
-      });
-    </script>
+    <section class="privacy-policy" id="privacy-policy">
+      <h2>Privacy Policy</h2>
+
+      <section>
+        <h3>1. Introduction</h3>
+        <p>
+          MySimpleSAT ("the App") prioritizes your privacy and data security.
+          This policy explains what data we collect, how we use it, and your
+          rights.
+        </p>
+      </section>
+
+      <section>
+        <h3>2. Information We Collect</h3>
+        <p>
+          We do not collect any of your data. Everything is stored locally on
+          your device.
+        </p>
+      </section>
+
+      <section>
+        <h3>3. Use of Information</h3>
+        <p>We do not have access to any of your information.</p>
+      </section>
+
+      <section>
+        <h3>4. Data Storage and Security</h3>
+        <p>
+          Data is stored locally on your device and is never uploaded to any
+          cloud databases.
+        </p>
+      </section>
+
+      <section>
+        <h3>5. AI Response Generation</h3>
+        <p>
+          AI responses are generated using Hack Club's free and open source
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://ai.hackclub.com"
+            >AI service</a
+          >. All AI requests and responses are logged by Hack Club to prevent
+          abuse. Data is not shared with any other third parties.
+        </p>
+      </section>
+
+      <section>
+        <h3>6. Children's Privacy</h3>
+        <p>
+          The app is not for children under 13, and we do not knowingly collect
+          data from them.
+        </p>
+      </section>
+
+      <section>
+        <h3>7. Changes to This Policy</h3>
+        <p>
+          We may update this policy; users will be notified of significant
+          changes.
+        </p>
+      </section>
+
+      <section>
+        <h3>8. Contact</h3>
+        <p>
+          Questions? Contact:
+          <a href="mailto:eesa@hackclub.app">eesa@hackclub.app</a>
+        </p>
+      </section>
+
+      <section>
+        <h3>9. Legal Compliance</h3>
+        <p>
+          This policy complies with applicable data protection laws, including
+          GDPR and CCPA where relevant.
+        </p>
+      </section>
+
+      <p>
+        This app is completely open source and available on
+        <a
+          href="https://github.com/eesazahed/mysimplesat-frontend"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >.
+      </p>
+    </section>
   </body>
 </html>
