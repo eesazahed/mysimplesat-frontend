@@ -15,7 +15,7 @@ const TabLayout = () => {
         tabBarButton: HapticTab,
         tabBarStyle: Platform.select({
           default: {
-            height: 120,
+            height: 100,
             display: !inTest ? "flex" : "none",
           },
         }),

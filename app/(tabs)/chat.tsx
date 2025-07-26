@@ -39,7 +39,7 @@ const Chat = () => {
   const route = useRoute<RouteProp<RootStackParamList, "chat">>();
   const userAnswer = route.params?.userAnswer;
 
-  const [clearButtonText, setClearButtonText] = useState("Clear Chat");
+  const [clearButtonText, setClearButtonText] = useState("Clear");
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -104,7 +104,7 @@ const Chat = () => {
     setChatHistory([systemMessage]);
     setLoading(false);
     setTimeout(() => {
-      setClearButtonText("Clear Chat");
+      setClearButtonText("Clear");
     }, 1000);
   };
 
@@ -119,7 +119,7 @@ const Chat = () => {
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={64}
+      keyboardVerticalOffset={0}
     >
       <ScrollView
         contentContainerStyle={styles.container}
@@ -165,26 +165,31 @@ const Chat = () => {
               value={input}
               onChangeText={setInput}
               placeholder="What would you like help with?"
-              minHeight={100}
+              minHeight={80}
               style={styles.input}
               containerStyle={{
                 marginBottom: 0,
                 marginTop: 0,
               }}
             />
-            <View style={{ marginVertical: 20 }}>
-              <Button
-                title="Send"
-                style={styles.button}
-                onPress={handleSendMessage}
-                disabled={!!(input.trim().length === 0 || loading)}
-              />
-              <View style={{ marginVertical: 10 }} />
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginVertical: 10,
+              }}
+            >
               <Button
                 title={clearButtonText}
                 style={[styles.button, { backgroundColor: "gray" }]}
                 onPress={clearChat}
                 disabled={messages.length === 0}
+              />
+              <Button
+                title="Send!"
+                style={styles.button}
+                onPress={handleSendMessage}
+                disabled={!!(input.trim().length === 0 || loading)}
               />
             </View>
           </View>

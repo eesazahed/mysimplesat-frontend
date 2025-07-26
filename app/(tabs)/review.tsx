@@ -308,7 +308,7 @@ const Review = () => {
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={64}
+      keyboardVerticalOffset={0}
     >
       <ScrollView
         contentContainerStyle={styles.container}
